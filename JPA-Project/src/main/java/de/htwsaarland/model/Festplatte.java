@@ -16,16 +16,18 @@ public class Festplatte extends Base{
 	
 	private String art;
 
-	private int groesse;
+	private String groesse;
 	private double preis;
 	private String hersteller;
+	private String kategorie;
+	
 	public Festplatte() {
 		// TODO Auto-generated constructor stub
 	}
 	public String getArt() {
 		return art;
 	}
-	public int getGroesse() {
+	public String getGroesse() {
 		return groesse;
 	}
 	public String getHersteller() {
@@ -41,7 +43,7 @@ public class Festplatte extends Base{
 		this.art = art;
 	}
 
-	public void setGroesse(int groesse) {
+	public void setGroesse(String groesse) {
 		this.groesse = groesse;
 	}
 	public void setHersteller(String hersteller) {
@@ -58,5 +60,17 @@ public class Festplatte extends Base{
 		return "Festplatte [name=" + name + ", art=" + art + ", groesse="
 				+ groesse + ", preis=" + preis + ", hersteller=" + hersteller
 				+ "]";
+	}
+	/**
+	 * @return the kategorie
+	 */
+	public String getKategorie() {
+		return kategorie;
+	}
+	/**
+	 * @param kategorie the kategorie to set
+	 */
+	public void setKategorie(String kategorie) {
+		this.kategorie = kategorie;
 	}
 }

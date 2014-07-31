@@ -20,6 +20,8 @@ public class Betriebssystem extends Base {
 	private String edition;
 
 	private double preis;
+	
+	private String jahr;
 
 	public Betriebssystem() {
 		// TODO Auto-generated constructor stub
@@ -59,5 +61,19 @@ public class Betriebssystem extends Base {
 		return "Betriebssystem [name=" + name + ", hersteller=" + hersteller
 				+ ", edition=" + edition + ", preis=" + preis + ", getId()="
 				+ getId() + "]";
+	}
+
+	/**
+	 * @return the jahr
+	 */
+	public String getJahr() {
+		return jahr;
+	}
+
+	/**
+	 * @param jahr the jahr to set
+	 */
+	public void setJahr(String jahr) {
+		this.jahr = jahr;
 	}
 }

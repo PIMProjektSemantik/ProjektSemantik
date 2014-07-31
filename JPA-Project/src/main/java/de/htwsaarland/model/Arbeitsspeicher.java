@@ -17,16 +17,18 @@ public class Arbeitsspeicher extends Base {
 
 	private String typ;
 
-	private int takt;
+	private String takt;
 
-	private int groesse;
+	private String groesse;
 
 	private double preis;
+	
+	private String kategorie;
 
 	public Arbeitsspeicher() {
 	}
 
-	public int getGroesse() {
+	public String getGroesse() {
 		return groesse;
 	}
 
@@ -38,7 +40,7 @@ public class Arbeitsspeicher extends Base {
 		return preis;
 	}
 
-	public int getTakt() {
+	public String getTakt() {
 		return takt;
 	}
 
@@ -46,7 +48,7 @@ public class Arbeitsspeicher extends Base {
 		return typ;
 	}
 
-	public void setGroesse(int groesse) {
+	public void setGroesse(String groesse) {
 		this.groesse = groesse;
 	}
 
@@ -57,7 +59,7 @@ public class Arbeitsspeicher extends Base {
 	public void setPreis(double preis) {
 		this.preis = preis;
 	}
-	public void setTakt(int takt) {
+	public void setTakt(String takt) {
 		this.takt = takt;
 	}
 	public void setTyp(String typ) {
@@ -67,5 +69,19 @@ public class Arbeitsspeicher extends Base {
 	public String toString() {
 		return "Arbeitsspeicher [name=" + name + ", typ=" + typ + ", takt="
 				+ takt + ", groesse=" + groesse + ", preis=" + preis + "]";
+	}
+
+	/**
+	 * @return the kategorie
+	 */
+	public String getKategorie() {
+		return kategorie;
+	}
+
+	/**
+	 * @param kategorie the kategorie to set
+	 */
+	public void setKategorie(String kategorie) {
+		this.kategorie = kategorie;
 	}
 }

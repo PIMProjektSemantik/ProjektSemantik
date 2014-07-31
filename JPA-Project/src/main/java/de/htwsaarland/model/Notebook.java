@@ -28,7 +28,7 @@ public class Notebook extends Base {
 
 
 	// in GB
-	private int festplatte;
+	private String festplatte;
 
 	private String betriebssystem;
 
@@ -65,7 +65,7 @@ public class Notebook extends Base {
 		return displaygroesse;
 	}
 
-	public int getFestplatte() {
+	public String getFestplatte() {
 		return festplatte;
 	}
 
@@ -103,7 +103,7 @@ public class Notebook extends Base {
 	public void setDisplaygroesse(String displaygroesse) {
 		this.displaygroesse = displaygroesse;
 	}
-	public void setFestplatte(int festplatte) {
+	public void setFestplatte(String festplatte) {
 		this.festplatte = festplatte;
 	}
 	public void setGrafikkarte(String grafikkarte) {

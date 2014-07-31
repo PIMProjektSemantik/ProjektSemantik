@@ -1,6 +1,7 @@
 package de.htwsaarland.model;
 
 import javax.persistence.Entity;
+
 /**
  * @author Marc Koster
  *
@@ -14,6 +15,8 @@ public class Tablet extends Base {
 	private int speicher;
 	private double preis;
 	private String connectionType;
+	private String displaygroesse;
+	private String betriebssystem;
 
 	/**
 	 * 
@@ -24,10 +27,6 @@ public class Tablet extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getConnectionType() {
-		return connectionType;
-	}
-
 	public String getHersteller() {
 		return hersteller;
 	}
@@ -36,16 +35,28 @@ public class Tablet extends Base {
 		return modell;
 	}
 
-	public double getPreis() {
-		return preis;
-	}
-
 	public String getProzessor() {
 		return prozessor;
 	}
 
+	public String getDisplaygroesse() {
+		return displaygroesse;
+	}
+
+	public String getBetriebssystem() {
+		return betriebssystem;
+	}
+
 	public int getSpeicher() {
 		return speicher;
+	}
+
+	public String getConnectionType() {
+		return connectionType;
+	}
+
+	public double getPreis() {
+		return preis;
 	}
 
 	public void setConnectionType(String connectionType) {
@@ -70,6 +81,14 @@ public class Tablet extends Base {
 
 	public void setSpeicher(int speicher) {
 		this.speicher = speicher;
+	}
+
+	public void setDisplaygroesse(String displaygroesse) {
+		this.displaygroesse = displaygroesse;
+	}
+
+	public void setBetriebssystem(String betriebssystem) {
+		this.betriebssystem = betriebssystem;
 	}
 
 	@Override

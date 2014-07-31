@@ -19,6 +19,7 @@ public class Grafikkarte extends Base{
 	private double rechenleistung;
 	private double preis;
 	private int speichergroesse;
+	private String kategorie;
 	public Grafikkarte() {
 		// TODO Auto-generated constructor stub
 	}
@@ -58,6 +59,18 @@ public class Grafikkarte extends Base{
 		return "Grafikkarte [name=" + name + ", hersteller=" + hersteller
 				+ ", rechenleistung=" + rechenleistung + ", preis=" + preis
 				+ ", speichergroesse=" + speichergroesse + "]";
+	}
+	/**
+	 * @return the kategorie
+	 */
+	public String getKategorie() {
+		return kategorie;
+	}
+	/**
+	 * @param kategorie the kategorie to set
+	 */
+	public void setKategorie(String kategorie) {
+		this.kategorie = kategorie;
 	}
 	
 	
