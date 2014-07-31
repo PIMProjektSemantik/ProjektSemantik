@@ -18,7 +18,6 @@
 
 4. Schreibt mir euren GitHub-Benutzernamen, damit ich euch zum Team hinzufügen kann.
 
-
 ## Einrichtung unseres Repositorys
 
 1. Erstellt euch auf eurem Computer einen stinknormalen Ordner. Meiner heißt "Projekt Semantik"
@@ -43,6 +42,60 @@
 	git pull origin master
 	```
 
-## Ausblick
+## Grundlegende Git-Befehle und Operationen
 
-Wenn das alles gemacht ist und ich etwas mehr an Content hochgeladen habe, zeige ich euch, wie ihr euch immer auf den neusten Stand bringt und selber etwas einchecken könnt. 
+### Eigene Version vom Server aktualisieren (Pull)
+
+Bevor ihr an etwas arbeitet, solltet ihr euch den neusten Stand vom Online-Repository besorgen. Das geht so:
+
+```shell
+git pull origin master
+```
+
+### Server von eigener Version aktualisieren (Commit & Push)
+
+Der Arbeitsablauf ist so, dass ihr Änderungen lokal als neue Version definiert (Commit) und sie, wenn ihr fertig seid, auf den Server schiebt (Push). Wenn ihr etwas korrigiert / ein neues Feature implementiert oder eine neue Datei angelegt habt, macht ihr folgendes:
+
+Anzeigen, was lokal geändert wurde:
+
+```shell
+git status
+```
+
+Eine geänderte oder neue Datei als Teil des nächsten Commits definieren:
+
+```shell
+git add "NEUE_ODER_GEÄNDERTE_DATEI"
+```
+
+Wenn ihr dafür zu faul seid, geht auch ein:
+
+```shell
+git add  *
+```
+
+Nachdem ihr nun alle geänderten Files dem nächsten Commit hinzugefügt habt, macht ihr ein:
+
+```shell
+git commit
+```
+
+Nun seht ihr ein Fensterchen, wo alle geaddeten Dateien drinstehen. Dort beschreibt ihr, was in diesem Commit geschehen ist. Im Falle des VI (ist glaube ich der Standardeditor):
+
+1. Mit Pfeiltasten nach unten zur noch leeren Nachricht navigieren
+2. Einfügemodus mit "SHIFT + i" starten
+3. Nachricht schreiben
+4. Einfügemodus mit "ESC" beenden
+5. Nachricht mit ":wq + ENTER" speichern
+
+Danach ist der Commit erledigt. Ihr könnt danach auch beliebig viele weitere Commits machen und sie erst z.B. am Ende des Tages auf das Online-Repo schieben. Das geht so:
+
+```shell
+git push origin master
+```
+
+Ihr werden nach eurem GitHub-Namen sowie -Passwort gefragt, gebt das ein, drückt Enter und im Browser könnt ihr nun sehen, dass in der Commit-Liste alle neuen Commits drinstehen.
+
+## Probleme
+
+Bei Fragen, Problemen oder Verbesserungen dieses Ablaufs bitte mich oder Steffen kontaktieren. Obige Lösung ist meine Art, Git und GitHub zu benutzen. Habe mir das aber erst vor kurzem selber beigebracht, das geht bestimmt noch besser ;).
