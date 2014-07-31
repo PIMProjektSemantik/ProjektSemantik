@@ -1,0 +1,1325 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/steffen/ontologies/2014/6/untitled-ontology-14"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/steffen/ontologies/2014/6/untitled-ontology-14">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Budget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Leistung"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_04f4304f_145d_4ac9_88f0_1c5b9eea343a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_10232dd6_c33e_4901_b518_9b6d58dfd884"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_11684121_c104_40b3_9c46_36c993483b5b"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_18c5d959_c642_41ce_9621_fa936baeb3c6"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_1b0a463f_2d7b_4526_9e70_3b56a3dcc1bb"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_1e10c8e9_c334_48b6_807a_a1825dea37ab"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_2550b128_cc25_4d5e_869b_2f81e8455c9f"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_2a5331ec_7ca1_4f45_bec8_1c299b90d155"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_2ed3e70e_5e59_45c6_a5c6_1fdd22b40632"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_32f7a128_30ca_4da0_8fde_c0b44e53393a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_3b3217be_a7b5_4f27_9a55_6673cf54f3dc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_3cedb31f_2016_4caf_9b48_54d754ef5df9"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_3fadb626_12ba_48ea_802f_7a84addd8d02"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_459a72a8_431c_4f53_a4e1_57c86132e04c"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_45be0f2b_40a6_4024_8740_3b0ade50daff"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_546a9b7f_3f84_4746_9986_35851c90e464"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_577a3be0_88a7_4491_a424_4a383182965b"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_5ef8a80a_199d_4cbe_ab7f_c5588ad747a6"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_66d11bdc_e67f_4c5d_89c6_4ade79eaa68a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_69b1e2cc_f3ca_4b88_92f8_89b8a1aab697"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_6e316d98_467c_48b2_9b73_d20e0c47f19e"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_6fb41666_888a_4601_a6c7_5d3b5f47204c"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_723e918c_4c09_4848_8ddf_f0f61c3846d1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_7477ee76_b33d_42b9_8ce8_fd42a8f8939c"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_763390e0_ed1a_4651_afa1_ae0cdc4c1a91"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_78d031d1_5a03_4466_82e6_f3a5b490f0af"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_79b7bd43_fb63_404b_a3c3_0db8e6f49afb"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_7a79c949_a5c5_41da_af85_c085879a9cbc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_804505a1_6e5e_406c_85b5_a9ecba4503d3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_832a725d_6ea9_4e8c_98b6_6d1fa00ab8a1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_8337391f_bcfe_42fc_a726_5a008906a338"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_86221e4c_26a7_44cf_9f49_6429d329c44d"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_86acbe64_8d23_48b1_a026_73c2ae1f7390"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_87a81d40_c3bf_4356_ba12_ed8777d0e874"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_8bedf854_041f_48b3_b87c_8f9c82b2bd19"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_8c75066a_2fc1_4b70_9d55_0e84c3108f1e"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_a9dcf4b6_d1c3_40d6_9241_7461c7eb284c"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_c7fcb4ab_891a_4d16_a24f_f9b5366f1582"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_cfaa5928_91ea_4ce4_a8ef_340358ab8105"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_d3771373_dfb1_4f59_91da_0c44a4a04dd4"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_d76547e2_1a36_4964_9f4a_e97e23fd73b8"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_df2dd5db_6e57_48d8_9e20_3261b92c8074"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_e2555873_b641_4b8c_8b21_583923b353de"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_e8a566df_69fd_42fa_bd5d_0b5b437a63ee"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_ea76524d_766e_4aa7_9736_de1ded5f5e58"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_ee3a9b06_8be0_458d_8d9c_66936262b70a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_f39841e0_0e92_4c92_93f1_e089fa717124"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_f39c69d3_d3b0_406b_9d75_d3870b6ac657"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_f81b6a5a_eb90_4731_8b7a_49a59532933a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#OWLObjectProperty_e9b0e121_c57a_49cc_a198_76256a96cf4d"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#für_anwendung"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_betriebssystem"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_cpu"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_festplatte"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_grafikkarte"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_leistung"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_preis"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_ram"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hat_zubehör"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ist_mobil"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Budget"/>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Leistung"/>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_04f4304f_145d_4ac9_88f0_1c5b9eea343a"/>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_10232dd6_c33e_4901_b518_9b6d58dfd884"/>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_11684121_c104_40b3_9c46_36c993483b5b"/>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_18c5d959_c642_41ce_9621_fa936baeb3c6"/>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_1b0a463f_2d7b_4526_9e70_3b56a3dcc1bb"/>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_1e10c8e9_c334_48b6_807a_a1825dea37ab"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_2550b128_cc25_4d5e_869b_2f81e8455c9f"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_2a5331ec_7ca1_4f45_bec8_1c299b90d155"/>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_2ed3e70e_5e59_45c6_a5c6_1fdd22b40632"/>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_32f7a128_30ca_4da0_8fde_c0b44e53393a"/>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+        <Class IRI="#OWLClass_79b7bd43_fb63_404b_a3c3_0db8e6f49afb"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_3b3217be_a7b5_4f27_9a55_6673cf54f3dc"/>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_3cedb31f_2016_4caf_9b48_54d754ef5df9"/>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_3fadb626_12ba_48ea_802f_7a84addd8d02"/>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_459a72a8_431c_4f53_a4e1_57c86132e04c"/>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_45be0f2b_40a6_4024_8740_3b0ade50daff"/>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+        <Class IRI="#Leistung"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563"/>
+            <Class IRI="#OWLClass_7477ee76_b33d_42b9_8ce8_fd42a8f8939c"/>
+            <Class IRI="#OWLClass_8c75066a_2fc1_4b70_9d55_0e84c3108f1e"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563"/>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_546a9b7f_3f84_4746_9986_35851c90e464"/>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_577a3be0_88a7_4491_a424_4a383182965b"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_5ef8a80a_199d_4cbe_ab7f_c5588ad747a6"/>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+        <Class IRI="#Budget"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_18c5d959_c642_41ce_9621_fa936baeb3c6"/>
+            <Class IRI="#OWLClass_723e918c_4c09_4848_8ddf_f0f61c3846d1"/>
+            <Class IRI="#OWLClass_8337391f_bcfe_42fc_a726_5a008906a338"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+        <Class IRI="#Budget"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_7a79c949_a5c5_41da_af85_c085879a9cbc"/>
+            <Class IRI="#OWLClass_86acbe64_8d23_48b1_a026_73c2ae1f7390"/>
+            <Class IRI="#OWLClass_a9dcf4b6_d1c3_40d6_9241_7461c7eb284c"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_66d11bdc_e67f_4c5d_89c6_4ade79eaa68a"/>
+        <Class IRI="#OWLClass_6e316d98_467c_48b2_9b73_d20e0c47f19e"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_69b1e2cc_f3ca_4b88_92f8_89b8a1aab697"/>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+        <Class IRI="#Leistung"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_1b0a463f_2d7b_4526_9e70_3b56a3dcc1bb"/>
+            <Class IRI="#OWLClass_804505a1_6e5e_406c_85b5_a9ecba4503d3"/>
+            <Class IRI="#OWLClass_8bedf854_041f_48b3_b87c_8f9c82b2bd19"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_6e316d98_467c_48b2_9b73_d20e0c47f19e"/>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_6fb41666_888a_4601_a6c7_5d3b5f47204c"/>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_723e918c_4c09_4848_8ddf_f0f61c3846d1"/>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_7477ee76_b33d_42b9_8ce8_fd42a8f8939c"/>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_763390e0_ed1a_4651_afa1_ae0cdc4c1a91"/>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_78d031d1_5a03_4466_82e6_f3a5b490f0af"/>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_79b7bd43_fb63_404b_a3c3_0db8e6f49afb"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_7a79c949_a5c5_41da_af85_c085879a9cbc"/>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_804505a1_6e5e_406c_85b5_a9ecba4503d3"/>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_832a725d_6ea9_4e8c_98b6_6d1fa00ab8a1"/>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_8337391f_bcfe_42fc_a726_5a008906a338"/>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+        <Class IRI="#Leistung"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_04f4304f_145d_4ac9_88f0_1c5b9eea343a"/>
+            <Class IRI="#OWLClass_2a5331ec_7ca1_4f45_bec8_1c299b90d155"/>
+            <Class IRI="#OWLClass_78d031d1_5a03_4466_82e6_f3a5b490f0af"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_86221e4c_26a7_44cf_9f49_6429d329c44d"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_86acbe64_8d23_48b1_a026_73c2ae1f7390"/>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_87a81d40_c3bf_4356_ba12_ed8777d0e874"/>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_11684121_c104_40b3_9c46_36c993483b5b"/>
+            <Class IRI="#OWLClass_87a81d40_c3bf_4356_ba12_ed8777d0e874"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_8bedf854_041f_48b3_b87c_8f9c82b2bd19"/>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_8c75066a_2fc1_4b70_9d55_0e84c3108f1e"/>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+        <Class IRI="#Budget"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_3fadb626_12ba_48ea_802f_7a84addd8d02"/>
+            <Class IRI="#OWLClass_45be0f2b_40a6_4024_8740_3b0ade50daff"/>
+            <Class IRI="#OWLClass_6fb41666_888a_4601_a6c7_5d3b5f47204c"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_1e10c8e9_c334_48b6_807a_a1825dea37ab"/>
+            <Class IRI="#OWLClass_c7fcb4ab_891a_4d16_a24f_f9b5366f1582"/>
+            <Class IRI="#OWLClass_d76547e2_1a36_4964_9f4a_e97e23fd73b8"/>
+            <Class IRI="#OWLClass_ee3a9b06_8be0_458d_8d9c_66936262b70a"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_a9dcf4b6_d1c3_40d6_9241_7461c7eb284c"/>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+        <Class IRI="#Leistung"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_32f7a128_30ca_4da0_8fde_c0b44e53393a"/>
+            <Class IRI="#OWLClass_546a9b7f_3f84_4746_9986_35851c90e464"/>
+            <Class IRI="#OWLClass_f39c69d3_d3b0_406b_9d75_d3870b6ac657"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_c7fcb4ab_891a_4d16_a24f_f9b5366f1582"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+        <Class IRI="#OWLClass_79b7bd43_fb63_404b_a3c3_0db8e6f49afb"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_cfaa5928_91ea_4ce4_a8ef_340358ab8105"/>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_d3771373_dfb1_4f59_91da_0c44a4a04dd4"/>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_d76547e2_1a36_4964_9f4a_e97e23fd73b8"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_df2dd5db_6e57_48d8_9e20_3261b92c8074"/>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_e2555873_b641_4b8c_8b21_583923b353de"/>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_e8a566df_69fd_42fa_bd5d_0b5b437a63ee"/>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_ea76524d_766e_4aa7_9736_de1ded5f5e58"/>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_ee3a9b06_8be0_458d_8d9c_66936262b70a"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_f39841e0_0e92_4c92_93f1_e089fa717124"/>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_f39c69d3_d3b0_406b_9d75_d3870b6ac657"/>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_f81b6a5a_eb90_4731_8b7a_49a59532933a"/>
+        <Class IRI="#OWLClass_6e316d98_467c_48b2_9b73_d20e0c47f19e"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+        <Class IRI="#Budget"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+        <ObjectUnionOf>
+            <Class IRI="#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563"/>
+            <Class IRI="#OWLClass_763390e0_ed1a_4651_afa1_ae0cdc4c1a91"/>
+            <Class IRI="#OWLClass_832a725d_6ea9_4e8c_98b6_6d1fa00ab8a1"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_04f4304f_145d_4ac9_88f0_1c5b9eea343a"/>
+        <Class IRI="#OWLClass_2a5331ec_7ca1_4f45_bec8_1c299b90d155"/>
+        <Class IRI="#OWLClass_78d031d1_5a03_4466_82e6_f3a5b490f0af"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_10232dd6_c33e_4901_b518_9b6d58dfd884"/>
+        <Class IRI="#OWLClass_2ed3e70e_5e59_45c6_a5c6_1fdd22b40632"/>
+        <Class IRI="#OWLClass_3cedb31f_2016_4caf_9b48_54d754ef5df9"/>
+        <Class IRI="#OWLClass_cfaa5928_91ea_4ce4_a8ef_340358ab8105"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_11684121_c104_40b3_9c46_36c993483b5b"/>
+        <Class IRI="#OWLClass_87a81d40_c3bf_4356_ba12_ed8777d0e874"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_18c5d959_c642_41ce_9621_fa936baeb3c6"/>
+        <Class IRI="#OWLClass_723e918c_4c09_4848_8ddf_f0f61c3846d1"/>
+        <Class IRI="#OWLClass_8337391f_bcfe_42fc_a726_5a008906a338"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_1b0a463f_2d7b_4526_9e70_3b56a3dcc1bb"/>
+        <Class IRI="#OWLClass_804505a1_6e5e_406c_85b5_a9ecba4503d3"/>
+        <Class IRI="#OWLClass_8bedf854_041f_48b3_b87c_8f9c82b2bd19"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_1e10c8e9_c334_48b6_807a_a1825dea37ab"/>
+        <Class IRI="#OWLClass_c7fcb4ab_891a_4d16_a24f_f9b5366f1582"/>
+        <Class IRI="#OWLClass_d76547e2_1a36_4964_9f4a_e97e23fd73b8"/>
+        <Class IRI="#OWLClass_ee3a9b06_8be0_458d_8d9c_66936262b70a"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_2550b128_cc25_4d5e_869b_2f81e8455c9f"/>
+        <Class IRI="#OWLClass_577a3be0_88a7_4491_a424_4a383182965b"/>
+        <Class IRI="#OWLClass_86221e4c_26a7_44cf_9f49_6429d329c44d"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_32f7a128_30ca_4da0_8fde_c0b44e53393a"/>
+        <Class IRI="#OWLClass_546a9b7f_3f84_4746_9986_35851c90e464"/>
+        <Class IRI="#OWLClass_f39c69d3_d3b0_406b_9d75_d3870b6ac657"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5"/>
+        <Class IRI="#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_3b3217be_a7b5_4f27_9a55_6673cf54f3dc"/>
+        <Class IRI="#OWLClass_459a72a8_431c_4f53_a4e1_57c86132e04c"/>
+        <Class IRI="#OWLClass_5ef8a80a_199d_4cbe_ab7f_c5588ad747a6"/>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_3fadb626_12ba_48ea_802f_7a84addd8d02"/>
+        <Class IRI="#OWLClass_45be0f2b_40a6_4024_8740_3b0ade50daff"/>
+        <Class IRI="#OWLClass_6fb41666_888a_4601_a6c7_5d3b5f47204c"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd"/>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+        <Class IRI="#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563"/>
+        <Class IRI="#OWLClass_7477ee76_b33d_42b9_8ce8_fd42a8f8939c"/>
+        <Class IRI="#OWLClass_8c75066a_2fc1_4b70_9d55_0e84c3108f1e"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563"/>
+        <Class IRI="#OWLClass_763390e0_ed1a_4651_afa1_ae0cdc4c1a91"/>
+        <Class IRI="#OWLClass_832a725d_6ea9_4e8c_98b6_6d1fa00ab8a1"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_614ac857_c866_410c_977f_96d7d638383c"/>
+        <Class IRI="#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d"/>
+        <Class IRI="#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_66d11bdc_e67f_4c5d_89c6_4ade79eaa68a"/>
+        <Class IRI="#OWLClass_f81b6a5a_eb90_4731_8b7a_49a59532933a"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_69b1e2cc_f3ca_4b88_92f8_89b8a1aab697"/>
+        <Class IRI="#OWLClass_6e316d98_467c_48b2_9b73_d20e0c47f19e"/>
+        <Class IRI="#OWLClass_e2555873_b641_4b8c_8b21_583923b353de"/>
+        <Class IRI="#OWLClass_e8a566df_69fd_42fa_bd5d_0b5b437a63ee"/>
+        <Class IRI="#OWLClass_ea76524d_766e_4aa7_9736_de1ded5f5e58"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815"/>
+        <Class IRI="#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0"/>
+        <Class IRI="#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_7a79c949_a5c5_41da_af85_c085879a9cbc"/>
+        <Class IRI="#OWLClass_86acbe64_8d23_48b1_a026_73c2ae1f7390"/>
+        <Class IRI="#OWLClass_a9dcf4b6_d1c3_40d6_9241_7461c7eb284c"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OWLClass_d3771373_dfb1_4f59_91da_0c44a4a04dd4"/>
+        <Class IRI="#OWLClass_f39841e0_0e92_4c92_93f1_e089fa717124"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#für_anwendung"/>
+        <ObjectProperty IRI="#OWLObjectProperty_e9b0e121_c57a_49cc_a198_76256a96cf4d"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_betriebssystem"/>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_cpu"/>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_festplatte"/>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_grafikkarte"/>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_leistung"/>
+        <ObjectProperty IRI="#OWLObjectProperty_e9b0e121_c57a_49cc_a198_76256a96cf4d"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_preis"/>
+        <ObjectProperty IRI="#OWLObjectProperty_e9b0e121_c57a_49cc_a198_76256a96cf4d"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_ram"/>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hat_zubehör"/>
+        <ObjectProperty IRI="#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ist_mobil"/>
+        <ObjectProperty IRI="#OWLObjectProperty_e9b0e121_c57a_49cc_a198_76256a96cf4d"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_betriebssystem"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_cpu"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_festplatte"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_grafikkarte"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_leistung"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_preis"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_ram"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#ist_mobil"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_betriebssystem"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_cpu"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_festplatte"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_grafikkarte"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hat_ram"/>
+    </InverseFunctionalObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hat_leistung"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hat_preis"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#für_anwendung"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_betriebssystem"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_cpu"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_festplatte"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_grafikkarte"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_leistung"/>
+        <Class IRI="#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_preis"/>
+        <Class IRI="#OWLClass_3b3217be_a7b5_4f27_9a55_6673cf54f3dc"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_preis"/>
+        <Class IRI="#OWLClass_459a72a8_431c_4f53_a4e1_57c86132e04c"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_preis"/>
+        <Class IRI="#OWLClass_5ef8a80a_199d_4cbe_ab7f_c5588ad747a6"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_preis"/>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_ram"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hat_zubehör"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ist_mobil"/>
+        <Class IRI="#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#für_anwendung"/>
+        <Class IRI="#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_betriebssystem"/>
+        <Class IRI="#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_cpu"/>
+        <Class IRI="#OWLClass_3b3217be_a7b5_4f27_9a55_6673cf54f3dc"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_festplatte"/>
+        <Class IRI="#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_grafikkarte"/>
+        <Class IRI="#OWLClass_459a72a8_431c_4f53_a4e1_57c86132e04c"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_leistung"/>
+        <Class IRI="#Leistung"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_preis"/>
+        <Class IRI="#Budget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_ram"/>
+        <Class IRI="#OWLClass_5ef8a80a_199d_4cbe_ab7f_c5588ad747a6"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hat_zubehör"/>
+        <Class IRI="#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ist_mobil"/>
+        <Class IRI="#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Budget</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Preis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_04f4304f_145d_4ac9_88f0_1c5b9eea343a</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Normal_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_10232dd6_c33e_4901_b518_9b6d58dfd884</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Windows</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_11684121_c104_40b3_9c46_36c993483b5b</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Mobil</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_18c5d959_c642_41ce_9621_fa936baeb3c6</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Mittel_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_1b0a463f_2d7b_4526_9e70_3b56a3dcc1bb</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Hoch_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_1e10c8e9_c334_48b6_807a_a1825dea37ab</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">CAD-Anwendung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_2550b128_cc25_4d5e_869b_2f81e8455c9f</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Tablet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_2a5331ec_7ca1_4f45_bec8_1c299b90d155</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Gering_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_2ed3e70e_5e59_45c6_a5c6_1fdd22b40632</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Android</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_32f7a128_30ca_4da0_8fde_c0b44e53393a</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Hoch_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_35db3f67_81b8_4251_bebc_9e69ef6d2bd5</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Independent_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_3b3217be_a7b5_4f27_9a55_6673cf54f3dc</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_3cedb31f_2016_4caf_9b48_54d754ef5df9</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Linux</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_3fadb626_12ba_48ea_802f_7a84addd8d02</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Mittel_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_459a72a8_431c_4f53_a4e1_57c86132e04c</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_45be0f2b_40a6_4024_8740_3b0ade50daff</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Günstig_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_4729bce4_ae51_4d9a_b6c5_b1478e7031bd</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Leistung_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_49b029b6_5a73_4c5b_ae94_2b6c0d44d563</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Normal_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_4fa7fada_b885_4ded_87e5_2210c26c97a0</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Zubehör</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_546a9b7f_3f84_4746_9986_35851c90e464</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Gering_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_577a3be0_88a7_4491_a424_4a383182965b</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Notebook</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_5ef8a80a_199d_4cbe_ab7f_c5588ad747a6</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Arbeitsspeicher</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_614ac857_c866_410c_977f_96d7d638383c</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Preis_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_63dabdf8_3454_40b2_b3ef_70d35318975d</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Preis_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_66d11bdc_e67f_4c5d_89c6_4ade79eaa68a</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Tastatur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_69b1e2cc_f3ca_4b88_92f8_89b8a1aab697</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Monitor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_6c70c6de_8309_4ce7_8aec_beb887a58815</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Leistung_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_6e316d98_467c_48b2_9b73_d20e0c47f19e</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Eingabegeräte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_6fb41666_888a_4601_a6c7_5d3b5f47204c</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Teuer_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_6ffeaa9d_f03c_4aa3_869f_2ea2ac26223a</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">PC_System</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_723e918c_4c09_4848_8ddf_f0f61c3846d1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Günstig_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_7477ee76_b33d_42b9_8ce8_fd42a8f8939c</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Hoch_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_763390e0_ed1a_4651_afa1_ae0cdc4c1a91</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Teuer_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_78d031d1_5a03_4466_82e6_f3a5b490f0af</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Hoch_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_79b7bd43_fb63_404b_a3c3_0db8e6f49afb</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Domain_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_7a79c949_a5c5_41da_af85_c085879a9cbc</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Günstig_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_804505a1_6e5e_406c_85b5_a9ecba4503d3</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Gering_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_832a725d_6ea9_4e8c_98b6_6d1fa00ab8a1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Günstig_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_8337391f_bcfe_42fc_a726_5a008906a338</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Teuer_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_83ba4983_1592_46b5_a07c_45e5d2b7bff0</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Leistung_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_86221e4c_26a7_44cf_9f49_6429d329c44d</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Desktop</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_86acbe64_8d23_48b1_a026_73c2ae1f7390</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Mittel_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_87a81d40_c3bf_4356_ba12_ed8777d0e874</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Stationär</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_8ab3b96d_27b6_405f_80db_876ea6446d18</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Mobilität</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_8bedf854_041f_48b3_b87c_8f9c82b2bd19</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Normal_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_8c75066a_2fc1_4b70_9d55_0e84c3108f1e</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Gering_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_a28e4d12_885e_4fd4_a1a2_a22f2e3cb792</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Preis_Grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_a8680bb8_6653_4d2b_9160_271217b449c3</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Anwendung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_a9dcf4b6_d1c3_40d6_9241_7461c7eb284c</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Teuer_Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_b73da9f9_299b_442f_be7f_f73fc8b3f91f</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Hardware</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_bc844add_f463_4d2d_a9bc_b1335411ea75</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Leistung_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_c7fcb4ab_891a_4d16_a24f_f9b5366f1582</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Bild-/Videobearbeitung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_c985dccc_ec7d_432f_9746_cfa9cc871dd1</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_cfaa5928_91ea_4ce4_a8ef_340358ab8105</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">OS</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_d3771373_dfb1_4f59_91da_0c44a4a04dd4</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">HDD</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_d588cca4_7ed5_4dfa_8260_d1428511bcbc</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_d76547e2_1a36_4964_9f4a_e97e23fd73b8</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">SW-Entwicklung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_d9df3c53_bdbd_4b75_9253_e5820d9429ec</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Betriebssystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_df2dd5db_6e57_48d8_9e20_3261b92c8074</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Mittel_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_e2555873_b641_4b8c_8b21_583923b353de</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Drucker</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_e8a566df_69fd_42fa_bd5d_0b5b437a63ee</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Dockingstation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_ea76524d_766e_4aa7_9736_de1ded5f5e58</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Tasche</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_ee3a9b06_8be0_458d_8d9c_66936262b70a</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Office</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_f39841e0_0e92_4c92_93f1_e089fa717124</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">SSD</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_f39c69d3_d3b0_406b_9d75_d3870b6ac657</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Normal_RAM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_f81b6a5a_eb90_4731_8b7a_49a59532933a</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Maus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLClass_fa55af38_0f76_4a41_8d70_45e9b299c4ad</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Preis_CPU</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLObjectProperty_4c847e2d_8dba_4d6d_85b1_6a4fd4d636a6</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">relational_property</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OWLObjectProperty_e9b0e121_c57a_49cc_a198_76256a96cf4d</IRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">modifier_property</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#für_anwendung</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ist_für_anwendung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_betriebssystem</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_betriebssystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_cpu</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_cpu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_festplatte</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_festplatte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_grafikkarte</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_grafikkarte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_leistung</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_leistung</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_preis</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_preis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_ram</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_ram</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hat_zubehör</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hat_zubehör</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ist_mobil</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ist_mobil</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
