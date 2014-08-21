@@ -15,6 +15,7 @@ import javax.swing.border.EtchedBorder;
 
 import de.htwsaarland.dao.NotebookDao;
 import de.htwsaarland.model.Notebook;
+import de.htwsaarland.scenario.gui.ScenarioGUIStepController;
 
 
 public class Main {
@@ -73,15 +74,15 @@ public class Main {
 		panel.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(122, 49, 245, 20);
+		comboBox.setBounds(121, 75, 245, 20);
 		panel.add(comboBox);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Nutzertyp");
-		rdbtnNewRadioButton.setBounds(6, 48, 109, 23);
+		rdbtnNewRadioButton.setBounds(6, 74, 109, 23);
 		panel.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Ger\u00E4t");
-		rdbtnNewRadioButton_1.setBounds(6, 74, 109, 23);
+		rdbtnNewRadioButton_1.setBounds(6, 100, 109, 23);
 		panel.add(rdbtnNewRadioButton_1);
 		
 		JLabel lblSchritte = new JLabel("Schritte");
@@ -93,23 +94,23 @@ public class Main {
 		panel.add(lblAntworten);
 		
 		JRadioButton radioButton = new JRadioButton("Zubeh\u00F6r");
-		radioButton.setBounds(6, 100, 109, 23);
+		radioButton.setBounds(6, 126, 109, 23);
 		panel.add(radioButton);
 		
 		JRadioButton radioButton_1 = new JRadioButton("CPU");
-		radioButton_1.setBounds(6, 126, 109, 23);
+		radioButton_1.setBounds(6, 152, 109, 23);
 		panel.add(radioButton_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(122, 101, 245, 20);
+		comboBox_2.setBounds(122, 127, 245, 20);
 		panel.add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(122, 127, 245, 20);
+		comboBox_3.setBounds(122, 153, 245, 20);
 		panel.add(comboBox_3);
 		
 		JRadioButton radioButton_2 = new JRadioButton("RAM");
-		radioButton_2.setBounds(6, 152, 109, 23);
+		radioButton_2.setBounds(6, 182, 109, 23);
 		panel.add(radioButton_2);
 		
 		JButton btnSchrittHoch = new JButton("Schritt hoch");
@@ -121,23 +122,35 @@ public class Main {
 		panel.add(btnSchrittRunter);
 		
 		JLabel lblAntwortRechtsWhlen = new JLabel("Antwort rechts w\u00E4hlen");
-		lblAntwortRechtsWhlen.setBounds(122, 156, 245, 14);
+		lblAntwortRechtsWhlen.setBounds(122, 191, 245, 14);
 		panel.add(lblAntwortRechtsWhlen);
 		
 		JLabel lblAppleIpadMini = new JLabel("Apple Ipad Mini");
-		lblAppleIpadMini.setBounds(122, 78, 245, 14);
+		lblAppleIpadMini.setBounds(122, 104, 245, 14);
 		panel.add(lblAppleIpadMini);
+		
+		JLabel lblHierErscheintNun = new JLabel("Testlauf für generierte Schritte");
+		lblHierErscheintNun.setBounds(206, 11, 175, 14);
+		panel.add(lblHierErscheintNun);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_1.setBounds(424, 11, 266, 433);
 		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
 		
 		JLabel lblHierIrgendwasAnzeigen = new JLabel("Hier irgendwas anzeigen, wenn die Frage");
+		lblHierIrgendwasAnzeigen.setBounds(32, 186, 198, 14);
 		panel_1.add(lblHierIrgendwasAnzeigen);
 		
 		JLabel lblNichtMitDropdown = new JLabel("nicht mit Dropdown geht, zb. Tabelle");
+		lblNichtMitDropdown.setBounds(32, 208, 176, 14);
 		panel_1.add(lblNichtMitDropdown);
+		
+		
+		
+		//Test
+		//ScenarioGUIStepController testcontroller = new ScenarioGUIStepController(panel, panel_1);
+		//testcontroller.showDemoStep();
 	}
-
 }
