@@ -1,26 +1,56 @@
 package de.htwsaarland.scenario.gui;
 
+import javax.swing.JPanel;
+
 /**
  * Darstellungskomponente für Szenarioschritte
  * 
  * Ist sehr allgemein dient nur als gemeinsame Oberklasse der eigentlichen
- * Darstellungselemente. 
+ * Darstellungselemente.  Ableitungen dieser Klasse sind erfoderlich, um
+ * konkrete Schritttypen darzustellen.
+ *
+ * Jede Komponente besteht aus zwei Teilen. Das erste Element ist allgemein das Element, 
+ * das in der Schrittliste erscheint und das zweite Element ermöglicht detaillierte Anzeigen, 
+ * ist aber nur zu sehen wenn der Schritt aktiv ist.
  * 
- * Jede Komponente besteht aus zwei Teilen. Eine ist
- * das Auswahlfeld in der Schrittliste (idr. ein Dropdownfeld oder 
- * ein Set aus Radiobuttons) sowie Inhalte, die
- * im danebenliegenden großen Feld nur für den jeweils aktuellen Schritt
- * angezeigt werden. Bei den einfachen Schritten beschränkt sich
- * dies auf kurze Texte in Labels.
+ * Bei einfachen Schritten erscheint in der Schrittliste ein 
+ * Dropdownfeld oder Radiobuttons (Ja/Nein-Prinzip) und in der
+ * Detailanzeige Hilfetexte oder garnichts.
  * 
- * Datenbankabfrage-Schritte können dieses Feld zur Anzeige der
- * Auswahloptionen verwenden.
- * 
- * Auswahl-Elemente und 
+ * Datenbankabfrage-Schritte können das Detailfeld zur Anzeige der
+ * Auswahltabelle verwenden, während sie in der Schrittliste
+ * nur ein Textlabel mit einem Hinweis auf die Tabelle anzeigen werden.
  * 
  * @author Stefan
  *
  */
-public class ScenarioGUIStep {
+public abstract class ScenarioGUIStep {
 
+	// Größe der Schrittliste (die "linke" Seite)
+	public static final int SCENARIO_GUI_STEP_LIST_HEIGHT = 500;
+	public static final int SCENARIO_GUI_STEP_LIST_WIDTH = 500;
+	
+	// Größe der linken Komponente (in der Schrittliste)
+	public static final int SCENARIO_GUI_STEP_LEFT_ELEMENT_HEIGHT = 40;
+	public static final int SCENARIO_GUI_STEP_LEFT_ELEMENT_WIDTH  = 200;
+	
+	// Größe der rechten Komponente (Detailfeld, nur zu sehen, wenn Schritt aktiv)
+	public static final int SCENARIO_GUI_STEP_RIGHT_ELEMENT_HEIGHT = 500;
+	public static final int SCENARIO_GUI_STEP_RIGHT_ELEMENT_WIDTH = 500;
+	
+	/**
+	 * Liefert die erste GUI Komponente (Schrittlistenelement) des Szenarioschritts
+	 * 
+	 * @return
+	 */
+	public abstract JPanel getLeftComponent();
+	
+	/**
+	 * Liefert die zweite GUI Komponente (Detailelement) des Szenarioschritts
+	 * 
+	 * @return
+	 */
+	public abstract JPanel getRightComponent();
+	
+	
 }
