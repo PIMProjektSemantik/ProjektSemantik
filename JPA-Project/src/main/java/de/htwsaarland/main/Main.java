@@ -54,7 +54,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 716, 514);
+		frame.setBounds(100, 100, 716, 526);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -73,18 +73,6 @@ public class Main {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(121, 75, 245, 20);
-		panel.add(comboBox);
-		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Nutzertyp");
-		rdbtnNewRadioButton.setBounds(6, 74, 109, 23);
-		panel.add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Ger\u00E4t");
-		rdbtnNewRadioButton_1.setBounds(6, 100, 109, 23);
-		panel.add(rdbtnNewRadioButton_1);
-		
 		JLabel lblSchritte = new JLabel("Schritte");
 		lblSchritte.setBounds(10, 11, 46, 14);
 		panel.add(lblSchritte);
@@ -93,44 +81,32 @@ public class Main {
 		lblAntworten.setBounds(122, 11, 74, 14);
 		panel.add(lblAntworten);
 		
-		JRadioButton radioButton = new JRadioButton("Zubeh\u00F6r");
-		radioButton.setBounds(6, 126, 109, 23);
-		panel.add(radioButton);
-		
 		JRadioButton radioButton_1 = new JRadioButton("CPU");
-		radioButton_1.setBounds(6, 152, 109, 23);
+		radioButton_1.setBounds(6, 199, 109, 23);
 		panel.add(radioButton_1);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(122, 127, 245, 20);
-		panel.add(comboBox_2);
-		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(122, 153, 245, 20);
+		comboBox_3.setBounds(121, 200, 245, 20);
 		panel.add(comboBox_3);
 		
 		JRadioButton radioButton_2 = new JRadioButton("RAM");
-		radioButton_2.setBounds(6, 182, 109, 23);
+		radioButton_2.setBounds(6, 229, 109, 23);
 		panel.add(radioButton_2);
 		
 		JButton btnSchrittHoch = new JButton("Schritt hoch");
-		btnSchrittHoch.setBounds(6, 288, 109, 23);
+		btnSchrittHoch.setBounds(10, 369, 109, 23);
 		panel.add(btnSchrittHoch);
 		
 		JButton btnSchrittRunter = new JButton("Schritt runter");
-		btnSchrittRunter.setBounds(6, 315, 109, 23);
+		btnSchrittRunter.setBounds(10, 397, 109, 23);
 		panel.add(btnSchrittRunter);
 		
 		JLabel lblAntwortRechtsWhlen = new JLabel("Antwort rechts w\u00E4hlen");
-		lblAntwortRechtsWhlen.setBounds(122, 191, 245, 14);
+		lblAntwortRechtsWhlen.setBounds(121, 233, 245, 14);
 		panel.add(lblAntwortRechtsWhlen);
 		
-		JLabel lblAppleIpadMini = new JLabel("Apple Ipad Mini");
-		lblAppleIpadMini.setBounds(122, 104, 245, 14);
-		panel.add(lblAppleIpadMini);
-		
-		JLabel lblHierErscheintNun = new JLabel("Testlauf für generierte Schritte");
-		lblHierErscheintNun.setBounds(206, 11, 175, 14);
+		JLabel lblHierErscheintNun = new JLabel("So werden die Schritte aussehen");
+		lblHierErscheintNun.setBounds(10, 176, 250, 14);
 		panel.add(lblHierErscheintNun);
 		
 		JPanel panel_1 = new JPanel();
@@ -139,18 +115,23 @@ public class Main {
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblHierIrgendwasAnzeigen = new JLabel("Hier irgendwas anzeigen, wenn die Frage");
+		JLabel lblHierIrgendwasAnzeigen = new JLabel("Zusatzinfos zum aktiven Schritt");
 		lblHierIrgendwasAnzeigen.setBounds(32, 186, 198, 14);
 		panel_1.add(lblHierIrgendwasAnzeigen);
 		
-		JLabel lblNichtMitDropdown = new JLabel("nicht mit Dropdown geht, zb. Tabelle");
-		lblNichtMitDropdown.setBounds(32, 208, 176, 14);
+		JLabel lblNichtMitDropdown = new JLabel("Bei DB/OWL auch Tabellen usw.");
+		lblNichtMitDropdown.setBounds(32, 208, 198, 14);
 		panel_1.add(lblNichtMitDropdown);
 		
 		
 		
 		//Test
-		//ScenarioGUIStepController testcontroller = new ScenarioGUIStepController(panel, panel_1);
-		//testcontroller.showDemoStep();
+		ScenarioGUIStepController testcontroller = new ScenarioGUIStepController(panel, panel_1);
+		testcontroller.showDemoStep(panel, panel_1);
+		
+
+		
+		
 	}
+	
 }

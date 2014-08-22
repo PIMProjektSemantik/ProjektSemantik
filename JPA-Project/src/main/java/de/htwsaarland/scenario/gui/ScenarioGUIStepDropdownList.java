@@ -36,6 +36,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	public JPanel getLeftComponent() {
 
 		JPanel dropDownPanel = new JPanel();
+		dropDownPanel.setLayout(null);
 		dropDownPanel.setSize(SCENARIO_GUI_STEP_BASE_ELEMENT_WIDTH, SCENARIO_GUI_STEP_BASE_ELEMENT_HEIGHT);
 		
 		JComboBox<String> selectionBox = new JComboBox<String>();
@@ -55,6 +56,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	public JPanel getRightComponent() {
 		
 		JPanel helpPanel = new JPanel();
+		helpPanel.setLayout(null);
 		helpPanel.setSize(SCENARIO_GUI_STEP_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_STEP_DETAIL_ELEMENT_HEIGHT);
 		
 		JLabel help = new JLabel(helpText);
