@@ -3,6 +3,9 @@ package de.htwsaarland.scenario.gui;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
+
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
 
 /**
  * GUI Komponente für Szenarioschritte mit Auswahlliste
@@ -14,7 +17,7 @@ import javax.swing.JPanel;
  *
  */
 public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
-	
+		
 	private String[] selectionOptions;
 	private String helpText;
 	
@@ -29,20 +32,20 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		}
 		
 		this.selectionOptions = selectionOptions;
-		
+		this.helpText = helpText;
 	}
 	
 	@Override
 	public JPanel getLeftComponent() {
 
+		// Panel für die Dropdown-Liste. Position wird vom Verwender gesetzt
 		JPanel dropDownPanel = new JPanel();
 		dropDownPanel.setLayout(null);
-		dropDownPanel.setSize(SCENARIO_GUI_STEP_BASE_ELEMENT_WIDTH, SCENARIO_GUI_STEP_BASE_ELEMENT_HEIGHT);
+		dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
 		
 		JComboBox<String> selectionBox = new JComboBox<String>();
-		selectionBox.setLocation(DEFAULT_X_MARGIN, DEFAULT_Y_MARGIN);
-		selectionBox.setSize(SCENARIO_GUI_STEP_BASE_ELEMENT_WIDTH - 2 * DEFAULT_X_MARGIN, SCENARIO_GUI_STEP_BASE_ELEMENT_HEIGHT - 2 * DEFAULT_Y_MARGIN);
-		
+		selectionBox.setBounds(0, 10, 250, 20);
+				
 		for(int i = 0; i < selectionOptions.length; ++i){
 			selectionBox.addItem(selectionOptions[i]);
 		}
@@ -56,11 +59,14 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	public JPanel getRightComponent() {
 		
 		JPanel helpPanel = new JPanel();
+		helpPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		helpPanel.setLayout(null);
-		helpPanel.setSize(SCENARIO_GUI_STEP_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_STEP_DETAIL_ELEMENT_HEIGHT);
+		
 		
 		JLabel help = new JLabel(helpText);
-		help.setLocation(DEFAULT_X_MARGIN, DEFAULT_Y_MARGIN);
+		help.setBounds(40, 40, 200, 200);
+	
+		helpPanel.add(help);
 		
 		return helpPanel;
 	}

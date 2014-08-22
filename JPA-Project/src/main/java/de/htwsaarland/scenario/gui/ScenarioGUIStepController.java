@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EtchedBorder;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
 
 /**
  * Kontrolle aller Darstellungselemente, die im Szenarioablauf dargestellt, geändert
@@ -21,9 +22,7 @@ import javax.swing.border.EtchedBorder;
  */
 public class ScenarioGUIStepController {
 
-	
-	public static final int SCENARIO_GUI_LEFT_AREA_X_MARGIN = 10;
-	public static final int SCENARIO_GUI_LEFT_AREA_Y_MARGIN = 30;
+
 	
 	private JPanel leftPanel;
 	private JPanel rightPanel;
@@ -36,7 +35,7 @@ public class ScenarioGUIStepController {
 		
 		this.leftPanel = leftPanel;
 		this.rightPanel = rightPanel;
-		
+		this.currentStepOffset = 0;
 	}
 	
 	
@@ -87,33 +86,43 @@ public class ScenarioGUIStepController {
 		
 	}
 	
-	
+
 	
 	
 	public void showDemoStepX() {
-		
-		// Radiobutton
-		JRadioButton activeScenarioButton = new JRadioButton();
-		activeScenarioButton.setText("Demoschritt: ");
-		activeScenarioButton.setLocation(SCENARIO_GUI_LEFT_AREA_X_MARGIN, SCENARIO_GUI_LEFT_AREA_Y_MARGIN);
 		
 		// Linkes Auswahlelement
 		String[] testArr = {"A","B","C"};
 		ScenarioGUIStepDropdownList testStep = new ScenarioGUIStepDropdownList(testArr, "Ein Testschritt");
 		
-		JPanel innerStepPanel = testStep.getLeftComponent();
-		innerStepPanel.setLocation(SCENARIO_GUI_LEFT_AREA_X_MARGIN + 500, SCENARIO_GUI_LEFT_AREA_Y_MARGIN + 100);
+		// Radiobutton
+		JRadioButton activeScenarioButton = new JRadioButton();
+		activeScenarioButton.setText("Schritt: " + currentStepOffset);
+		activeScenarioButton.setBounds(STEP_RADIOBUTTON_X_POS, STEP_RADIOBUTTON_Y_FIRSTPOS + currentStepOffset * STEP_Y_DISTANCE, 
+										STEP_RADIOBUTTON_X_SIZE, STEP_RADIOBUTTON_Y_SIZE);
+
 		
-		leftPanel.add(testStep.getLeftComponent());
-		leftPanel.invalidate();
+		
+		
+		
+		JPanel innerStepPanel = testStep.getLeftComponent();
+		innerStepPanel.setBounds(STEP_PANEL_X_POS, STEP_PANEL_Y_FIRSTPOS + currentStepOffset * STEP_Y_DISTANCE, 
+									STEP_PANEL_X_SIZE, STEP_PANEL_Y_SIZE);
+		
+		leftPanel.add(activeScenarioButton);
+		leftPanel.add(innerStepPanel);
+		leftPanel.repaint();
+		leftPanel.revalidate();
 		
 		// Rechtes Auswahlelement
-		rightPanel.removeAll();
-		rightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-		rightPanel.add(testStep.getRightComponent());
+		JPanel detailPanel = testStep.getRightComponent();
+		detailPanel.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT);
 		
-		rightPanel.invalidate();
+
+		rightPanel.add(detailPanel);
+		rightPanel.repaint();
 		
+		this.currentStepOffset++;
 	}
 	
 	

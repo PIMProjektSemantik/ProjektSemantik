@@ -16,10 +16,14 @@ import javax.swing.border.EtchedBorder;
 import de.htwsaarland.dao.NotebookDao;
 import de.htwsaarland.model.Notebook;
 import de.htwsaarland.scenario.gui.ScenarioGUIStepController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Main {
 
+	public static ScenarioGUIStepController testController;
+	
 	// Database creation/check trigger
 	NotebookDao ndao = new NotebookDao();
 	Notebook notebook = new Notebook("Lenovo yoga5");
@@ -54,7 +58,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 716, 526);
+		frame.setBounds(100, 100, 901, 543);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -68,7 +72,7 @@ public class Main {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 403, 433);
+		panel.setBounds(10, 11, 400, 450);
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -94,11 +98,16 @@ public class Main {
 		panel.add(radioButton_2);
 		
 		JButton btnSchrittHoch = new JButton("Schritt hoch");
-		btnSchrittHoch.setBounds(10, 369, 109, 23);
+		btnSchrittHoch.setBounds(10, 369, 131, 23);
 		panel.add(btnSchrittHoch);
 		
 		JButton btnSchrittRunter = new JButton("Schritt runter");
-		btnSchrittRunter.setBounds(10, 397, 109, 23);
+		btnSchrittRunter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				testController.showDemoStepX();
+			}
+		});
+		btnSchrittRunter.setBounds(10, 397, 131, 23);
 		panel.add(btnSchrittRunter);
 		
 		JLabel lblAntwortRechtsWhlen = new JLabel("Antwort rechts w\u00E4hlen");
@@ -111,7 +120,7 @@ public class Main {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(424, 11, 266, 433);
+		panel_1.setBounds(421, 11, 450, 450);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -126,9 +135,9 @@ public class Main {
 		
 		
 		//Test
-		ScenarioGUIStepController testcontroller = new ScenarioGUIStepController(panel, panel_1);
-		testcontroller.showDemoStep(panel, panel_1);
-		
+		testController = new ScenarioGUIStepController(panel, panel_1);
+		//testcontroller.showDemoStep(panel, panel_1);
+	
 
 		
 		
