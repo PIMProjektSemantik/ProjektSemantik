@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  */
 public abstract class ScenarioGUIStep {
 
-
+	
 	
 	/**
 	 * Liefert die erste GUI Komponente (Schrittlistenelement) des Szenarioschritts
@@ -41,6 +41,13 @@ public abstract class ScenarioGUIStep {
 	 * @return
 	 */
 	public abstract JPanel getRightComponent();
+	
+	/**
+	 * Liefert die in den GUI-Komponenten des Schritts ausgewählte Option
+	 * 
+	 * @return
+	 */
+	public abstract int getSelection();
 	
 	
 }

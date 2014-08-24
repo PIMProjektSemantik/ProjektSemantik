@@ -15,8 +15,9 @@ import javax.swing.border.EtchedBorder;
  * 
  * In der Regel handelt es sich hier um Ja/Nein-Fragen
  * 
- * Besteht aus einem Dropdown-Feld in der Schrittliste
- * und einem Beschreibungstext für den Detailbereich
+ * Besteht aus zwei Radiobuttons. 
+ * 
+ * 
  * 
  * @author Stefan
  *
@@ -28,6 +29,22 @@ private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 	private String[] selectionOptions;
 	private String helpText;
 	
+	// Referenzen zu den Radiobuttons, um ausgewählten Button auszulesen
+	private JRadioButton firstRadioButton;
+	private JRadioButton secondRadioButton;
+	
+	// Die Panels
+	private JPanel radioButtonPanel;
+	private JPanel helpPanel;
+	
+	/**
+	 * Erzeugt eine neues GUI-Objekt für einen Zwei-Options-Szenarioschritt.
+	 * Die Indizes der beiden Strings entsprechen dem Rückgabewert bei Abfrage der
+	 * ausgewählten Option.
+	 * 
+	 * @param selectionOptions
+	 * @param helpText
+	 */
 	public ScenarioGUIStepTwoOptionsRadiobuttons(String[] selectionOptions, String helpText) {
 		
 		if(selectionOptions == null || selectionOptions.length != 2) {
@@ -40,48 +57,38 @@ private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 		
 		this.selectionOptions = selectionOptions;
 		this.helpText = helpText;
-	}
-	
-	
-	@Override
-	public JPanel getLeftComponent() {
-
-		// Panel für die Dropdown-Liste. Wird von der Haupt-GUI platziert
-				JPanel radioButtonPanel = new JPanel();
-				radioButtonPanel.setLayout(null);
-				//dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-				
-				// Combobox mit den Optionen
-				JRadioButton firstOptionButton = new JRadioButton(this.selectionOptions[0]);
-				firstOptionButton.setBounds(0, 10, 120, 20);
-				
-				JRadioButton secondOptionButton = new JRadioButton(this.selectionOptions[1]);
-				secondOptionButton.setBounds(130, 10, 120, 20);
-				
-				// Gruppieren der beiden Radiobuttons
-				ButtonGroup radioGroup = new ButtonGroup();
-				radioGroup.add(firstOptionButton);
-				radioGroup.add(secondOptionButton);
-	
-				// Zusammenbau
-				radioButtonPanel.add(firstOptionButton);
-				radioButtonPanel.add(secondOptionButton);
-				return radioButtonPanel;
-				
-					
-	}
-
-
-	/**
-	 * Liefert ein JPanel für die Detailseite zum Szenarioschritt mit
-	 * Dropdown-Auswahl. Dieser kann dort einen in der Regel einzeiligen
-	 * Hilfetext anzeigen.
-	 */
-	@Override
-	public JPanel getRightComponent() {
 		
+		// Gui Komponenten bauen
+		this.createGUIComponents();
+	}
+	
+	
+	private void createGUIComponents(){
+		
+		// Panel für die Dropdown-Liste. Wird von der Haupt-GUI platziert
+		this.radioButtonPanel = new JPanel();
+		radioButtonPanel.setLayout(null);
+		//dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
+		
+		// Combobox mit den Optionen
+		this.firstRadioButton = new JRadioButton(this.selectionOptions[0]);
+		firstRadioButton.setBounds(0, 10, 120, 20);
+		
+		this.secondRadioButton = new JRadioButton(this.selectionOptions[1]);
+		secondRadioButton.setBounds(130, 10, 120, 20);
+		
+		// Gruppieren der beiden Radiobuttons
+		ButtonGroup radioGroup = new ButtonGroup();
+		radioGroup.add(firstRadioButton);
+		radioGroup.add(secondRadioButton);
+
+		// Zusammenbau
+		radioButtonPanel.add(firstRadioButton);
+		radioButtonPanel.add(secondRadioButton);
+		
+
 		// Das Panel selbst
-		JPanel helpPanel = new JPanel();
+		this.helpPanel = new JPanel();
 		helpPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		helpPanel.setLayout(null);
 		
@@ -92,8 +99,38 @@ private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 		help.setVerticalAlignment(SwingConstants.TOP);
 		help.setHorizontalAlignment(SwingConstants.LEFT);
 		helpPanel.add(help);
-		
-		return helpPanel;
+	}
+	
+	
+	@Override
+	public JPanel getLeftComponent() {
+		return this.radioButtonPanel;
+	}
+
+
+	/**
+	 * Liefert ein JPanel für die Detailseite zum Szenarioschritt mit
+	 * Dropdown-Auswahl. Dieser kann dort einen in der Regel einzeiligen
+	 * Hilfetext anzeigen.
+	 */
+	@Override
+	public JPanel getRightComponent() {
+		return this.helpPanel;
+	}
+
+	/**
+	 * Liefert die ausgewählte Option. Der Int-Wert entspricht der Zuordnung der Optionstexte
+	 * im String Array, der dem Konstruktor übergeben wurde (0 oder 1).
+	 */
+	@Override
+	public int getSelection() {
+
+		// Man muss nur den einen Knopf abfragen, wenn er nicht gewählt ist, dann der andere
+		if(firstRadioButton.isSelected()){
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 
 }

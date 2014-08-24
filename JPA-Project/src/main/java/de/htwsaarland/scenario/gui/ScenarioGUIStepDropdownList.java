@@ -21,8 +21,16 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
 	private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 	
+	// Auswahlstrings und Hilfetext
 	private String[] selectionOptions;
 	private String helpText;
+	
+	// Dropdown-Liste. Referenz zur späteren Abfrage der gewählten Option
+	private JComboBox<String> selectionBox;
+	
+	// Die Panels
+	private JPanel leftPanel;
+	private JPanel rightPanel;
 	
 	public ScenarioGUIStepDropdownList(String[] selectionOptions, String helpText) {
 		
@@ -36,6 +44,9 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
 		this.selectionOptions = selectionOptions;
 		this.helpText = helpText;
+		
+		// JPanels generieren
+		this.createGUIComponents();
 	}
 	
 	/**
@@ -46,10 +57,37 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	 */
 	@Override
 	public JPanel getLeftComponent() {
+		return this.leftPanel;
+	}
 
+	/**
+	 * Liefert ein JPanel für die Detailseite zum Szenarioschritt mit
+	 * Dropdown-Auswahl. Dieser kann dort einen in der Regel einzeiligen
+	 * Hilfetext anzeigen.
+	 */
+	@Override
+	public JPanel getRightComponent() {
+		return this.rightPanel;
+	}
+
+	/**
+	 * Liefert die ausgewählte Option der Dropdownliste.
+	 * Die int-Werte entsprechen der Anordnung in der String-Liste,
+	 * die dem Konstruktor übergeben wurde.
+	 */
+	@Override
+	public int getSelection() {
+		return this.selectionBox.getSelectedIndex();
+	}
+
+	/**
+	 * Hilfsfunktion zur Generierung der beiden JPanels des Schrittes
+	 */
+	private void createGUIComponents(){
+		
 		// Panel für die Dropdown-Liste. Wird von der Haupt-GUI platziert
-		JPanel dropDownPanel = new JPanel();
-		dropDownPanel.setLayout(null);
+		this.leftPanel = new JPanel();
+		this.leftPanel.setLayout(null);
 		//dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
 		
 		// Combobox mit den Optionen
@@ -62,23 +100,12 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		}
 		
 		// Zusammenbau
-		dropDownPanel.add(selectionBox);
-		return dropDownPanel;
+		this.leftPanel.add(selectionBox);
 		
-	}
-
-	/**
-	 * Liefert ein JPanel für die Detailseite zum Szenarioschritt mit
-	 * Dropdown-Auswahl. Dieser kann dort einen in der Regel einzeiligen
-	 * Hilfetext anzeigen.
-	 */
-	@Override
-	public JPanel getRightComponent() {
-		
-		// Das Panel selbst
-		JPanel helpPanel = new JPanel();
-		helpPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-		helpPanel.setLayout(null);
+		// Das rechte Panel
+		this.rightPanel = new JPanel();
+		this.rightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+		this.rightPanel.setLayout(null);
 		
 		// Text einbauen
 		JLabel help = new JLabel(helpText);
@@ -86,13 +113,10 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - DEFAULT_HELP_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - DEFAULT_HELP_LABEL_MARGIN);
 		help.setVerticalAlignment(SwingConstants.TOP);
 		help.setHorizontalAlignment(SwingConstants.LEFT);
-		helpPanel.add(help);
+		this.rightPanel.add(help);
+	
 		
-		return helpPanel;
 	}
-
-	
-	
 	
 	
 }
