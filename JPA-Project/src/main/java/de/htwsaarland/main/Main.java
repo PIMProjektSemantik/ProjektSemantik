@@ -58,7 +58,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 901, 543);
+		frame.setBounds(100, 100, 901, 566);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -86,36 +86,23 @@ public class Main {
 		panel.add(lblAntworten);
 		
 		JRadioButton radioButton_1 = new JRadioButton("CPU");
-		radioButton_1.setBounds(6, 199, 109, 23);
+		radioButton_1.setBounds(10, 394, 109, 23);
 		panel.add(radioButton_1);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(121, 200, 245, 20);
+		comboBox_3.setBounds(122, 395, 245, 20);
 		panel.add(comboBox_3);
 		
 		JRadioButton radioButton_2 = new JRadioButton("RAM");
-		radioButton_2.setBounds(6, 229, 109, 23);
+		radioButton_2.setBounds(10, 420, 109, 23);
 		panel.add(radioButton_2);
 		
-		JButton btnSchrittHoch = new JButton("Schritt hoch");
-		btnSchrittHoch.setBounds(10, 369, 131, 23);
-		panel.add(btnSchrittHoch);
-		
-		JButton btnSchrittRunter = new JButton("Schritt runter");
-		btnSchrittRunter.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				testController.showDemoStepX();
-			}
-		});
-		btnSchrittRunter.setBounds(10, 397, 131, 23);
-		panel.add(btnSchrittRunter);
-		
 		JLabel lblAntwortRechtsWhlen = new JLabel("Antwort rechts w\u00E4hlen");
-		lblAntwortRechtsWhlen.setBounds(121, 233, 245, 14);
+		lblAntwortRechtsWhlen.setBounds(122, 424, 245, 14);
 		panel.add(lblAntwortRechtsWhlen);
 		
 		JLabel lblHierErscheintNun = new JLabel("So werden die Schritte aussehen");
-		lblHierErscheintNun.setBounds(10, 176, 250, 14);
+		lblHierErscheintNun.setBounds(10, 367, 250, 14);
 		panel.add(lblHierErscheintNun);
 		
 		JPanel panel_1 = new JPanel();
@@ -136,6 +123,19 @@ public class Main {
 		
 		//Test
 		testController = new ScenarioGUIStepController(panel, panel_1);
+		
+		JButton btnSchrittRunter = new JButton("Schritt runter");
+		btnSchrittRunter.setBounds(150, 472, 131, 23);
+		frame.getContentPane().add(btnSchrittRunter);
+		
+		JButton btnSchrittHoch = new JButton("Schritt hoch");
+		btnSchrittHoch.setBounds(10, 472, 131, 23);
+		frame.getContentPane().add(btnSchrittHoch);
+		btnSchrittRunter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				testController.showDemoStepX();
+			}
+		});
 		//testcontroller.showDemoStep(panel, panel_1);
 	
 
