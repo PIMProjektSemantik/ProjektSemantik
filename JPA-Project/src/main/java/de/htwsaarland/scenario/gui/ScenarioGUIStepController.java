@@ -79,7 +79,7 @@ public class ScenarioGUIStepController {
 		
 		right.removeAll();
 		
-		JLabel helpLabel = new JLabel("Testschritt links!");
+		JLabel helpLabel = new JLabel("Testschritt " + this.currentStepOffset + " links!");
 		helpLabel.setSize(100, 20);
 		helpLabel.setLocation(30, 30);
 		right.add(helpLabel);
@@ -93,7 +93,7 @@ public class ScenarioGUIStepController {
 		
 		// Linkes Auswahlelement
 		String[] testArr = {"A","B","C"};
-		ScenarioGUIStepDropdownList testStep = new ScenarioGUIStepDropdownList(testArr, "Ein Testschritt");
+		ScenarioGUIStepDropdownList testStep = new ScenarioGUIStepDropdownList(testArr, "Testschritt " + this.currentStepOffset + " links!");
 		
 		// Radiobutton
 		JRadioButton activeScenarioButton = new JRadioButton();
@@ -118,7 +118,7 @@ public class ScenarioGUIStepController {
 		JPanel detailPanel = testStep.getRightComponent();
 		detailPanel.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT);
 		
-
+		rightPanel.removeAll();
 		rightPanel.add(detailPanel);
 		rightPanel.repaint();
 		
