@@ -1,6 +1,5 @@
 package de.htwsaarland.scenario;
 
-import java.util.ArrayList;
 
 /**
  * Form des Szenarioschrittes, die eine einfache Auswahl von Optionen bereitstellt und 
@@ -23,6 +22,7 @@ public class ScenarioTreeStepSimpleList extends ScenarioTreeStep {
 
 	// Parameter für die gesetzte Auswahl
 	private int selectedOption;
+
 	
 	/**
 	 * Erstellt einen Schritt mit Schrittnamen. Name darf nicht null
@@ -33,58 +33,6 @@ public class ScenarioTreeStepSimpleList extends ScenarioTreeStep {
 	public ScenarioTreeStepSimpleList(String name) {
 		super(name);
 		selectedOption = -1;
-	}
-
-
-	ArrayList<String> selectionNames;
-	
-	/**
-	 * Liefert die Auswahloptionen dieses Szenarioschritts. Geliefert werden
-	 * die zur jeweligen Auswahl gehörenden lesbaren Texte. Diese
-	 * werden in der gleichen Reihenfolge geordnet wie die dazugehörigen Schritte.
-	 *  
-	 * @return String-Array
-	 */
-	public String[] getSelectionOptions(){
-		
-		return (String[])selectionNames.toArray();
-	}
-
-	/**
-	 * Fügt einen neuen Folgeschritt zur Liste der Folgeschritte hinzu. Wird
-	 * dieser hier ohne Auswahloptionsname übergeben, dann wird der 
-	 * Schrittname als Auswahloptionsname verwendet.
-	 * 
-	 */
-	
-	@Override
-	public void addFollowUpStep(ScenarioTreeStep stepToAdd){
-		
-		// Fängt null-Fehler bei stepToAdd
-		super.addFollowUpStep(stepToAdd);
-		
-		this.selectionNames.add(stepToAdd.name);
-		
-	}
-	
-	
-	
-	/**
-	 * Fügt einen Folgeschritt mit benutzerdefiniertem Optionstext hinzu.
-	 * 
-	 * @param stepToAdd
-	 * @param optionName
-	 */
-	public void addFollowUpStep(ScenarioTreeStep stepToAdd, String optionName){
-		
-		// Fängt null-Fehler bei stepToAdd
-		super.addFollowUpStep(stepToAdd);
-		
-		if(optionName == null || optionName.trim().isEmpty()) {
-			throw new IllegalArgumentException("ScenarioTreeStepSimpleList: Optionsname darf nicht null oder nur Whitespaces sein!");
-		}
-		this.selectionNames.add(optionName);
-		
 	}
 	
 	/**

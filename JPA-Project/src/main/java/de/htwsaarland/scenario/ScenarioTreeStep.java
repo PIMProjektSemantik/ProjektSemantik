@@ -38,7 +38,8 @@ import java.util.ArrayList;
  */
 public abstract class ScenarioTreeStep {
 
-	public final String name;
+	public final String NAME;
+	ArrayList<String> selectionNames;
 	
 	// Alle möglichen Folgeschritte
 	private ArrayList<ScenarioTreeStep> followUpStepsList;
@@ -52,26 +53,49 @@ public abstract class ScenarioTreeStep {
 		if (name == null || name.trim().isEmpty()){
 			throw new IllegalArgumentException("ScenarioTreeStep: Namen darf nicht null sein bzw. nur Whitespaces enthalten!");
 		}
-		this.name = name;
+		this.NAME = name;
 		
 		followUpStepsList = new ArrayList<ScenarioTreeStep>();
 	}
 	
 	
-	
 	/**
-	 * Fügt einen Schritt zur Liste von Nachfolgeschritten hinzu
+	 * Fügt einen Schritt zur Liste von Nachfolgeschritten hinzu.
+	 * Als Optionsname gilt der interne Schrittname
 	 * 
 	 * @param stepToAdd
 	 */
 	public void addFollowUpStep(ScenarioTreeStep stepToAdd){
 		
+		this.addFollowUpStep(stepToAdd, null);
+	}
+	
+	
+	/**
+	 * Fügt einen Folgeschritt mit benutzerdefiniertem Optionstext hinzu.
+	 * Je nach konkretem Schrittyp kann dieser Name unsichtbar sein. Wird
+	 * er weggelassen (null), dann gilt automatisch der Schrittname.
+	 * 
+	 * @param stepToAdd
+	 * @param optionName
+	 */
+	public void addFollowUpStep(ScenarioTreeStep stepToAdd, String optionName){
+		
 		// Argument null-Check
 		if (stepToAdd == null){
 			throw new IllegalArgumentException("ScenarioTreeStep: Szenario zum Hinzufügen darf nicht null sein!");
 		}
-		
+				
 		this.followUpStepsList.add(stepToAdd);
+
+		// Name Option check
+		if(optionName == null || optionName.trim().isEmpty()) {
+			this.selectionNames.add(stepToAdd.NAME);
+		} else {
+			this.selectionNames.add(optionName);
+		}
+		
+		
 	}
 	
 	/**
@@ -107,5 +131,18 @@ public abstract class ScenarioTreeStep {
 	 * @return
 	 */
 	public abstract ScenarioTreeStep getNextStep();
+	
+	
+	/**
+	 * Liefert die Auswahloptionen dieses Szenarioschritts. Geliefert werden
+	 * die zur jeweligen Auswahl gehörenden lesbaren Texte. Diese
+	 * werden in der gleichen Reihenfolge geordnet wie die dazugehörigen Schritte.
+	 *  
+	 * @return String-Array
+	 */
+	public String[] getSelectionOptions(){
+		
+		return (String[])selectionNames.toArray();
+	}
 	
 }
