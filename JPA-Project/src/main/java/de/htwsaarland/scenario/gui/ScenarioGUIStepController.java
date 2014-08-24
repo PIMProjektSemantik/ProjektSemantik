@@ -92,8 +92,18 @@ public class ScenarioGUIStepController {
 	public void showDemoStepX() {
 		
 		// Linkes Auswahlelement
-		String[] testArr = {"A","B","C"};
-		ScenarioGUIStepDropdownList testStep = new ScenarioGUIStepDropdownList(testArr, "Testschritt " + this.currentStepOffset + " links!");
+		String[] testArrDropdown = {"A","B","C"};
+		String[] testArrRadio = {"Ja","Nein"};
+		
+		ScenarioGUIStep testStep;
+		
+		if (this.currentStepOffset % 2 == 0) {
+			testStep = new ScenarioGUIStepDropdownList(testArrDropdown, "Testschritt " + this.currentStepOffset + " links!");
+		} else  {
+			testStep = new ScenarioGUIStepTwoOptionsRadiobuttons(testArrRadio, "Radioschritt " + this.currentStepOffset);
+		}
+		
+		
 		
 		// Radiobutton
 		JRadioButton activeScenarioButton = new JRadioButton();
