@@ -111,7 +111,7 @@ public class Main {
 		frame.getContentPane().add(btnSchrittHoch);
 		btnSchrittRunter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				testController.showDemoStepX();
+				testController.goForwardInScenario();
 			}
 		});
 		//testcontroller.showDemoStep(panel, panel_1);

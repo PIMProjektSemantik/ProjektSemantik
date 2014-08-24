@@ -8,7 +8,7 @@ package de.htwsaarland.scenario.selectionLists;
  */
 public enum MainUsage {
 
-	OFFICE("Büroarbeit"),
+	OFFICE("BÃ¼roarbeit"),
 	MEDIA_EDITING("Medienbearbeitung"),
 	CAD("CAD"),
 	ENTERTAINMENT_MEDIA("Multimediazentrale"),

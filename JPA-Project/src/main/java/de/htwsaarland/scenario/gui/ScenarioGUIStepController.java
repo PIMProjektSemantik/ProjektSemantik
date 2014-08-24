@@ -1,11 +1,30 @@
 package de.htwsaarland.scenario.gui;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.SCENARIO_GUI_DETAIL_ELEMENT_WIDTH;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_PANEL_X_POS;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_PANEL_X_SIZE;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_PANEL_Y_FIRSTPOS;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_PANEL_Y_SIZE;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_RADIOBUTTON_X_POS;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_RADIOBUTTON_X_SIZE;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_RADIOBUTTON_Y_FIRSTPOS;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_RADIOBUTTON_Y_SIZE;
+import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_Y_DISTANCE;
+
+import java.util.ArrayList;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.border.EtchedBorder;
-import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
+
+import de.htwsaarland.scenario.ScenarioHardwareBerater;
+import de.htwsaarland.scenario.ScenarioTreeStep;
+import de.htwsaarland.scenario.ScenarioTreeStepBeginning;
+import de.htwsaarland.scenario.ScenarioTreeStepFinish;
+import de.htwsaarland.scenario.ScenarioTreeStepSimpleList;
+import de.htwsaarland.scenario.ScenarioTreeStepTwoOptions;
 
 /**
  * Kontrolle aller Darstellungselemente, die im Szenarioablauf dargestellt, geändert
@@ -22,117 +41,136 @@ import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
  */
 public class ScenarioGUIStepController {
 
-
-	
+	// Die beiden Panels der Haupt-GUI (links die Schritte und Rechts der Detailbereich)
 	private JPanel leftPanel;
+	private ArrayList<ScenarioGUIStep> guiStepList;
+	private ButtonGroup leftPanelRadioButtonGroup;
 	private JPanel rightPanel;
-	
-	
-	private int currentStepOffset;
-	
+
+	// Referenz zur Szenariologik
+	ScenarioHardwareBerater scenarioHardwareBerater;
 	
 	public ScenarioGUIStepController(JPanel leftPanel, JPanel rightPanel){
 		
-		this.leftPanel = leftPanel;
-		this.rightPanel = rightPanel;
-		this.currentStepOffset = 0;
+		this.leftPanel 					= leftPanel;
+		this.rightPanel 				= rightPanel;
+		this.scenarioHardwareBerater 	= new ScenarioHardwareBerater();
+		this.guiStepList 				= new ArrayList<ScenarioGUIStep>();
+		this.leftPanelRadioButtonGroup 	= new ButtonGroup();
+		
+		// Ersten Schritt in die GUI holen
+
+		ScenarioTreeStep currentStep = this.scenarioHardwareBerater.getCurrentStep();
+		ScenarioGUIStep currentGUIStep = this.getScenarioGUIStepFromTreeStep(currentStep);
+		this.guiStepList.add(currentGUIStep);
+		this.showScenarioStepGUIComponents(currentStep.NAME, currentGUIStep);
 	}
 	
-	
-	
-	public void showDemoStep(JPanel left, JPanel right) {
-		
-		JRadioButton stepActiveButton1 = new JRadioButton("Schritt 1");
-		JRadioButton stepActiveButton2 = new JRadioButton("Schritt 2");
-		stepActiveButton1.setLocation(15, 50);
-		stepActiveButton2.setLocation(15, 100);
-		stepActiveButton1.setSize(100, 20);
-		stepActiveButton2.setSize(100, 20);
-		left.add(stepActiveButton1);
-		left.add(stepActiveButton2);
-		
-		JPanel dropDownPanel = new JPanel();
-		dropDownPanel.setLayout(null);
-		dropDownPanel.setLocation(120, 40);
-		dropDownPanel.setSize(270, 40);
-		dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-		
-		JPanel dropDownPanel2 = new JPanel();
-		dropDownPanel2.setLayout(null);
-		dropDownPanel2.setLocation(120, 90);
-		dropDownPanel2.setSize(270, 40);
-		dropDownPanel2.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-		
-		JComboBox<String> selectionBox = new JComboBox<String>();
-		selectionBox.setLocation(10, 10);
-		selectionBox.setSize(250, 20);
-		
-		String[] testArr = {"A","B","C"};
-		for(int i = 0; i < testArr.length; ++i){
-			selectionBox.addItem(testArr[i]);
-		}
-		
-		dropDownPanel.add(selectionBox);
-		
-		left.add(dropDownPanel);
-		left.add(dropDownPanel2);
-		
-		right.removeAll();
-		
-		JLabel helpLabel = new JLabel("Testschritt " + this.currentStepOffset + " links!");
-		helpLabel.setSize(100, 20);
-		helpLabel.setLocation(30, 30);
-		right.add(helpLabel);
-		
-	}
 	
 
+	/**
+	 * Geht im Szenario einen Schritt vorwärts. F
+	 * 
+	 */
+	public void goForwardInScenario(){
+		
+		// GUI Parameter auslesen und in Szenarioschritt übertragen. Auswirkungen werden beim Aufruf
+		// von goToNextStep() im Szenario automatisch aktiv, sofern für den nächsten Schritt relevant#
+		ScenarioGUIStep currentGUIStep = this.guiStepList.get(this.guiStepList.size() - 1);
+		currentGUIStep.setSelectionIntoScenarioStep();
+				
+		// Aufruf zum nächsten Szenarioschritt, siehe auch obigen Hinweis
+		this.scenarioHardwareBerater.goToNextStep();
+		
+		// GUI-Schritt Objekt holen (definiert das Aussehen der GUI-Elemente des Schritts)
+		ScenarioTreeStep currentStep = scenarioHardwareBerater.getCurrentStep();
+		System.out.println("Next identified Step: " + currentStep.NAME);
+		currentGUIStep = getScenarioGUIStepFromTreeStep(currentStep);
+		this.guiStepList.add(currentGUIStep);
+		
+		// GUI um Auswahlelemente des neuen Schrittes ergänzen.
+		this.showScenarioStepGUIComponents(currentStep.NAME, currentGUIStep);
+		
+	}
 	
 	
-	public void showDemoStepX() {
+	/**
+	 * Fügt der Haupt-GUI die Szenarioschritt-Komponente des aktuellen Schrittes hinzu und aktualisiert
+	 * 
+	 */
+	private void showScenarioStepGUIComponents(String name, ScenarioGUIStep currentGUIStep){
 		
-		// Linkes Auswahlelement
-		String[] testArrDropdown = {"A","B","C"};
-		String[] testArrRadio = {"Ja","Nein"};
+		// 1 abziehen, da das aktuelle Element schon in der Liste ist und Index immer 1 unter size
+		int currentStepIndex = this.guiStepList.size() - 1;
 		
-		ScenarioGUIStep testStep;
-		
-		if (this.currentStepOffset % 2 == 0) {
-			testStep = new ScenarioGUIStepDropdownList(testArrDropdown, "Testschritt " + this.currentStepOffset + " links!");
-		} else  {
-			testStep = new ScenarioGUIStepTwoOptionsRadiobuttons(testArrRadio, "Radioschritt " + this.currentStepOffset);
-		}
-		
-		
-		
-		// Radiobutton
+		// Radiobutton erzeugen und einbauen
 		JRadioButton activeScenarioButton = new JRadioButton();
-		activeScenarioButton.setText("Schritt: " + currentStepOffset);
-		activeScenarioButton.setBounds(STEP_RADIOBUTTON_X_POS, STEP_RADIOBUTTON_Y_FIRSTPOS + currentStepOffset * STEP_Y_DISTANCE, 
+		activeScenarioButton.setText(name);
+		activeScenarioButton.setBounds(STEP_RADIOBUTTON_X_POS, STEP_RADIOBUTTON_Y_FIRSTPOS + currentStepIndex * STEP_Y_DISTANCE, 
 										STEP_RADIOBUTTON_X_SIZE, STEP_RADIOBUTTON_Y_SIZE);
-
 		
+		leftPanelRadioButtonGroup.add(activeScenarioButton);
+		leftPanelRadioButtonGroup.setSelected(activeScenarioButton.getModel(), true);
 		
+		// Linkes Schrittelement Panel
 		
-		
-		JPanel innerStepPanel = testStep.getLeftComponent();
-		innerStepPanel.setBounds(STEP_PANEL_X_POS, STEP_PANEL_Y_FIRSTPOS + currentStepOffset * STEP_Y_DISTANCE, 
+		// Panel aus GUI Step Objekt holen und in Schrittpanel-Liste Setzen
+		System.out.println(currentGUIStep.getClass().getCanonicalName());
+		System.out.println("currentStep: " + (guiStepList.size() - 1));
+		JPanel innerStepPanel = currentGUIStep.getLeftComponent();
+		innerStepPanel.setBounds(STEP_PANEL_X_POS, STEP_PANEL_Y_FIRSTPOS + currentStepIndex * STEP_Y_DISTANCE, 
 									STEP_PANEL_X_SIZE, STEP_PANEL_Y_SIZE);
 		
+		// Schrittpanel in GUI hinzufügen
 		leftPanel.add(activeScenarioButton);
 		leftPanel.add(innerStepPanel);
 		leftPanel.repaint();
 		leftPanel.revalidate();
 		
-		// Rechtes Auswahlelement
-		JPanel detailPanel = testStep.getRightComponent();
-		detailPanel.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT);
 		
+		// Rechtes Detailpanel
+		
+		// Rechtes Detailpanel leeren
 		rightPanel.removeAll();
+		
+		// Neues Panel setzen
+		JPanel detailPanel = currentGUIStep.getRightComponent();
+		detailPanel.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT);
+	
 		rightPanel.add(detailPanel);
 		rightPanel.repaint();
+		rightPanel.revalidate();
+	
 		
-		this.currentStepOffset++;
+	}
+	
+	
+	/**
+	 * Erstellt aus einem logischen Szenarioschritt Objekt das GUI-Schritt Objekt
+	 * 
+	 * @param currentStep
+	 * @return
+	 */
+	private ScenarioGUIStep getScenarioGUIStepFromTreeStep(ScenarioTreeStep currentStep) {
+				
+		// Gibt das passende GUI Schritt Objekt zurück zum Szenarioschrittobjekt
+		// und fügt das Szenarioschrittobjekt dem GUI Schritt Objekt per Konstruktor hinzu
+		if(currentStep instanceof ScenarioTreeStepBeginning){
+			return new ScenarioGUIStepBeginning((ScenarioTreeStepBeginning)currentStep);
+		} else if(currentStep instanceof ScenarioTreeStepTwoOptions) {
+			return new ScenarioGUIStepTwoOptionsRadiobuttons((ScenarioTreeStepTwoOptions)currentStep);
+		} else if(currentStep instanceof ScenarioTreeStepSimpleList) {
+			return new ScenarioGUIStepDropdownList((ScenarioTreeStepSimpleList)currentStep);
+		}  else if (currentStep instanceof ScenarioTreeStepFinish){
+			return new ScenarioGUIStepFinish((ScenarioTreeStepFinish)currentStep);
+		}
+			
+		// Derzeit gibt es die obigen Typen
+		return null;
+	}
+	
+	public void showDemoStepX() {
+			
 	}
 	
 	

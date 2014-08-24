@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
+import de.htwsaarland.scenario.ScenarioTreeStepSimpleList;
 import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
 
 /**
@@ -21,33 +22,70 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
 	private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 	
+	// Zugeordneter logischer Schritt
+	private ScenarioTreeStepSimpleList scenarioStep;
+	
 	// Auswahlstrings und Hilfetext
 	private String[] selectionOptions;
-	private String helpText;
-	
+		
 	// Dropdown-Liste. Referenz zur späteren Abfrage der gewählten Option
 	private JComboBox<String> selectionBox;
 	
 	// Die Panels
-	private JPanel leftPanel;
-	private JPanel rightPanel;
+	private JPanel dropDownPanel;
+	private JPanel helpPanel;
 	
-	public ScenarioGUIStepDropdownList(String[] selectionOptions, String helpText) {
+	public ScenarioGUIStepDropdownList(ScenarioTreeStepSimpleList scenarioStep) {
 		
-		if(selectionOptions == null || selectionOptions.length < 1) {
-			throw new IllegalArgumentException("ScenarioGUIStepDropdownList: String array may not be null or empty!");
+		if(scenarioStep == null) {
+			throw new IllegalArgumentException("ScenarioGUIStepDropdownList: scenarioStep may not be empty!");
 		}
 		
-		if(helpText == null || helpText.trim().length() < 1) {
-			throw new IllegalArgumentException("ScenarioGUIStepDropdownList: Help text may not be null or empty!");
-		}
-		
-		this.selectionOptions = selectionOptions;
-		this.helpText = helpText;
+		this.selectionOptions = scenarioStep.getSelectionOptions();
+		this.scenarioStep = scenarioStep;
 		
 		// JPanels generieren
 		this.createGUIComponents();
 	}
+
+	/**
+	 * Hilfsfunktion zur Generierung der beiden JPanels des Schrittes
+	 */
+	private void createGUIComponents(){
+		
+		// Panel für die Dropdown-Liste. Wird von der Haupt-GUI platziert
+		this.dropDownPanel = new JPanel();
+		this.dropDownPanel.setLayout(null);
+		//dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
+		
+		// Combobox mit den Optionen
+		this.selectionBox = new JComboBox<String>();
+		selectionBox.setBounds(0, 10, 250, 20);
+			
+		// Optionen hinzufügen (gibt keine "alles"-hinzufügen Option)
+		for(int i = 0; i < selectionOptions.length; ++i){
+			selectionBox.addItem(selectionOptions[i]);
+		}
+		
+		// Zusammenbau
+		this.dropDownPanel.add(selectionBox);
+		
+		// Das rechte Panel
+		this.helpPanel = new JPanel();
+		this.helpPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+		this.helpPanel.setLayout(null);
+		
+		// Text einbauen
+		JLabel help = new JLabel(scenarioStep.HELP);
+		help.setBounds(DEFAULT_HELP_LABEL_MARGIN, DEFAULT_HELP_LABEL_MARGIN, 
+						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - DEFAULT_HELP_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - DEFAULT_HELP_LABEL_MARGIN);
+		help.setVerticalAlignment(SwingConstants.TOP);
+		help.setHorizontalAlignment(SwingConstants.LEFT);
+		this.helpPanel.add(help);
+	
+		
+	}
+	
 	
 	/**
 	 * Liefert die linke Darstellungskomponente eines Dropdownschritts
@@ -57,7 +95,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	 */
 	@Override
 	public JPanel getLeftComponent() {
-		return this.leftPanel;
+		return this.dropDownPanel;
 	}
 
 	/**
@@ -67,7 +105,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	 */
 	@Override
 	public JPanel getRightComponent() {
-		return this.rightPanel;
+		return this.helpPanel;
 	}
 
 	/**
@@ -81,42 +119,12 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	}
 
 	/**
-	 * Hilfsfunktion zur Generierung der beiden JPanels des Schrittes
+	 * Transferiert die Auswahl der GUI-Komponenten in den darunterliegenden Szenarioschritt,
+	 * damit die Szenariologik diese Auswahl weiterverwenden kann.
 	 */
-	private void createGUIComponents(){
-		
-		// Panel für die Dropdown-Liste. Wird von der Haupt-GUI platziert
-		this.leftPanel = new JPanel();
-		this.leftPanel.setLayout(null);
-		//dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-		
-		// Combobox mit den Optionen
-		JComboBox<String> selectionBox = new JComboBox<String>();
-		selectionBox.setBounds(0, 10, 250, 20);
-			
-		// Optionen hinzufügen (gibt keine "alles"-hinzufügen Option)
-		for(int i = 0; i < selectionOptions.length; ++i){
-			selectionBox.addItem(selectionOptions[i]);
-		}
-		
-		// Zusammenbau
-		this.leftPanel.add(selectionBox);
-		
-		// Das rechte Panel
-		this.rightPanel = new JPanel();
-		this.rightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-		this.rightPanel.setLayout(null);
-		
-		// Text einbauen
-		JLabel help = new JLabel(helpText);
-		help.setBounds(DEFAULT_HELP_LABEL_MARGIN, DEFAULT_HELP_LABEL_MARGIN, 
-						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - DEFAULT_HELP_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - DEFAULT_HELP_LABEL_MARGIN);
-		help.setVerticalAlignment(SwingConstants.TOP);
-		help.setHorizontalAlignment(SwingConstants.LEFT);
-		this.rightPanel.add(help);
-	
+	@Override
+	public void setSelectionIntoScenarioStep() {
+		this.scenarioStep.setSelection(this.getSelection());
 		
 	}
-	
-	
 }

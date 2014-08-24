@@ -43,6 +43,12 @@ public abstract class ScenarioGUIStep {
 	public abstract JPanel getRightComponent();
 	
 	/**
+	 * Transferiert die Auswahl der GUI-Komponenten in den darunterliegenden Szenarioschritt,
+	 * damit die Szenariologik diese Auswahl weiterverwenden kann.
+	 */
+	public abstract void setSelectionIntoScenarioStep();
+	
+	/**
 	 * Liefert die in den GUI-Komponenten des Schritts ausgewählte Option
 	 * 
 	 * @return

@@ -10,6 +10,9 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
+import de.htwsaarland.scenario.ScenarioTreeStepSimpleList;
+import de.htwsaarland.scenario.ScenarioTreeStepTwoOptions;
+
 /**
  * GUI Komponente für Szenarioschritte mit zwei Optionen.
  * 
@@ -24,10 +27,13 @@ import javax.swing.border.EtchedBorder;
  */
 public class ScenarioGUIStepTwoOptionsRadiobuttons extends ScenarioGUIStep {
 
-private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
+	private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 	
+	// Zugeordneter logischer Schritt
+	private ScenarioTreeStepSimpleList scenarioStep;
+
+	// Auswahloptionen und Hilfetext
 	private String[] selectionOptions;
-	private String helpText;
 	
 	// Referenzen zu den Radiobuttons, um ausgewählten Button auszulesen
 	private JRadioButton firstRadioButton;
@@ -45,18 +51,14 @@ private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 	 * @param selectionOptions
 	 * @param helpText
 	 */
-	public ScenarioGUIStepTwoOptionsRadiobuttons(String[] selectionOptions, String helpText) {
+	public ScenarioGUIStepTwoOptionsRadiobuttons(ScenarioTreeStepTwoOptions scenarioStep) {
 		
-		if(selectionOptions == null || selectionOptions.length != 2) {
-			throw new IllegalArgumentException("ScenarioGUIStepDropdownList: String array may not be null and must have 2 selections!");
+		if(scenarioStep == null) {
+			throw new IllegalArgumentException("ScenarioGUIStepTwoOptionsRadiobuttons: scenarioStep may not be empty!");
 		}
-		
-		if(helpText == null || helpText.trim().length() < 1) {
-			throw new IllegalArgumentException("ScenarioGUIStepDropdownList: Help text may not be null or empty!");
-		}
-		
-		this.selectionOptions = selectionOptions;
-		this.helpText = helpText;
+	
+		this.selectionOptions = scenarioStep.getSelectionOptions();
+		this.scenarioStep = scenarioStep;
 		
 		// Gui Komponenten bauen
 		this.createGUIComponents();
@@ -93,7 +95,7 @@ private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 		helpPanel.setLayout(null);
 		
 		// Text einbauen
-		JLabel help = new JLabel(helpText);
+		JLabel help = new JLabel(scenarioStep.HELP);
 		help.setBounds(DEFAULT_HELP_LABEL_MARGIN, DEFAULT_HELP_LABEL_MARGIN, 
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - DEFAULT_HELP_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - DEFAULT_HELP_LABEL_MARGIN);
 		help.setVerticalAlignment(SwingConstants.TOP);
@@ -131,6 +133,17 @@ private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
 		} else {
 			return 1;
 		}
+	}
+
+	/**
+	 * Transferiert die Auswahl der GUI-Komponenten in den darunterliegenden Szenarioschritt,
+	 * damit die Szenariologik diese Auswahl weiterverwenden kann.
+	 */
+	@Override
+	public void setSelectionIntoScenarioStep() {
+
+		this.scenarioStep.setSelection(this.getSelection());
+		
 	}
 
 }
