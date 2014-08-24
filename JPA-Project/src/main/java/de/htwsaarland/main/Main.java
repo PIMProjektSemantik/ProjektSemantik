@@ -1,23 +1,21 @@
 package de.htwsaarland.main;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.border.EtchedBorder;
 
 import de.htwsaarland.dao.NotebookDao;
 import de.htwsaarland.model.Notebook;
 import de.htwsaarland.scenario.gui.ScenarioGUIStepController;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class Main {
@@ -85,37 +83,17 @@ public class Main {
 		lblAntworten.setBounds(122, 11, 74, 14);
 		panel.add(lblAntworten);
 		
-		JRadioButton radioButton_1 = new JRadioButton("CPU");
-		radioButton_1.setBounds(10, 394, 109, 23);
-		panel.add(radioButton_1);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(122, 395, 245, 20);
-		panel.add(comboBox_3);
-		
-		JRadioButton radioButton_2 = new JRadioButton("RAM");
-		radioButton_2.setBounds(10, 420, 109, 23);
-		panel.add(radioButton_2);
-		
-		JLabel lblAntwortRechtsWhlen = new JLabel("Antwort rechts w\u00E4hlen");
-		lblAntwortRechtsWhlen.setBounds(122, 424, 245, 14);
-		panel.add(lblAntwortRechtsWhlen);
-		
-		JLabel lblHierErscheintNun = new JLabel("So werden die Schritte aussehen");
-		lblHierErscheintNun.setBounds(10, 367, 250, 14);
-		panel.add(lblHierErscheintNun);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_1.setBounds(421, 11, 450, 450);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblHierIrgendwasAnzeigen = new JLabel("Zusatzinfos zum aktiven Schritt");
+		JLabel lblHierIrgendwasAnzeigen = new JLabel("Bitte \"Schritt runter\" drücken");
 		lblHierIrgendwasAnzeigen.setBounds(32, 186, 198, 14);
 		panel_1.add(lblHierIrgendwasAnzeigen);
 		
-		JLabel lblNichtMitDropdown = new JLabel("Bei DB/OWL auch Tabellen usw.");
+		JLabel lblNichtMitDropdown = new JLabel("Hier stehen Hilfen etc.");
 		lblNichtMitDropdown.setBounds(32, 208, 198, 14);
 		panel_1.add(lblNichtMitDropdown);
 		
