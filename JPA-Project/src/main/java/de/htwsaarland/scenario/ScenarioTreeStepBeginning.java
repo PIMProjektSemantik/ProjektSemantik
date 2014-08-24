@@ -12,13 +12,14 @@ package de.htwsaarland.scenario;/**
 public class ScenarioTreeStepBeginning extends ScenarioTreeStep {
 
 	public final static String DEFAULT_START_TEXT = "Start";
+	public final static String DEFAULT_HELP_TEXT = "Das Szenario beginnt jetzt!";
 	
 	/**
 	 * Erstellt einen Start-Schritt mit Standardname "Ende"
 	 * 
 	 */
 	public ScenarioTreeStepBeginning(){
-		super(DEFAULT_START_TEXT);
+		super(DEFAULT_START_TEXT, DEFAULT_HELP_TEXT);
 	}
 	
 	/**
@@ -26,8 +27,8 @@ public class ScenarioTreeStepBeginning extends ScenarioTreeStep {
 	 * 
 	 * @param name Name des Endschrittes
 	 */
-	public ScenarioTreeStepBeginning(String name) {
-		super(name);
+	public ScenarioTreeStepBeginning(String name, String help) {
+		super(name, help);
 
 	}
 	

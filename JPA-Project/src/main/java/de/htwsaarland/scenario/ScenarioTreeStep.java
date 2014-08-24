@@ -39,6 +39,7 @@ import java.util.ArrayList;
 public abstract class ScenarioTreeStep {
 
 	public final String NAME;
+	public final String HELP;
 	ArrayList<String> selectionNames;
 	
 	// Alle möglichen Folgeschritte
@@ -48,14 +49,23 @@ public abstract class ScenarioTreeStep {
 	/**
 	 * Konstuktor des absrakten Szenario Schritts.
 	 */
-	public ScenarioTreeStep(String name) {
+	public ScenarioTreeStep(String name, String help) {
 		
 		if (name == null || name.trim().isEmpty()){
 			throw new IllegalArgumentException("ScenarioTreeStep: Namen darf nicht null sein bzw. nur Whitespaces enthalten!");
 		}
 		this.NAME = name;
 		
-		followUpStepsList = new ArrayList<ScenarioTreeStep>();
+		
+		if(help == null) {
+			throw new IllegalArgumentException("ScenarioGUIStepTwoOptionsRadiobuttons: Help text may not be null!");
+		}
+				
+		// Help kann auch leer sein
+		this.HELP = help;
+		
+		this.selectionNames = new ArrayList<String>();
+		this.followUpStepsList = new ArrayList<ScenarioTreeStep>();
 	}
 	
 	
@@ -119,9 +129,9 @@ public abstract class ScenarioTreeStep {
 	 * 
 	 * @return
 	 */
-	public ScenarioTreeStep[] getFollowUpSteps(){
+	public Object[] getFollowUpSteps(){
 		
-		return (ScenarioTreeStep[])followUpStepsList.toArray();
+		return followUpStepsList.toArray();
 		
 	}
 	
@@ -142,7 +152,14 @@ public abstract class ScenarioTreeStep {
 	 */
 	public String[] getSelectionOptions(){
 		
-		return (String[])selectionNames.toArray();
+		Object[] src = selectionNames.toArray();
+		String[] ret = new String[src.length]; 
+		
+		for(int i = 0; i < src.length; ++i) {
+			ret[i] = (String)src[i];
+		}
+				
+		return ret;
 	}
 	
 }

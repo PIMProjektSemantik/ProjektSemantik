@@ -25,8 +25,8 @@ package de.htwsaarland.scenario;
  */
 public abstract class ScenarioTreeStepSimpleDatabaseRequest extends ScenarioTreeStep {
 
-	public ScenarioTreeStepSimpleDatabaseRequest(String name) {
-		super(name);
+	public ScenarioTreeStepSimpleDatabaseRequest(String name, String help) {
+		super(name, help);
 
 	}
 

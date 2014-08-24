@@ -30,9 +30,13 @@ public class ScenarioTreeStepSimpleList extends ScenarioTreeStep {
 	 * 
 	 * @param name Name des Schrittes
 	 */
-	public ScenarioTreeStepSimpleList(String name) {
-		super(name);
+	public ScenarioTreeStepSimpleList(String name, String help) {
+		super(name, help);
 		selectedOption = -1;
+	}
+	
+	public int getSelection(){
+		return this.selectedOption;
 	}
 	
 	/**

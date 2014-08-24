@@ -22,9 +22,9 @@ public class ScenarioTreeStepTwoOptions extends ScenarioTreeStepSimpleList {
 	 * @param first		Auswahlschritt der ersten Option unter "Ja"
 	 * @param second	Auswahlschritt der zweiten Option unter "Nein"
 	 */
-	public ScenarioTreeStepTwoOptions(String name, ScenarioTreeStep first, ScenarioTreeStep second) {
+	public ScenarioTreeStepTwoOptions(String name, ScenarioTreeStep first, ScenarioTreeStep second, String help) {
 		
-		this(name, first, DEFAULT_FIRST_TEXT, second, DEFAULT_SECOND_TEXT);
+		this(name, first, DEFAULT_FIRST_TEXT, second, DEFAULT_SECOND_TEXT, help);
 		
 	}
 	
@@ -37,9 +37,9 @@ public class ScenarioTreeStepTwoOptions extends ScenarioTreeStepSimpleList {
 	 * @param second		Auswahlschritt der zweiten Option unter wählbarem Text
 	 * @param secondText	Text der zweiten Option
 	 */
-	public ScenarioTreeStepTwoOptions(String name, ScenarioTreeStep first, String firstText, ScenarioTreeStep second, String secondText) {
+	public ScenarioTreeStepTwoOptions(String name, ScenarioTreeStep first, String firstText, ScenarioTreeStep second, String secondText, String help) {
 		
-		super(name);
+		super(name, help);
 		if (first == null || second == null) { 
 			throw new IllegalArgumentException("ScenarioTreeStepTwoOptions: Beide Schritte müssen gesetzt sein!");			
 		}

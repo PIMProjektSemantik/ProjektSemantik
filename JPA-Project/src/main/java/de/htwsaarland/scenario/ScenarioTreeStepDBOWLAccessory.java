@@ -15,8 +15,8 @@ public class ScenarioTreeStepDBOWLAccessory extends ScenarioTreeStepSimpleDataba
 	 * 
 	 * @param name
 	 */
-	public ScenarioTreeStepDBOWLAccessory(String name) {
-		super(name);
+	public ScenarioTreeStepDBOWLAccessory(String name, String help) {
+		super(name, help);
 		
 	}
 

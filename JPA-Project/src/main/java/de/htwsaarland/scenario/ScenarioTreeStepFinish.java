@@ -14,13 +14,14 @@ package de.htwsaarland.scenario;
 public class ScenarioTreeStepFinish extends ScenarioTreeStep {
 
 	public final static String DEFAULT_END_TEXT = "Ende";
+	public final static String DEFAULT_HELP_TEXT = "Das Szenario ist zu Ende!";
 	
 	/**
 	 * Erstellt einen End-Schritt mit Standardname "Ende"
 	 * 
 	 */
 	public ScenarioTreeStepFinish(){
-		super(DEFAULT_END_TEXT);
+		super(DEFAULT_END_TEXT, DEFAULT_HELP_TEXT);
 	}
 	
 	/**
@@ -28,8 +29,8 @@ public class ScenarioTreeStepFinish extends ScenarioTreeStep {
 	 * 
 	 * @param name Name des Endschrittes
 	 */
-	public ScenarioTreeStepFinish(String name) {
-		super(name);
+	public ScenarioTreeStepFinish(String name, String help) {
+		super(name, help);
 
 	}
 
