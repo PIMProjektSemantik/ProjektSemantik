@@ -107,6 +107,11 @@ public class Main {
 		frame.getContentPane().add(btnSchrittRunter);
 		
 		JButton btnSchrittHoch = new JButton("Schritt hoch");
+		btnSchrittHoch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				testController.goBackwardsInScenario();
+			}
+		});
 		btnSchrittHoch.setBounds(10, 472, 131, 23);
 		frame.getContentPane().add(btnSchrittHoch);
 		btnSchrittRunter.addActionListener(new ActionListener() {

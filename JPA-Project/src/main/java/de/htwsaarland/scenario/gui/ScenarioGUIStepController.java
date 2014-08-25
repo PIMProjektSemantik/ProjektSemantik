@@ -15,7 +15,6 @@ import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_Y_DISTANCE;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -42,10 +41,15 @@ import de.htwsaarland.scenario.ScenarioTreeStepTwoOptions;
 public class ScenarioGUIStepController {
 
 	// Die beiden Panels der Haupt-GUI (links die Schritte und Rechts der Detailbereich)
-	private JPanel leftPanel;
-	private ArrayList<ScenarioGUIStep> guiStepList;
-	private ButtonGroup leftPanelRadioButtonGroup;
-	private JPanel rightPanel;
+	// Weitere sind Listen für die Panels und Radiobuttons, die auf der linken Seite entstehen
+	// Diese dienen zur einfachen Entfernung bei "Zurück"-Knopf
+	private JPanel 						leftPanel;
+	private JPanel 						rightPanel;
+	private ArrayList<ScenarioGUIStep> 	guiStepList;
+	private ArrayList<JPanel>			leftSideStepPanelList;
+	private ArrayList<JRadioButton>		leftSideRadioButtonList;
+	private ButtonGroup 				leftPanelRadioButtonGroup;
+
 
 	// Referenz zur Szenariologik
 	ScenarioHardwareBerater scenarioHardwareBerater;
@@ -56,6 +60,8 @@ public class ScenarioGUIStepController {
 		this.rightPanel 				= rightPanel;
 		this.scenarioHardwareBerater 	= new ScenarioHardwareBerater();
 		this.guiStepList 				= new ArrayList<ScenarioGUIStep>();
+		this.leftSideStepPanelList		= new ArrayList<JPanel>();
+		this.leftSideRadioButtonList	= new ArrayList<JRadioButton>();
 		this.leftPanelRadioButtonGroup 	= new ButtonGroup();
 		
 		// Ersten Schritt in die GUI holen
@@ -93,6 +99,25 @@ public class ScenarioGUIStepController {
 		
 	}
 	
+	/**
+	 * Wandert einen Schritt im Szenario zurück
+	 * 
+	 */
+	public void goBackwardsInScenario(){
+		
+		// Wenn Startschritt, Aufruf ignorieren
+		if(this.guiStepList.size() <= 1){
+			return;
+		}
+		
+		// Gui Elemente löschen
+		this.removeLastScenarioStepGUIComponents();
+		this.guiStepList.remove(this.guiStepList.size() - 1);
+		
+		// Szenario aktualisieren
+		this.scenarioHardwareBerater.goToPreviousStep();
+	
+	}
 	
 	/**
 	 * Fügt der Haupt-GUI die Szenarioschritt-Komponente des aktuellen Schrittes hinzu und aktualisiert
@@ -106,11 +131,14 @@ public class ScenarioGUIStepController {
 		// Radiobutton erzeugen und einbauen
 		JRadioButton activeScenarioButton = new JRadioButton();
 		activeScenarioButton.setText(name);
+		activeScenarioButton.setEnabled(false);
 		activeScenarioButton.setBounds(STEP_RADIOBUTTON_X_POS, STEP_RADIOBUTTON_Y_FIRSTPOS + currentStepIndex * STEP_Y_DISTANCE, 
 										STEP_RADIOBUTTON_X_SIZE, STEP_RADIOBUTTON_Y_SIZE);
 		
+		// Radiobutton in Gruppe setzen und registrieren
 		leftPanelRadioButtonGroup.add(activeScenarioButton);
 		leftPanelRadioButtonGroup.setSelected(activeScenarioButton.getModel(), true);
+		leftSideRadioButtonList.add(activeScenarioButton);
 		
 		// Linkes Schrittelement Panel
 		
@@ -126,6 +154,9 @@ public class ScenarioGUIStepController {
 		leftPanel.add(innerStepPanel);
 		leftPanel.repaint();
 		leftPanel.revalidate();
+		
+		// Panel registrieren
+		leftSideStepPanelList.add(innerStepPanel);
 		
 		
 		// Rechtes Detailpanel
@@ -143,6 +174,46 @@ public class ScenarioGUIStepController {
 	
 		
 	}
+	
+	/**
+	 * Entfernt die GUI-Komponenten des letzten Szenarioschrittes
+	 * und stellt die Detailseite des vorherigen Schrittes wieder her
+	 */
+	private void removeLastScenarioStepGUIComponents(){
+
+		// Schrittindex des letzten Elements
+		int lastStepIndex = this.guiStepList.size() - 1;
+		
+		// Letzten Radiobutton (vom linken Rand) und JPanel abrufen
+		JPanel lastLeftPanel = this.leftSideStepPanelList.get(lastStepIndex);
+		JRadioButton lastRadioButton = this.leftSideRadioButtonList.get(lastStepIndex);
+		
+		// Radiobutton aus Gruppe, Liste und GUI löschen
+		this.leftPanelRadioButtonGroup.remove(lastRadioButton);
+		this.leftSideRadioButtonList.remove(lastStepIndex);
+		this.leftPanel.remove(lastRadioButton);
+		
+		// Panel aus Liste und GUI löschen
+		this.leftSideStepPanelList.remove(lastStepIndex);
+		this.leftPanel.remove(lastLeftPanel);
+		
+		// Neu zeichen
+		this.leftPanel.repaint();
+		this.leftPanel.revalidate();
+		
+		// Rechtes Panel leeren
+		this.rightPanel.removeAll();
+
+		// Vorheriges rechtes Panel abrufen und wieder darstellen (da der letzte Schritt noch
+		// in Schrittliste, also 1 Pos vor lastStepIndex)
+		JPanel detailPanel = this.guiStepList.get(lastStepIndex-1).getRightComponent();
+		detailPanel.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT);
+			
+		rightPanel.add(detailPanel);
+		rightPanel.repaint();
+		rightPanel.revalidate();
+	}
+	
 	
 	
 	/**
@@ -168,11 +239,6 @@ public class ScenarioGUIStepController {
 		// Derzeit gibt es die obigen Typen
 		return null;
 	}
-	
-	public void showDemoStepX() {
-			
-	}
-	
 	
 	
 	
