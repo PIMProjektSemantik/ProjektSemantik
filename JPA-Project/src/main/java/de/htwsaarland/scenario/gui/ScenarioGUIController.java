@@ -38,7 +38,7 @@ import de.htwsaarland.scenario.ScenarioTreeStepTwoOptions;
  * @author Stefan
  *
  */
-public class ScenarioGUIStepController {
+public class ScenarioGUIController {
 
 	// Die beiden Panels der Haupt-GUI (links die Schritte und Rechts der Detailbereich)
 	// Weitere sind Listen für die Panels und Radiobuttons, die auf der linken Seite entstehen
@@ -54,7 +54,7 @@ public class ScenarioGUIStepController {
 	// Referenz zur Szenariologik
 	ScenarioHardwareBerater scenarioHardwareBerater;
 	
-	public ScenarioGUIStepController(JPanel leftPanel, JPanel rightPanel){
+	public ScenarioGUIController(JPanel leftPanel, JPanel rightPanel){
 		
 		this.leftPanel 					= leftPanel;
 		this.rightPanel 				= rightPanel;

@@ -15,12 +15,12 @@ import javax.swing.border.EtchedBorder;
 
 import de.htwsaarland.dao.NotebookDao;
 import de.htwsaarland.model.Notebook;
-import de.htwsaarland.scenario.gui.ScenarioGUIStepController;
+import de.htwsaarland.scenario.gui.ScenarioGUIController;
 
 
 public class Main {
 
-	public static ScenarioGUIStepController testController;
+	public static ScenarioGUIController testController;
 	
 	// Database creation/check trigger
 	NotebookDao ndao = new NotebookDao();
@@ -100,7 +100,7 @@ public class Main {
 		
 		
 		//Test
-		testController = new ScenarioGUIStepController(panel, panel_1);
+		testController = new ScenarioGUIController(panel, panel_1);
 		
 		JButton btnSchrittRunter = new JButton("Schritt runter");
 		btnSchrittRunter.setBounds(150, 472, 131, 23);
