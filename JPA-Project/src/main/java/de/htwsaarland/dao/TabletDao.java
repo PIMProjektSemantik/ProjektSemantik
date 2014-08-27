@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import de.htwsaarland.model.Tablet;
 import de.htwsaarland.model.Base;
 import de.htwsaarland.model.Tablet;
 
@@ -51,6 +52,16 @@ public class TabletDao extends BaseDao implements IDao {
 		tx.begin();
 		getEntityManager().persist(Tablet);
 		tx.commit();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Tablet> fireQuery(String querie) {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		tx.begin();
+		Query query = getEntityManager()
+				.createNativeQuery(querie, Tablet.class);
+		tx.commit();
+		return query.getResultList();
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import de.htwsaarland.model.Notebook;
 import de.htwsaarland.model.Base;
 import de.htwsaarland.model.Notebook;
 
@@ -51,6 +52,16 @@ public class NotebookDao extends BaseDao implements IDao {
 		tx.begin();
 		getEntityManager().persist(notebook);
 		tx.commit();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Notebook> fireQuery(String querie) {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		tx.begin();
+		Query query = getEntityManager()
+				.createNativeQuery(querie, Notebook.class);
+		tx.commit();
+		return query.getResultList();
 	}
 
 }
