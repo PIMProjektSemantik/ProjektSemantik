@@ -36,6 +36,16 @@ public class ArbeitsspeicherDao extends BaseDao implements IDao {
 		tx.commit();
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Arbeitsspeicher> fireQuery(String querie) {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		tx.begin();
+		Query query = getEntityManager()
+				.createNativeQuery(querie, Arbeitsspeicher.class);
+		tx.commit();
+		return query.getResultList();
+	}
 
 	public void remove(Base o) {
 		Arbeitsspeicher Arbeitsspeicher = (Arbeitsspeicher) o;

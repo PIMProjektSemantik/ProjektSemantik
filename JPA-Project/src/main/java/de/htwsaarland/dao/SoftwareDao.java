@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import de.htwsaarland.model.Software;
 import de.htwsaarland.model.Base;
 import de.htwsaarland.model.Software;
 
@@ -51,6 +52,15 @@ public class SoftwareDao extends BaseDao implements IDao {
 		tx.begin();
 		getEntityManager().persist(Software);
 		tx.commit();
+	}
+	@SuppressWarnings("unchecked")
+	public List<Software> fireQuery(String querie) {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		tx.begin();
+		Query query = getEntityManager()
+				.createNativeQuery(querie, Software.class);
+		tx.commit();
+		return query.getResultList();
 	}
 
 }

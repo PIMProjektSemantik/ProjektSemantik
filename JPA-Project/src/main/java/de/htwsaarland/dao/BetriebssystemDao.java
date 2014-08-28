@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import de.htwsaarland.model.Betriebssystem;
 import de.htwsaarland.model.Base;
 import de.htwsaarland.model.Betriebssystem;
 
@@ -53,4 +54,13 @@ public class BetriebssystemDao extends BaseDao implements IDao {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Betriebssystem> fireQuery(String querie) {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		tx.begin();
+		Query query = getEntityManager()
+				.createNativeQuery(querie, Betriebssystem.class);
+		tx.commit();
+		return query.getResultList();
+	}
 }
