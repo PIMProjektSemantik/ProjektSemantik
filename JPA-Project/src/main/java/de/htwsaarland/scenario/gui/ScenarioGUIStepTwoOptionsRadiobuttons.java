@@ -27,7 +27,7 @@ import de.htwsaarland.scenario.ScenarioTreeStepTwoOptions;
  */
 public class ScenarioGUIStepTwoOptionsRadiobuttons extends ScenarioGUIStep {
 
-	private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
+	private static final int DEFAULT_HELP_LABEL_MARGIN = 5;
 	
 	// Zugeordneter logischer Schritt
 	private ScenarioTreeStepSimpleList scenarioStep;
@@ -72,12 +72,13 @@ public class ScenarioGUIStepTwoOptionsRadiobuttons extends ScenarioGUIStep {
 		radioButtonPanel.setLayout(null);
 		//dropDownPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
 		
-		// Combobox mit den Optionen
+		// Die Zwei Radiobuttons
 		this.firstRadioButton = new JRadioButton(this.selectionOptions[0]);
-		firstRadioButton.setBounds(0, 10, 120, 20);
+		firstRadioButton.setBounds(0, 5, 120, 20);
+		firstRadioButton.setSelected(true);
 		
 		this.secondRadioButton = new JRadioButton(this.selectionOptions[1]);
-		secondRadioButton.setBounds(130, 10, 120, 20);
+		secondRadioButton.setBounds(130, 5, 120, 20);
 		
 		// Gruppieren der beiden Radiobuttons
 		ButtonGroup radioGroup = new ButtonGroup();

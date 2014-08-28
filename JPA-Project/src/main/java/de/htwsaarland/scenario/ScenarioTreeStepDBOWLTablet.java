@@ -8,24 +8,46 @@ package de.htwsaarland.scenario;
  * @author Stefan
  *
  */
-public class ScenarioTreeStepDBOWLDevices extends ScenarioTreeStepSimpleDatabaseRequest {
+public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseRequest {
 
 	/**
 	 * Konstruiert den Geräte-Datenbankschritt mit seinem Namen
 	 * 
 	 * @param name
 	 */
-	public ScenarioTreeStepDBOWLDevices(String name, String help) {
+	public ScenarioTreeStepDBOWLTablet(String name, String help) {
 		super(name, help);
 		
 	}
 
 	
+	
+	
+	
+	public String generateQuery(){
+		
+		return "SELECT * FROM tablet where preis > 100";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public void addFollowUpStep(ScenarioTreeStep stepToAdd) {
 		
 		if(this.getFollowUpSteps().length >= 1) {
-			throw new RuntimeException("ScenarioTreeStepBDOWLAccessory: Nur ein Folgeschritt möglich");
+			throw new RuntimeException("ScenarioTreeStepDBOWLTablet: Nur ein Folgeschritt möglich");
 		}
 		
 		super.addFollowUpStep(stepToAdd);
@@ -38,7 +60,7 @@ public class ScenarioTreeStepDBOWLDevices extends ScenarioTreeStepSimpleDatabase
 	public ScenarioTreeStep getNextStep() {
 		
 		if(this.getFollowUpSteps().length == 0){
-			throw new RuntimeException("ScenarioTreeStepBDOWLAccessory: Kein Folgeschritt gesetzt!");
+			throw new RuntimeException("ScenarioTreeStepDBOWLTablet: Kein Folgeschritt gesetzt!");
 		}
 		
 		return this.getFollowUpStep(0);

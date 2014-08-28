@@ -46,7 +46,7 @@ public class ScenarioHardwareBerater {
 	
 	// Referenzen zu den erstellten Schrittobjekten (für Vergleiche im Steppath zb.)
 	ScenarioTreeStepFinish 				stepFinish								= null;
-	ScenarioTreeStepDBOWLAccessory 		stepAdditionalAccessoryFromDB			= null;
+	ScenarioTreeStepDBOWLTablet			stepDeviceTablet						= null;
 	ScenarioTreeStepTwoOptions 			stepAdditionalAccessoryYesNo			= null;
 	ScenarioTreeStepSimpleList 			stepAdditionalScreenRequirementType		= null;
 	ScenarioTreeStepTwoOptions 			stepAdditionalScreenRequirementsYesNo	= null;
@@ -124,8 +124,12 @@ public class ScenarioHardwareBerater {
 		// Endschritt
 		stepFinish = new ScenarioTreeStepFinish("Abschluss", "Zubehörabfrage fehlt noch!");
 	
+		// Tabletschritt test
+		stepDeviceTablet = new ScenarioTreeStepDBOWLTablet("Gerät (Tablet) wählen", "autom. gefiltert anhand Antworten");
+		stepDeviceTablet.addFollowUpStep(stepFinish);
+		
 		// Zubehörschritt (Ja/Nein)
-		stepAdditionalAccessoryYesNo = new ScenarioTreeStepTwoOptions("Zubehör", stepFinish, "Ja", stepFinish, "Nein", "Weiteres Zubehör?");
+		stepAdditionalAccessoryYesNo = new ScenarioTreeStepTwoOptions("Zubehör", stepDeviceTablet, "Ja", stepDeviceTablet, "Nein", "Weiteres Zubehör?");
 			
 		// Monitorschritt (besondere Anforderung wählen)
 		stepAdditionalScreenRequirementType = new ScenarioTreeStepSimpleList("Monitoranforderungen", "Berührumgsempflindlich oder Farbecht für Grafiker");
@@ -292,12 +296,9 @@ public class ScenarioHardwareBerater {
 			this.stepMainUsage.setSelection(this.mainUsageId);
 			nextStep = this.stepMainUsage.getNextStep();
 
-		} else if (currentStep == this.stepBeginning) {
-			// Beginnschritt
-			nextStep = this.stepBeginning.getNextStep();
-		
 		} else {
-			throw new RuntimeException("ScenarioHardwareBerater goToNextStep: ungültiger Schritt in currentStep!");
+			// Schritte ohne Parametrierung
+			nextStep = this.currentStep.getNextStep();
 		}
 		
 		
@@ -314,14 +315,7 @@ public class ScenarioHardwareBerater {
 		// tabellarische Ausgabe zu filtern. Folgeschritte gibt es dann sogar nur einen,
 		// da die Auswahl sich nicht darauf auswirkt.
 		
-		// Hier wird der in nextStep eingesetzte Schritt geprüft
-		if (nextStep == this.stepAdditionalAccessoryFromDB) {
-			
-			// SetOperationen
-		} else if (true){
-			
-			// Weitere DB Schritte
-		}
+		
 		
 	}
 	

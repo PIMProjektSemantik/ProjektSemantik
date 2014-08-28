@@ -20,7 +20,7 @@ import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
  */
 public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
-	private static final int DEFAULT_HELP_LABEL_MARGIN = 10;
+	private static final int DEFAULT_HELP_LABEL_MARGIN = 5;
 	
 	// Zugeordneter logischer Schritt
 	private ScenarioTreeStepSimpleList scenarioStep;
@@ -60,7 +60,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
 		// Combobox mit den Optionen
 		this.selectionBox = new JComboBox<String>();
-		selectionBox.setBounds(0, 10, 250, 20);
+		selectionBox.setBounds(0, 5, 180, 20);
 			
 		// Optionen hinzufügen (gibt keine "alles"-hinzufügen Option)
 		for(int i = 0; i < selectionOptions.length; ++i){

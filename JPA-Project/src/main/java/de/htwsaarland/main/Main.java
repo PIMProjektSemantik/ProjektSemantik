@@ -56,7 +56,8 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 901, 566);
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 1167, 634);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -70,7 +71,7 @@ public class Main {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 400, 450);
+		panel.setBounds(10, 11, 482, 529);
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -80,12 +81,12 @@ public class Main {
 		panel.add(lblSchritte);
 		
 		JLabel lblAntworten = new JLabel("Antworten");
-		lblAntworten.setBounds(122, 11, 74, 14);
+		lblAntworten.setBounds(200, 11, 74, 14);
 		panel.add(lblAntworten);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(421, 11, 450, 450);
+		panel_1.setBounds(502, 11, 650, 529);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -103,7 +104,7 @@ public class Main {
 		testController = new ScenarioGUIController(panel, panel_1);
 		
 		JButton btnSchrittRunter = new JButton("Schritt runter");
-		btnSchrittRunter.setBounds(150, 472, 131, 23);
+		btnSchrittRunter.setBounds(151, 551, 131, 23);
 		frame.getContentPane().add(btnSchrittRunter);
 		
 		JButton btnSchrittHoch = new JButton("Schritt hoch");
@@ -112,7 +113,7 @@ public class Main {
 				testController.goBackwardsInScenario();
 			}
 		});
-		btnSchrittHoch.setBounds(10, 472, 131, 23);
+		btnSchrittHoch.setBounds(10, 551, 131, 23);
 		frame.getContentPane().add(btnSchrittHoch);
 		btnSchrittRunter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

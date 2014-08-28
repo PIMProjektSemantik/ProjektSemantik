@@ -20,7 +20,7 @@ import de.htwsaarland.scenario.ScenarioTreeStepBeginning;
  */
 public class ScenarioGUIStepBeginning extends ScenarioGUIStep {
 
-	private static final int DEFAULT_LABEL_MARGIN = 10;
+	private static final int DEFAULT_LABEL_MARGIN = 5;
 	
 	// Zugeordneter logischer Schritt
 	private ScenarioTreeStepBeginning scenarioStep; 
@@ -32,7 +32,7 @@ public class ScenarioGUIStepBeginning extends ScenarioGUIStep {
 	public ScenarioGUIStepBeginning(ScenarioTreeStepBeginning scenarioStep){
 		
 		if(scenarioStep == null) {
-			throw new IllegalArgumentException("ScenarioTreeStepBeginning: scenarioStep may not be empty!");
+			throw new IllegalArgumentException("ScenarioGUIStepBeginning: scenarioStep may not be empty!");
 		}
 		this.scenarioStep = scenarioStep;
 		
@@ -49,7 +49,7 @@ private void createGUIComponents(){
 	
 	// Text einbauen
 	JLabel startText = new JLabel(scenarioStep.HELP);
-	startText.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
+	startText.setBounds(0, DEFAULT_LABEL_MARGIN, 
 					STEP_PANEL_X_SIZE - DEFAULT_LABEL_MARGIN, STEP_PANEL_Y_SIZE - DEFAULT_LABEL_MARGIN);
 	startText.setVerticalAlignment(SwingConstants.TOP);
 	startText.setHorizontalAlignment(SwingConstants.LEFT);
@@ -57,7 +57,7 @@ private void createGUIComponents(){
 	
 	// Das Panel selbst
 	this.helpPanel = new JPanel();
-	helpPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED));
+	helpPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 	helpPanel.setLayout(null);
 	
 	// Text einbauen

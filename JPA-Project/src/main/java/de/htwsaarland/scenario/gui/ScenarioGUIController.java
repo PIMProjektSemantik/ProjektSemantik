@@ -21,6 +21,7 @@ import javax.swing.JRadioButton;
 import de.htwsaarland.scenario.ScenarioHardwareBerater;
 import de.htwsaarland.scenario.ScenarioTreeStep;
 import de.htwsaarland.scenario.ScenarioTreeStepBeginning;
+import de.htwsaarland.scenario.ScenarioTreeStepDBOWLTablet;
 import de.htwsaarland.scenario.ScenarioTreeStepFinish;
 import de.htwsaarland.scenario.ScenarioTreeStepSimpleList;
 import de.htwsaarland.scenario.ScenarioTreeStepTwoOptions;
@@ -232,8 +233,10 @@ public class ScenarioGUIController {
 			return new ScenarioGUIStepTwoOptionsRadiobuttons((ScenarioTreeStepTwoOptions)currentStep);
 		} else if(currentStep instanceof ScenarioTreeStepSimpleList) {
 			return new ScenarioGUIStepDropdownList((ScenarioTreeStepSimpleList)currentStep);
-		}  else if (currentStep instanceof ScenarioTreeStepFinish){
+		} else if (currentStep instanceof ScenarioTreeStepFinish){
 			return new ScenarioGUIStepFinish((ScenarioTreeStepFinish)currentStep);
+		} else if (currentStep instanceof ScenarioTreeStepDBOWLTablet){
+			return new ScenarioGUIStepDatabaseRequestTablet((ScenarioTreeStepDBOWLTablet)currentStep);
 		}
 			
 		// Derzeit gibt es die obigen Typen
