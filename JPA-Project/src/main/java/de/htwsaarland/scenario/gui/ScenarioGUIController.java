@@ -21,6 +21,7 @@ import javax.swing.JRadioButton;
 import de.htwsaarland.scenario.ScenarioHardwareBerater;
 import de.htwsaarland.scenario.ScenarioTreeStep;
 import de.htwsaarland.scenario.ScenarioTreeStepBeginning;
+import de.htwsaarland.scenario.ScenarioTreeStepDBOWLNotebook;
 import de.htwsaarland.scenario.ScenarioTreeStepDBOWLTablet;
 import de.htwsaarland.scenario.ScenarioTreeStepFinish;
 import de.htwsaarland.scenario.ScenarioTreeStepSimpleList;
@@ -80,13 +81,19 @@ public class ScenarioGUIController {
 	 * 
 	 */
 	public void goForwardInScenario(){
-		
-		// GUI Parameter auslesen und in Szenarioschritt übertragen. Auswirkungen werden beim Aufruf
-		// von goToNextStep() im Szenario automatisch aktiv, sofern für den nächsten Schritt relevant#
-		ScenarioGUIStep currentGUIStep = this.guiStepList.get(this.guiStepList.size() - 1);
-		currentGUIStep.setSelectionIntoScenarioStep();
 				
-		// Aufruf zum nächsten Szenarioschritt, siehe auch obigen Hinweis
+		// GUI Parameter auslesen und in Szenarioschritt übertragen.
+		ScenarioGUIStep currentGUIStep = this.guiStepList.get(this.guiStepList.size() - 1);
+		
+		
+		// Blockieren, wenn es der letzte Schritt ist (der setSelection Aufruf ist unkritisch, da er dort leer ist)
+		if(currentGUIStep instanceof ScenarioGUIStepFinish){
+			return;
+		}
+				
+		// Auswahl in logischen Scenarioschritt durchreichen und Aufruf zum nächsten Szenarioschritt, 
+		// dies verwendet die zuvor gesetzte Auswahl automatisch weiter 
+		currentGUIStep.setSelectionIntoScenarioStep();
 		this.scenarioHardwareBerater.goToNextStep();
 		
 		// GUI-Schritt Objekt holen (definiert das Aussehen der GUI-Elemente des Schritts)
@@ -237,6 +244,8 @@ public class ScenarioGUIController {
 			return new ScenarioGUIStepFinish((ScenarioTreeStepFinish)currentStep);
 		} else if (currentStep instanceof ScenarioTreeStepDBOWLTablet){
 			return new ScenarioGUIStepDatabaseRequestTablet((ScenarioTreeStepDBOWLTablet)currentStep);
+		} else if (currentStep instanceof ScenarioTreeStepDBOWLNotebook){
+			return new ScenarioGUIStepDatabaseRequestNotebook((ScenarioTreeStepDBOWLNotebook)currentStep);
 		}
 			
 		// Derzeit gibt es die obigen Typen

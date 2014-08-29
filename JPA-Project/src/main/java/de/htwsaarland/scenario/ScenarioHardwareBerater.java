@@ -1,7 +1,6 @@
 package de.htwsaarland.scenario;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.htwsaarland.scenario.selectionLists.AdditionalScreenCategory;
 import de.htwsaarland.scenario.selectionLists.MainUsage;
@@ -9,13 +8,6 @@ import de.htwsaarland.scenario.selectionLists.MobileDeviceCategory;
 import de.htwsaarland.scenario.selectionLists.OperatingSystemComputer;
 import de.htwsaarland.scenario.selectionLists.OperatingSystemMobile;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
-import de.htwsaarland.scenario.selectionLists.internal.CPUPrice;
-import de.htwsaarland.scenario.selectionLists.internal.CPUSpeed;
-import de.htwsaarland.scenario.selectionLists.internal.GraphicsPrice;
-import de.htwsaarland.scenario.selectionLists.internal.GraphicsSpeed;
-import de.htwsaarland.scenario.selectionLists.internal.RAMPrice;
-import de.htwsaarland.scenario.selectionLists.internal.RAMSize;
-import de.htwsaarland.scenario.selectionLists.internal.RAMSpeed;
 
 /**
  * Repräsentiert den aktuellen Stand der Auswahloptionen.
@@ -47,6 +39,7 @@ public class ScenarioHardwareBerater {
 	// Referenzen zu den erstellten Schrittobjekten (für Vergleiche im Steppath zb.)
 	ScenarioTreeStepFinish 				stepFinish								= null;
 	ScenarioTreeStepDBOWLTablet			stepDeviceTablet						= null;
+	ScenarioTreeStepDBOWLNotebook		stepDeviceNotebook						= null;
 	ScenarioTreeStepTwoOptions 			stepAdditionalAccessoryYesNo			= null;
 	ScenarioTreeStepSimpleList 			stepAdditionalScreenRequirementType		= null;
 	ScenarioTreeStepTwoOptions 			stepAdditionalScreenRequirementsYesNo	= null;
@@ -64,21 +57,13 @@ public class ScenarioHardwareBerater {
 	ScenarioTreeStepBeginning			stepBeginning							= null;
 	
 	// Über die GUI auswählbare Optionen
-	private int 						mainUsageId					= -1;
-	private int 						mobileDeviceCategoryId		= -1;
-	private int							additionalScreenCategoryId	= -1;
-	private int 						operatingSystemComputerId	= -1;
-	private int							operatingSystemMobileId		= -1;
-	private int							budgetId					= -1;
-	
-	// Derzeit nicht per GUI gesetzt (folgt automatisch dem Budget-Schritt)
-	private CPUPrice					cpuPrice					= null;
-	private CPUSpeed					cpuSpeed					= null;
-	private GraphicsPrice				graphicsPrice				= null;
-	private GraphicsSpeed				graphicsSpeed				= null;
-	private RAMPrice					ramPrice					= null;
-	private RAMSize						ramSize						= null;
-	private RAMSpeed					ramSpeed					= null;
+	private MainUsage					mainUsage					= null;
+	private MobileDeviceCategory 		mobileDeviceCategory		= null;
+	private AdditionalScreenCategory	additionalScreenCategory	= null;
+	private OperatingSystemComputer		operatingSystemComputer		= null;
+	private OperatingSystemMobile		operatingSystemMobile		= null;
+	private PriceBudgetGlobal			budget						= null;
+
 	
 	// Zusätzliche Ja/Nein Antworten
 	private boolean						additionalAccessoryNeeded 	= false;
@@ -92,13 +77,13 @@ public class ScenarioHardwareBerater {
 
 			
 	// Id-Werte für Tabellen-Auswahlen (CPU, RAM, Grafik wie oben automatisch nach Budget??)
-	private List<Integer>				accessoryList				= new ArrayList<Integer>();
-	private int							tabletId					= -1;
-	private int 						notebookId					= -1;
-	private int							storageId					= -1;
-	private int							cpuId						= -1;
-	private int							ramId						= -1;
-	private int							graphicsId					= -1;
+//	private List<Integer>				accessoryList				= new ArrayList<Integer>();
+//	private int							tabletId					= -1;
+//	private int 						notebookId					= -1;
+//	private int							storageId					= -1;
+//	private int							cpuId						= -1;
+//	private int							ramId						= -1;
+//	private int							graphicsId					= -1;
 	
 	
 	public ScenarioHardwareBerater(){
@@ -124,9 +109,13 @@ public class ScenarioHardwareBerater {
 		// Endschritt
 		stepFinish = new ScenarioTreeStepFinish("Abschluss", "Zubehörabfrage fehlt noch!");
 	
+		// Notebookschritt test
+		stepDeviceNotebook = new ScenarioTreeStepDBOWLNotebook("Gerät (Notebook) wählen", "autom. anhand bish. Auswahl gefiltert ->", this);
+		stepDeviceNotebook.addFollowUpStep(stepFinish);
+		
 		// Tabletschritt test
 		stepDeviceTablet = new ScenarioTreeStepDBOWLTablet("Gerät (Tablet) wählen", "autom. gefiltert anhand Antworten");
-		stepDeviceTablet.addFollowUpStep(stepFinish);
+		stepDeviceTablet.addFollowUpStep(stepDeviceNotebook);
 		
 		// Zubehörschritt (Ja/Nein)
 		stepAdditionalAccessoryYesNo = new ScenarioTreeStepTwoOptions("Zubehör", stepDeviceTablet, "Ja", stepDeviceTablet, "Nein", "Weiteres Zubehör?");
@@ -215,85 +204,73 @@ public class ScenarioHardwareBerater {
 		} else if (currentStep == this.stepAdditionalAccessoryYesNo){
 			// Zubehör Ja/Nein 0 = Ja, 1 = Nein
 			this.additionalAccessoryNeeded = this.stepAdditionalAccessoryYesNo.getSelection() == 0 ? true : false;
-			this.stepAdditionalAccessoryYesNo.setSelection(this.additionalAccessoryNeeded ? 0 : 1);
 			nextStep = this.stepAdditionalAccessoryYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepAdditionalScreenRequirementType){
 			// Typ des Zusatzbildschirms
-			this.additionalScreenCategoryId = this.stepAdditionalScreenRequirementType.getSelection();
-			this.stepAdditionalScreenRequirementType.setSelection(this.additionalScreenCategoryId);
+			this.setAdditionalScreenCategory(AdditionalScreenCategory.values()[this.stepAdditionalScreenRequirementType.getSelection()]);
 			nextStep = this.stepAdditionalScreenRequirementType.getNextStep();
 		
 		} else if (currentStep == this.stepAdditionalScreenRequirementsYesNo){
 			// Zusatzbildschirm besondere Anforderung Ja/Nein
 			this.additionalScreenRequirements = this.stepAdditionalScreenRequirementsYesNo.getSelection() == 0 ? true : false;
-			this.stepAdditionalScreenRequirementsYesNo.setSelection(this.additionalScreenRequirements ? 0 : 1);
 			nextStep = this.stepAdditionalScreenRequirementsYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepAdditionalScreenYesNo){
 			// Zusatzbildschirm Ja/Nein
 			this.additionalScreenNeeded = this.stepAdditionalScreenYesNo.getSelection() == 0 ? true : false;
-			this.stepAdditionalScreenYesNo.setSelection(this.additionalScreenNeeded ? 0 : 1);
 			nextStep = this.stepAdditionalScreenYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepMobileInternetYesNo){
 			// Mobiles Internet Ja/Nein
 			this.mobileInternetRequested = this.stepMobileInternetYesNo.getSelection() == 0 ? true : false;
-			this.stepMobileInternetYesNo.setSelection(this.mobileInternetRequested ? 0 : 1);
 			nextStep = this.stepMobileInternetYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepWLANYesNo){
 			// WLAN Ja/Nein
 			this.wlanAvailable = this.stepWLANYesNo.getSelection() == 0 ? true : false;
-			this.stepWLANYesNo.setSelection(this.wlanAvailable ? 0 : 1);
 			nextStep = this.stepWLANYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepSSDYesNo){
 			// SSD Schnellstart Ja/Nein
 			this.fastBootSSDRequested = this.stepSSDYesNo.getSelection() == 0 ? true : false;
-			this.stepSSDYesNo.setSelection(this.fastBootSSDRequested ? 0 : 1);
 			nextStep = this.stepSSDYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepHighAmountOfData){
 			// Viel Speicher Ja/Nein
 			this.highAmountOfStorageRequested = this.stepHighAmountOfData.getSelection() == 0 ? true : false;
-			this.stepHighAmountOfData.setSelection(this.highAmountOfStorageRequested ? 0 : 1);
 			nextStep = this.stepHighAmountOfData.getNextStep();
 			
 		} else if (currentStep == this.stepOperatingSystemComputer) {
 			// Betriebssystem Computer
-			this.operatingSystemComputerId = this.stepOperatingSystemComputer.getSelection();
-			this.stepOperatingSystemComputer.setSelection(this.operatingSystemComputerId);
+			int pcOs = this.stepOperatingSystemComputer.getSelection();
+			this.setOperatingSystemComputer(OperatingSystemComputer.values()[pcOs]);
 			nextStep = this.stepOperatingSystemComputer.getNextStep();
 			
 		} else if (currentStep == this.stepOperatingSystemMobile) {
 			// Betriebssystem Mobil
-			this.operatingSystemMobileId = this.stepOperatingSystemMobile.getSelection();
-			this.stepOperatingSystemMobile.setSelection(this.operatingSystemMobileId);
+			this.setOperatingSystemMobile(OperatingSystemMobile.values()[this.stepOperatingSystemMobile.getSelection()]);
 			nextStep = this.stepOperatingSystemMobile.getNextStep();
 			
 		} else if (currentStep == this.stepMobileDeviceType) {
 			// Mobiler Gerätetyp
-			this.mobileDeviceCategoryId = this.stepMobileDeviceType.getSelection();
-			this.stepMobileDeviceType.setSelection(this.mobileDeviceCategoryId);
+			this.setMobileDeviceCategory(MobileDeviceCategory.values()[this.stepMobileDeviceType.getSelection()]);
 			nextStep = this.stepMobileDeviceType.getNextStep();
 			
 		} else if (currentStep == this.stepMobileUsageYesNo) {
 			// Mobile Benutzung Ja/Nein
 			this.mobileUsageRequested = this.stepMobileUsageYesNo.getSelection() == 0 ? true : false;
-			this.stepMobileUsageYesNo.setSelection(this.mobileUsageRequested ? 0 : 1);
+
 			nextStep = this.stepMobileUsageYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepBudget) {
 			// Budget
-			this.budgetId = this.stepBudget.getSelection();
-			this.stepBudget.setSelection(this.budgetId);
+			this.setBudget(PriceBudgetGlobal.values()[this.stepBudget.getSelection()]);
 			nextStep = this.stepBudget.getNextStep();
 			
 		} else if (currentStep == this.stepMainUsage) {
 			// Hauptnutzung
-			this.mainUsageId = this.stepMainUsage.getSelection();
-			this.stepMainUsage.setSelection(this.mainUsageId);
+			this.setMainUsage(MainUsage.values()[this.stepMainUsage.getSelection()]);
 			nextStep = this.stepMainUsage.getNextStep();
 
 		} else {
@@ -345,191 +322,9 @@ public class ScenarioHardwareBerater {
 	}
 	
 	/**
-	 * @return the mainUsageId
-	 */
-	public int getMainUsageId() {
-		return mainUsageId;
-	}
-
-	/**
-	 * @param mainUsageId the mainUsageId to set
-	 */
-	public void setMainUsageId(int mainUsageId) {
-		this.mainUsageId = mainUsageId;
-	}
-
-	/**
-	 * @return the mobileDeviceCategoryId
-	 */
-	public int getMobileDeviceCategoryId() {
-		return mobileDeviceCategoryId;
-	}
-
-	/**
-	 * @param mobileDeviceCategoryId the mobileDeviceCategoryId to set
-	 */
-	public void setMobileDeviceCategoryId(int mobileDeviceCategoryId) {
-		this.mobileDeviceCategoryId = mobileDeviceCategoryId;
-	}
-
-	/**
-	 * @return the additionalScreenCategoryId
-	 */
-	public int getAdditionalScreenCategoryId() {
-		return additionalScreenCategoryId;
-	}
-
-	/**
-	 * @param additionalScreenCategoryId the additionalScreenCategoryId to set
-	 */
-	public void setAdditionalScreenCategoryId(int additionalScreenCategoryId) {
-		this.additionalScreenCategoryId = additionalScreenCategoryId;
-	}
-
-	/**
-	 * @return the operatingSystemComputerId
-	 */
-	public int getOperatingSystemComputerId() {
-		return operatingSystemComputerId;
-	}
-
-	/**
-	 * @param operatingSystemComputerId the operatingSystemComputerId to set
-	 */
-	public void setOperatingSystemComputerId(int operatingSystemComputerId) {
-		this.operatingSystemComputerId = operatingSystemComputerId;
-	}
-
-	/**
-	 * @return the operatingSystemMobileId
-	 */
-	public int getOperatingSystemMobileId() {
-		return operatingSystemMobileId;
-	}
-
-	/**
-	 * @param operatingSystemMobileId the operatingSystemMobileId to set
-	 */
-	public void setOperatingSystemMobileId(int operatingSystemMobileId) {
-		this.operatingSystemMobileId = operatingSystemMobileId;
-	}
-
-	/**
-	 * @return the budgetId
-	 */
-	public int getBudgetId() {
-		return budgetId;
-	}
-
-	/**
-	 * @param budgetId the budgetId to set
-	 */
-	public void setBudgetId(int budgetId) {
-		this.budgetId = budgetId;
-	}
-
-	/**
-	 * @return the cpuPrice
-	 */
-	public CPUPrice getCpuPrice() {
-		return cpuPrice;
-	}
-
-	/**
-	 * @param cpuPrice the cpuPrice to set
-	 */
-	public void setCpuPrice(CPUPrice cpuPrice) {
-		this.cpuPrice = cpuPrice;
-	}
-
-	/**
-	 * @return the cpuSpeed
-	 */
-	public CPUSpeed getCpuSpeed() {
-		return cpuSpeed;
-	}
-
-	/**
-	 * @param cpuSpeed the cpuSpeed to set
-	 */
-	public void setCpuSpeed(CPUSpeed cpuSpeed) {
-		this.cpuSpeed = cpuSpeed;
-	}
-
-	/**
-	 * @return the graphicsPrice
-	 */
-	public GraphicsPrice getGraphicsPrice() {
-		return graphicsPrice;
-	}
-
-	/**
-	 * @param graphicsPrice the graphicsPrice to set
-	 */
-	public void setGraphicsPrice(GraphicsPrice graphicsPrice) {
-		this.graphicsPrice = graphicsPrice;
-	}
-
-	/**
-	 * @return the graphicsSpeed
-	 */
-	public GraphicsSpeed getGraphicsSpeed() {
-		return graphicsSpeed;
-	}
-
-	/**
-	 * @param graphicsSpeed the graphicsSpeed to set
-	 */
-	public void setGraphicsSpeed(GraphicsSpeed graphicsSpeed) {
-		this.graphicsSpeed = graphicsSpeed;
-	}
-
-	/**
-	 * @return the ramPrice
-	 */
-	public RAMPrice getRamPrice() {
-		return ramPrice;
-	}
-
-	/**
-	 * @param ramPrice the ramPrice to set
-	 */
-	public void setRamPrice(RAMPrice ramPrice) {
-		this.ramPrice = ramPrice;
-	}
-
-	/**
-	 * @return the ramSize
-	 */
-	public RAMSize getRamSize() {
-		return ramSize;
-	}
-
-	/**
-	 * @param ramSize the ramSize to set
-	 */
-	public void setRamSize(RAMSize ramSize) {
-		this.ramSize = ramSize;
-	}
-
-	/**
-	 * @return the ramSpeed
-	 */
-	public RAMSpeed getRamSpeed() {
-		return ramSpeed;
-	}
-
-	/**
-	 * @param ramSpeed the ramSpeed to set
-	 */
-	public void setRamSpeed(RAMSpeed ramSpeed) {
-		this.ramSpeed = ramSpeed;
-	}
-
-	/**
 	 * @return the additionalAccessoryNeeded
 	 */
-	public boolean isAdditionalAccessoryNeeded() {
+	public boolean getIsAdditionalAccessoryNeeded() {
 		return additionalAccessoryNeeded;
 	}
 
@@ -543,7 +338,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the additionalScreenNeeded
 	 */
-	public boolean isAdditionalScreenNeeded() {
+	public boolean getIsAdditionalScreenNeeded() {
 		return additionalScreenNeeded;
 	}
 
@@ -557,7 +352,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the additionalScreenRequirements
 	 */
-	public boolean isAdditionalScreenRequirements() {
+	public boolean getIsAdditionalScreenRequirementRequested() {
 		return additionalScreenRequirements;
 	}
 
@@ -571,7 +366,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the wlanAvailable
 	 */
-	public boolean isWlanAvailable() {
+	public boolean getIsWlanAvailable() {
 		return wlanAvailable;
 	}
 
@@ -585,7 +380,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the mobileInternetRequested
 	 */
-	public boolean isMobileInternetRequested() {
+	public boolean getIsMobileInternetRequested() {
 		return mobileInternetRequested;
 	}
 
@@ -599,7 +394,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the fastBootSSDRequested
 	 */
-	public boolean isFastBootSSDRequested() {
+	public boolean getIsFastBootSSDRequested() {
 		return fastBootSSDRequested;
 	}
 
@@ -613,7 +408,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the highAmountOfStorageRequested
 	 */
-	public boolean isHighAmountOfStorageRequested() {
+	public boolean getIsHighAmountOfStorageRequested() {
 		return highAmountOfStorageRequested;
 	}
 
@@ -627,7 +422,7 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the mobileUsageRequested
 	 */
-	public boolean isMobileUsageRequested() {
+	public boolean getIsMobileUsageRequested() {
 		return mobileUsageRequested;
 	}
 
@@ -638,88 +433,89 @@ public class ScenarioHardwareBerater {
 		this.mobileUsageRequested = mobileUsageRequested;
 	}
 
+
 	/**
-	 * @return the tabletId
+	 * @return the mainUsage
 	 */
-	public int getTabletId() {
-		return tabletId;
+	public MainUsage getMainUsage() {
+		return mainUsage;
 	}
 
 	/**
-	 * @param tabletId the tabletId to set
+	 * @param mainUsage the mainUsage to set
 	 */
-	public void setTabletId(int tabletId) {
-		this.tabletId = tabletId;
+	public void setMainUsage(MainUsage mainUsage) {
+		this.mainUsage = mainUsage;
 	}
 
 	/**
-	 * @return the notebookId
+	 * @return the additionalScreenCategory
 	 */
-	public int getNotebookId() {
-		return notebookId;
+	public AdditionalScreenCategory getAdditionalScreenCategory() {
+		return additionalScreenCategory;
 	}
 
 	/**
-	 * @param notebookId the notebookId to set
+	 * @param additionalScreenCategory the additionalScreenCategory to set
 	 */
-	public void setNotebookId(int notebookId) {
-		this.notebookId = notebookId;
+	public void setAdditionalScreenCategory(AdditionalScreenCategory additionalScreenCategory) {
+		this.additionalScreenCategory = additionalScreenCategory;
 	}
 
 	/**
-	 * @return the storageId
+	 * @return the operatingSystemComputer
 	 */
-	public int getStorageId() {
-		return storageId;
+	public OperatingSystemComputer getOperatingSystemComputer() {
+		return operatingSystemComputer;
 	}
 
 	/**
-	 * @param storageId the storageId to set
+	 * @param operatingSystemComputer the operatingSystemComputer to set
 	 */
-	public void setStorageId(int storageId) {
-		this.storageId = storageId;
+	public void setOperatingSystemComputer(OperatingSystemComputer operatingSystemComputer) {
+		this.operatingSystemComputer = operatingSystemComputer;
 	}
 
 	/**
-	 * @return the cpuId
+	 * @return the mobileDeviceCategory
 	 */
-	public int getCpuId() {
-		return cpuId;
+	public MobileDeviceCategory getMobileDeviceCategory() {
+		return mobileDeviceCategory;
 	}
 
 	/**
-	 * @param cpuId the cpuId to set
+	 * @param mobileDeviceCategory the mobileDeviceCategory to set
 	 */
-	public void setCpuId(int cpuId) {
-		this.cpuId = cpuId;
+	public void setMobileDeviceCategory(MobileDeviceCategory mobileDeviceCategory) {
+		this.mobileDeviceCategory = mobileDeviceCategory;
 	}
 
 	/**
-	 * @return the ramId
+	 * @return the operatingSystemMobile
 	 */
-	public int getRamId() {
-		return ramId;
+	public OperatingSystemMobile getOperatingSystemMobile() {
+		return operatingSystemMobile;
 	}
 
 	/**
-	 * @param ramId the ramId to set
+	 * @param operatingSystemMobile the operatingSystemMobile to set
 	 */
-	public void setRamId(int ramId) {
-		this.ramId = ramId;
+	public void setOperatingSystemMobile(OperatingSystemMobile operatingSystemMobile) {
+		this.operatingSystemMobile = operatingSystemMobile;
 	}
 
 	/**
-	 * @return the graphicsId
+	 * @return the budget
 	 */
-	public int getGraphicsId() {
-		return graphicsId;
+	public PriceBudgetGlobal getBudget() {
+		return budget;
 	}
 
 	/**
-	 * @param graphicsId the graphicsId to set
+	 * @param budget the budget to set
 	 */
-	public void setGraphicsId(int graphicsId) {
-		this.graphicsId = graphicsId;
+	public void setBudget(PriceBudgetGlobal budget) {
+		this.budget = budget;
 	}
 	
 	

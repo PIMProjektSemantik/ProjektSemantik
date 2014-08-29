@@ -12,22 +12,22 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
-import de.htwsaarland.dao.TabletDao;
-import de.htwsaarland.model.TabletJTableModel;
-import de.htwsaarland.scenario.ScenarioTreeStepDBOWLTablet;
+import de.htwsaarland.dao.NotebookDao;
+import de.htwsaarland.model.NotebookJTableModel;
+import de.htwsaarland.scenario.ScenarioTreeStepDBOWLNotebook;
 
-public class ScenarioGUIStepDatabaseRequestTablet extends ScenarioGUIStep {
+public class ScenarioGUIStepDatabaseRequestNotebook extends ScenarioGUIStep {
 
 	private static final int DEFAULT_LABEL_MARGIN = 10;
-	private ScenarioTreeStepDBOWLTablet scenarioStep;
+	private ScenarioTreeStepDBOWLNotebook scenarioStep;
 	
 	private JPanel leftNoticePanel;
 	private JPanel rightTablePanel;
 	
-	public ScenarioGUIStepDatabaseRequestTablet(ScenarioTreeStepDBOWLTablet scenarioStep){
+	public ScenarioGUIStepDatabaseRequestNotebook(ScenarioTreeStepDBOWLNotebook scenarioStep){
 		
 		if(scenarioStep == null) {
-			throw new IllegalArgumentException("ScenarioGUIStepDatabaseRequestTablet: scenarioStep may not be null!");
+			throw new IllegalArgumentException("ScenarioGUIStepDatabaseRequestNotebook: scenarioStep may not be null!");
 		}
 		this.scenarioStep = scenarioStep;
 	
@@ -55,14 +55,12 @@ public class ScenarioGUIStepDatabaseRequestTablet extends ScenarioGUIStep {
 		rightTablePanel.setLayout(null);
 		
 		// Text einbauen
-		TabletJTableModel tableModel = new TabletJTableModel(new TabletDao(), this.scenarioStep.generateQuery());
+		NotebookJTableModel tableModel = new NotebookJTableModel(new NotebookDao(), this.scenarioStep.generateQuery());
 		JTable table = new JTable(tableModel);
 		table.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - 2 * DEFAULT_LABEL_MARGIN);
-		table.getColumnModel().getColumn(2).setPreferredWidth(120);
-		table.getColumnModel().getColumn(3).setPreferredWidth(100);
-		table.getColumnModel().getColumn(4).setPreferredWidth(190);
-		table.getColumnModel().getColumn(6).setPreferredWidth(90);
+		//table.getColumnModel().getColumn(2).setPreferredWidth(120);
+		
 		
 		JScrollPane pane = new JScrollPane(table);
 		pane.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
