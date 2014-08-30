@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import de.htwsaarland.model.Software;
 import de.htwsaarland.model.Base;
 import de.htwsaarland.model.Software;
 
