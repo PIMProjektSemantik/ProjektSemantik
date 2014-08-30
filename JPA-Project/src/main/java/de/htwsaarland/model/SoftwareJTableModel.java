@@ -4,20 +4,20 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import de.htwsaarland.dao.NotebookDao;
+import de.htwsaarland.dao.SoftwareDao;
 
 @SuppressWarnings("serial")
-public class NotebookJTableModel extends AbstractTableModel {
+public class SoftwareJTableModel extends AbstractTableModel {
 
 	// Datenquelle
-	private NotebookDao dbSource;
+	private SoftwareDao dbSource;
 	private String query;
 	
 	// Spalten. Können statisch definiert werden, da dies im DAO auch so ist, das als Datenbankinterface dient.
-	private String[] columnNames = {"Prod.Nr.", "Hersteller", "Modell", "Betriebssystem", "Display", "Akku", "Prozessor", "RAM", "Grafikkarte", "Festplatte", "Preis"};
+	private String[] columnNames = {"Prod.Nr.", "Hersteller", "Name", "Edition", "Preis"};
 	
 	@SuppressWarnings("rawtypes")
-	private Class[] classList = {Integer.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class};
+	private Class[] classList = {Integer.class, String.class, String.class, String.class, String.class};
 	private Object[][] data;
 	
 	/**
@@ -26,7 +26,7 @@ public class NotebookJTableModel extends AbstractTableModel {
 	 * @param dbSource
 	 * @param query
 	 */
-	public NotebookJTableModel(NotebookDao dbSource, String query){
+	public SoftwareJTableModel(SoftwareDao dbSource, String query){
 		
 		if(dbSource == null){
 			throw new IllegalArgumentException("Notebook table model benötigt eine Datenbankquelle != null");
@@ -46,24 +46,18 @@ public class NotebookJTableModel extends AbstractTableModel {
 	 */
 	public void getDBContents(){
 		
-		List<Notebook> entries = dbSource.fireQuery(query);
+		List<Software> entries = dbSource.fireQuery(query);
 		this.data = new Object[entries.size()][columnNames.length];
 		
 		for(int i = 0; i < entries.size(); ++i) {
 			
-			Notebook currentNotebook = entries.get(i);
+			Software currentSoftware = entries.get(i);
 			
-			data[i][0] = currentNotebook.getId();
-			data[i][1] = currentNotebook.getHersteller();
-			data[i][2] = currentNotebook.getModell();
-			data[i][3] = currentNotebook.getBetriebssystem();
-			data[i][4] = currentNotebook.getDisplaygroesse() + " Zoll";
-			data[i][5] = currentNotebook.getAkku() + " h";
-			data[i][6] = currentNotebook.getCpu();
-			data[i][7] = currentNotebook.getRam();
-			data[i][8] = currentNotebook.getGrafikkarte();
-			data[i][9] = currentNotebook.getFestplatte();
-			data[i][10] = currentNotebook.getPreis() + " €";
+			data[i][0] = currentSoftware.getId();
+			data[i][1] = currentSoftware.getHersteller();
+			data[i][2] = currentSoftware.getName();
+			data[i][3] = currentSoftware.getEdition();
+			data[i][4] = currentSoftware.getPreis() + " €";
 			
 		}
 		
