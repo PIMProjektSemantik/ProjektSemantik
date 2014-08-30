@@ -114,7 +114,7 @@ public class ScenarioHardwareBerater {
 		stepDeviceNotebook.addFollowUpStep(stepFinish);
 		
 		// Tabletschritt test
-		stepDeviceTablet = new ScenarioTreeStepDBOWLTablet("Gerät (Tablet) wählen", "autom. gefiltert anhand Antworten");
+		stepDeviceTablet = new ScenarioTreeStepDBOWLTablet("Gerät (Tablet) wählen", "autom. gefiltert anhand Antworten ->", this);
 		stepDeviceTablet.addFollowUpStep(stepDeviceNotebook);
 		
 		// Zubehörschritt (Ja/Nein)

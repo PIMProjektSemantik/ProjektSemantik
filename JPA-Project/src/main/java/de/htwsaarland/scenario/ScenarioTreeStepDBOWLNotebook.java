@@ -20,7 +20,12 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 	 */
 	public ScenarioTreeStepDBOWLNotebook(String name, String help, ScenarioHardwareBerater scenario) {
 		super(name, help);
+		
+		if(scenario == null){
+			throw new IllegalArgumentException("ScenarioTreeStepDBOWLNotebook benötigt ein Szenarioobjekt, darf nicht null sein!");
+		}
 		this.scenario = scenario;
+		
 	}
 
 		
@@ -48,7 +53,7 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 	public void addFollowUpStep(ScenarioTreeStep stepToAdd) {
 		
 		if(this.getFollowUpSteps().length >= 1) {
-			throw new RuntimeException("ScenarioTreeStepDBOWLTablet: Nur ein Folgeschritt möglich");
+			throw new RuntimeException("ScenarioTreeStepDBOWLNotebook: Nur ein Folgeschritt möglich");
 		}
 		
 		super.addFollowUpStep(stepToAdd);
@@ -61,7 +66,7 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 	public ScenarioTreeStep getNextStep() {
 		
 		if(this.getFollowUpSteps().length == 0){
-			throw new RuntimeException("ScenarioTreeStepDBOWLTablet: Kein Folgeschritt gesetzt!");
+			throw new RuntimeException("ScenarioTreeStepDBOWLNotebook: Kein Folgeschritt gesetzt!");
 		}
 		
 		return this.getFollowUpStep(0);

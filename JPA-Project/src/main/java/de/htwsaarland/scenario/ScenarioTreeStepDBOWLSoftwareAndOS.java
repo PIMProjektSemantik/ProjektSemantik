@@ -8,7 +8,7 @@ package de.htwsaarland.scenario;
  * @author Stefan
  *
  */
-public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseRequest {
+public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDatabaseRequest {
 
 	
 	ScenarioHardwareBerater scenario;
@@ -18,11 +18,11 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 	 * 
 	 * @param name
 	 */
-	public ScenarioTreeStepDBOWLTablet(String name, String help, ScenarioHardwareBerater scenario) {
+	public ScenarioTreeStepDBOWLSoftwareAndOS(String name, String help, ScenarioHardwareBerater scenario) {
 		super(name, help);
 		
 		if(scenario == null){
-			throw new IllegalArgumentException("ScenarioTreeStepDBOWLTablet benötigt ein Szenarioobjekt, darf nicht null sein!");
+			throw new IllegalArgumentException("ScenarioTreeStepDBOWLSoftwareAndOS benötigt ein Szenarioobjekt, darf nicht null sein!");
 		}
 		this.scenario = scenario;
 	}
@@ -31,16 +31,18 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 	
 	
 	
-	public String generateQuery(){
+	
+	public String generateQuerySoftware(){
 		
-		return "SELECT * FROM tablet where preis > 100";
+		return "SELECT * FROM software";
 		
 	}
 	
-	
-	
-	
-	
+	public String generateQueryOS(){
+		
+		return "SELECT * FROM betriebssystem";
+		
+	}
 	
 	
 	
@@ -54,7 +56,7 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 	public void addFollowUpStep(ScenarioTreeStep stepToAdd) {
 		
 		if(this.getFollowUpSteps().length >= 1) {
-			throw new RuntimeException("ScenarioTreeStepDBOWLTablet: Nur ein Folgeschritt möglich");
+			throw new RuntimeException("ScenarioTreeStepDBOWLSoftwareAndOS: Nur ein Folgeschritt möglich");
 		}
 		
 		super.addFollowUpStep(stepToAdd);
@@ -67,7 +69,7 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 	public ScenarioTreeStep getNextStep() {
 		
 		if(this.getFollowUpSteps().length == 0){
-			throw new RuntimeException("ScenarioTreeStepDBOWLTablet: Kein Folgeschritt gesetzt!");
+			throw new RuntimeException("ScenarioTreeStepDBOWLSoftwareAndOS: Kein Folgeschritt gesetzt!");
 		}
 		
 		return this.getFollowUpStep(0);
