@@ -21,7 +21,9 @@ import javax.swing.JRadioButton;
 import de.htwsaarland.scenario.ScenarioHardwareBerater;
 import de.htwsaarland.scenario.ScenarioTreeStep;
 import de.htwsaarland.scenario.ScenarioTreeStepBeginning;
+import de.htwsaarland.scenario.ScenarioTreeStepDBOWLComputerComponents;
 import de.htwsaarland.scenario.ScenarioTreeStepDBOWLNotebook;
+import de.htwsaarland.scenario.ScenarioTreeStepDBOWLSoftwareAndOS;
 import de.htwsaarland.scenario.ScenarioTreeStepDBOWLTablet;
 import de.htwsaarland.scenario.ScenarioTreeStepFinish;
 import de.htwsaarland.scenario.ScenarioTreeStepSimpleList;
@@ -246,6 +248,10 @@ public class ScenarioGUIController {
 			return new ScenarioGUIStepDatabaseRequestTablet((ScenarioTreeStepDBOWLTablet)currentStep);
 		} else if (currentStep instanceof ScenarioTreeStepDBOWLNotebook){
 			return new ScenarioGUIStepDatabaseRequestNotebook((ScenarioTreeStepDBOWLNotebook)currentStep);
+		} else if (currentStep instanceof ScenarioTreeStepDBOWLComputerComponents){
+			return new ScenarioGUIStepDatabaseRequestComputerComponents((ScenarioTreeStepDBOWLComputerComponents)currentStep);
+		} else if (currentStep instanceof ScenarioTreeStepDBOWLSoftwareAndOS){
+			return new ScenarioGUIStepDatabaseRequestSoftwareAndOS((ScenarioTreeStepDBOWLSoftwareAndOS)currentStep);
 		}
 			
 		// Derzeit gibt es die obigen Typen

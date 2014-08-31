@@ -18,7 +18,7 @@ import de.htwsaarland.scenario.ScenarioTreeStepDBOWLNotebook;
 
 public class ScenarioGUIStepDatabaseRequestNotebook extends ScenarioGUIStep {
 
-	private static final int DEFAULT_LABEL_MARGIN = 10;
+	private static final int DEFAULT_LABEL_MARGIN = 5;
 	private ScenarioTreeStepDBOWLNotebook scenarioStep;
 	
 	private JPanel leftNoticePanel;
@@ -43,7 +43,7 @@ public class ScenarioGUIStepDatabaseRequestNotebook extends ScenarioGUIStep {
 		
 		// Text einbauen
 		JLabel startText = new JLabel(scenarioStep.HELP);
-		startText.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
+		startText.setBounds(0, DEFAULT_LABEL_MARGIN, 
 						STEP_PANEL_X_SIZE - DEFAULT_LABEL_MARGIN, STEP_PANEL_Y_SIZE - DEFAULT_LABEL_MARGIN);
 		startText.setVerticalAlignment(SwingConstants.TOP);
 		startText.setHorizontalAlignment(SwingConstants.LEFT);
@@ -59,7 +59,7 @@ public class ScenarioGUIStepDatabaseRequestNotebook extends ScenarioGUIStep {
 		JTable table = new JTable(tableModel);
 		table.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - 2 * DEFAULT_LABEL_MARGIN);
-		//table.getColumnModel().getColumn(2).setPreferredWidth(120);
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
 		
 		
 		JScrollPane pane = new JScrollPane(table);

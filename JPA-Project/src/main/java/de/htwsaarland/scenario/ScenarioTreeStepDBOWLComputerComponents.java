@@ -33,26 +33,26 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 	
 	public String generateQueryCPU(){
 		
-		return "SELECT * FROM prozessor where";
+		return "SELECT * FROM prozessor";
 		
 	}
 	
 	public String generateQueryRAM(){
 		
-		return "SELECT * FROM arbeitsspeicher where";
+		return "SELECT * FROM arbeitsspeicher";
 		
 	}
 	
 	public String generateQueryGraphics(){
 		
-		return "SELECT * FROM grafikkarte where preis";
+		return "SELECT * FROM grafikkarte";
 		
 	}
 	
 	
 	public String generateQueryStorage(){
 		
-		return "SELECT * FROM festplatte where preis";
+		return "SELECT * FROM festplatte";
 		
 	}
 	

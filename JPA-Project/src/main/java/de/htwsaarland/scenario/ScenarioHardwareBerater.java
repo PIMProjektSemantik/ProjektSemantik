@@ -38,6 +38,8 @@ public class ScenarioHardwareBerater {
 	
 	// Referenzen zu den erstellten Schrittobjekten (für Vergleiche im Steppath zb.)
 	ScenarioTreeStepFinish 				stepFinish								= null;
+	ScenarioTreeStepDBOWLSoftwareAndOS	stepSoftwareAndOS						= null;
+	ScenarioTreeStepDBOWLComputerComponents stepComputerComponents				= null;
 	ScenarioTreeStepDBOWLTablet			stepDeviceTablet						= null;
 	ScenarioTreeStepDBOWLNotebook		stepDeviceNotebook						= null;
 	ScenarioTreeStepTwoOptions 			stepAdditionalAccessoryYesNo			= null;
@@ -109,9 +111,17 @@ public class ScenarioHardwareBerater {
 		// Endschritt
 		stepFinish = new ScenarioTreeStepFinish("Abschluss", "Zubehörabfrage fehlt noch!");
 	
+		// Softwareschritt test
+		stepSoftwareAndOS = new ScenarioTreeStepDBOWLSoftwareAndOS("Software und OS", "gefilterte Tabelle ->", this);
+		stepSoftwareAndOS.addFollowUpStep(stepFinish);
+		
+		// Computerschritt test
+		stepComputerComponents = new ScenarioTreeStepDBOWLComputerComponents("Computerteile auswählen", "aus ihren Antworten gefiltert ->", this);
+		stepComputerComponents.addFollowUpStep(stepSoftwareAndOS);
+		
 		// Notebookschritt test
 		stepDeviceNotebook = new ScenarioTreeStepDBOWLNotebook("Gerät (Notebook) wählen", "autom. anhand bish. Auswahl gefiltert ->", this);
-		stepDeviceNotebook.addFollowUpStep(stepFinish);
+		stepDeviceNotebook.addFollowUpStep(stepComputerComponents);
 		
 		// Tabletschritt test
 		stepDeviceTablet = new ScenarioTreeStepDBOWLTablet("Gerät (Tablet) wählen", "autom. gefiltert anhand Antworten ->", this);
@@ -172,10 +182,10 @@ public class ScenarioHardwareBerater {
 		// Anwendungsbereich
 		stepMainUsage = new ScenarioTreeStepSimpleList("Anwendungsbereich:", "Hauptnutzungsbereich ihres Gerätes.");
 		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.OFFICE.NAME);
-		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.ENTERTAINMENT_MEDIA.NAME);
-		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.ENTERTAINMENT_GAMES.NAME);
 		stepMainUsage.addFollowUpStep(stepMobileUsageYesNo, MainUsage.MEDIA_EDITING.NAME);
 		stepMainUsage.addFollowUpStep(stepMobileUsageYesNo, MainUsage.CAD.NAME);
+		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.ENTERTAINMENT_MEDIA.NAME);
+		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.ENTERTAINMENT_GAMES.NAME);
 		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.SOFTWARE_DEVELOPMENT.NAME);
 		
 		// StartSchritt

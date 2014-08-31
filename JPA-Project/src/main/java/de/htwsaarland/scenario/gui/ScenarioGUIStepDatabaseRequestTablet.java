@@ -18,7 +18,7 @@ import de.htwsaarland.scenario.ScenarioTreeStepDBOWLTablet;
 
 public class ScenarioGUIStepDatabaseRequestTablet extends ScenarioGUIStep {
 
-	private static final int DEFAULT_LABEL_MARGIN = 10;
+	private static final int DEFAULT_LABEL_MARGIN = 5;
 	private ScenarioTreeStepDBOWLTablet scenarioStep;
 	
 	private JPanel leftNoticePanel;
@@ -43,7 +43,7 @@ public class ScenarioGUIStepDatabaseRequestTablet extends ScenarioGUIStep {
 		
 		// Text einbauen
 		JLabel startText = new JLabel(scenarioStep.HELP);
-		startText.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
+		startText.setBounds(0, DEFAULT_LABEL_MARGIN, 
 						STEP_PANEL_X_SIZE - DEFAULT_LABEL_MARGIN, STEP_PANEL_Y_SIZE - DEFAULT_LABEL_MARGIN);
 		startText.setVerticalAlignment(SwingConstants.TOP);
 		startText.setHorizontalAlignment(SwingConstants.LEFT);
@@ -59,10 +59,11 @@ public class ScenarioGUIStepDatabaseRequestTablet extends ScenarioGUIStep {
 		JTable table = new JTable(tableModel);
 		table.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - 2 * DEFAULT_LABEL_MARGIN);
-		table.getColumnModel().getColumn(2).setPreferredWidth(120);
-		table.getColumnModel().getColumn(3).setPreferredWidth(100);
-		table.getColumnModel().getColumn(4).setPreferredWidth(190);
-		table.getColumnModel().getColumn(6).setPreferredWidth(90);
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(3).setPreferredWidth(120);
+		table.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table.getColumnModel().getColumn(5).setPreferredWidth(190);
+		table.getColumnModel().getColumn(7).setPreferredWidth(90);
 		
 		JScrollPane pane = new JScrollPane(table);
 		pane.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
