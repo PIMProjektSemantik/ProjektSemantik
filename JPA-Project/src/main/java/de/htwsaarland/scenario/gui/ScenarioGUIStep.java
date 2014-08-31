@@ -27,6 +27,12 @@ import javax.swing.JPanel;
 public abstract class ScenarioGUIStep {
 
 	
+	/**
+	 * Aktiviert oder deaktiviert die Inhalte des Schrittlistenelementes 
+	 */
+	public void setLeftComponentActivated(boolean enabled){ 
+		// Es gibt Schritte , die hier keine Auswahlen haben, dh. kann die Methode leer sein
+	}
 	
 	/**
 	 * Liefert die erste GUI Komponente (Schrittlistenelement) des Szenarioschritts

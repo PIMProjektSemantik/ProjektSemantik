@@ -127,4 +127,9 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		this.scenarioStep.setSelection(this.getSelection());
 		
 	}
+	
+	@Override
+	public void setLeftComponentActivated(boolean enabled){
+		this.selectionBox.setEnabled(enabled);
+	}
 }

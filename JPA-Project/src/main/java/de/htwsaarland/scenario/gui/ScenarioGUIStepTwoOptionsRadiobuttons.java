@@ -146,5 +146,11 @@ public class ScenarioGUIStepTwoOptionsRadiobuttons extends ScenarioGUIStep {
 		this.scenarioStep.setSelection(this.getSelection());
 		
 	}
+	
+	@Override
+	public void setLeftComponentActivated(boolean enabled) {
+		this.firstRadioButton.setEnabled(enabled);
+		this.secondRadioButton.setEnabled(enabled);
+	}
 
 }

@@ -86,18 +86,20 @@ public class ScenarioGUIController {
 				
 		// GUI Parameter auslesen und in Szenarioschritt übertragen.
 		ScenarioGUIStep currentGUIStep = this.guiStepList.get(this.guiStepList.size() - 1);
-		
-		
+				
 		// Blockieren, wenn es der letzte Schritt ist (der setSelection Aufruf ist unkritisch, da er dort leer ist)
 		if(currentGUIStep instanceof ScenarioGUIStepFinish){
 			return;
 		}
-				
+			
+		// Linke Auswahlelemente des aktuellen Schrittes deaktivieren
+		currentGUIStep.setLeftComponentActivated(false);
+		
 		// Auswahl in logischen Scenarioschritt durchreichen und Aufruf zum nächsten Szenarioschritt, 
 		// dies verwendet die zuvor gesetzte Auswahl automatisch weiter 
 		currentGUIStep.setSelectionIntoScenarioStep();
 		this.scenarioHardwareBerater.goToNextStep();
-		
+				
 		// GUI-Schritt Objekt holen (definiert das Aussehen der GUI-Elemente des Schritts)
 		ScenarioTreeStep currentStep = scenarioHardwareBerater.getCurrentStep();
 		System.out.println("Next identified Step: " + currentStep.NAME);
@@ -127,6 +129,9 @@ public class ScenarioGUIController {
 		// Szenario aktualisieren
 		this.scenarioHardwareBerater.goToPreviousStep();
 	
+		// Linke Auswahlelemente des nun untersten Schrittes reaktivieren
+		this.guiStepList.get(this.guiStepList.size() - 1).setLeftComponentActivated(true);
+		
 	}
 	
 	/**
