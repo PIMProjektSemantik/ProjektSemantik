@@ -20,7 +20,9 @@ import static de.htwsaarland.scenario.gui.ScenarioGUIParams.*;
  */
 public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
-	private static final int DEFAULT_HELP_LABEL_MARGIN = 5;
+	private static final int DEFAULT_MARGIN = 5;
+	private static final int DROPDOWN_BOX_HEIGHT = 20;
+	private static final int DROPDOWN_BOX_WIDTH = 270;
 	
 	// Zugeordneter logischer Schritt
 	private ScenarioTreeStepSimpleList scenarioStep;
@@ -60,7 +62,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
 		// Combobox mit den Optionen
 		this.selectionBox = new JComboBox<String>();
-		selectionBox.setBounds(0, 5, 180, 20);
+		selectionBox.setBounds(0, DEFAULT_MARGIN, DROPDOWN_BOX_WIDTH, DROPDOWN_BOX_HEIGHT);
 			
 		// Optionen hinzufügen (gibt keine "alles"-hinzufügen Option)
 		for(int i = 0; i < selectionOptions.length; ++i){
@@ -77,8 +79,8 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 		
 		// Text einbauen
 		JLabel help = new JLabel(scenarioStep.HELP);
-		help.setBounds(DEFAULT_HELP_LABEL_MARGIN, DEFAULT_HELP_LABEL_MARGIN, 
-						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - DEFAULT_HELP_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - DEFAULT_HELP_LABEL_MARGIN);
+		help.setBounds(DEFAULT_MARGIN, DEFAULT_MARGIN, 
+						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - DEFAULT_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - DEFAULT_MARGIN);
 		help.setVerticalAlignment(SwingConstants.TOP);
 		help.setHorizontalAlignment(SwingConstants.LEFT);
 		this.helpPanel.add(help);
