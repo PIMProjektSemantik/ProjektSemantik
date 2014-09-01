@@ -110,22 +110,18 @@ public class ScenarioHardwareBerater {
 		
 		// Endschritt
 		stepFinish = new ScenarioTreeStepFinish("Abschluss", "Zubehörabfrage fehlt noch!");
-	
-		// Softwareschritt test
-		stepSoftwareAndOS = new ScenarioTreeStepDBOWLSoftwareAndOS("Software und OS", "gefilterte Tabelle ->", this);
-		stepSoftwareAndOS.addFollowUpStep(stepFinish);
 		
 		// Computerschritt test
 		stepComputerComponents = new ScenarioTreeStepDBOWLComputerComponents("Computerteile auswählen", "aus ihren Antworten gefiltert ->", this);
-		stepComputerComponents.addFollowUpStep(stepSoftwareAndOS);
+		stepComputerComponents.addFollowUpStep(stepFinish);
 		
 		// Notebookschritt test
 		stepDeviceNotebook = new ScenarioTreeStepDBOWLNotebook("Gerät (Notebook) wählen", "autom. anhand bish. Auswahl gefiltert ->", this);
-		stepDeviceNotebook.addFollowUpStep(stepComputerComponents);
+		stepDeviceNotebook.addFollowUpStep(stepFinish);
 		
 		// Tabletschritt test
 		stepDeviceTablet = new ScenarioTreeStepDBOWLTablet("Gerät (Tablet) wählen", "autom. gefiltert anhand Antworten ->", this);
-		stepDeviceTablet.addFollowUpStep(stepDeviceNotebook);
+		stepDeviceTablet.addFollowUpStep(stepFinish);
 		
 		// Zubehörschritt (Ja/Nein)
 		stepAdditionalAccessoryYesNo = new ScenarioTreeStepTwoOptions("Zubehör", stepDeviceTablet, "Ja", stepDeviceTablet, "Nein", "Weiteres Zubehör?");
@@ -153,12 +149,16 @@ public class ScenarioHardwareBerater {
 		// Datenspeicherschritt (Viele Daten Ja/Nein)
 		stepHighAmountOfData = new ScenarioTreeStepTwoOptions("Große Datenmenge", stepWLANYesNo, "Ja", stepSSDYesNo, "Nein", "Große Video und Fotosammlungen, Backups, usw.?");
 		
+		// Softwareauswahl (nur Windows/Linux auf Laptop/PC)
+		stepSoftwareAndOS = new ScenarioTreeStepDBOWLSoftwareAndOS("Software und Betriebssysteme", "gefilterte Tabelle ->", this);
+		stepSoftwareAndOS.addFollowUpStep(stepHighAmountOfData);
+		
 		// BetriebssystemSchritt (PC/Laptop)
 		stepOperatingSystemComputer = new ScenarioTreeStepSimpleList("Betriebssystem (PC)", "Je nach BS gibt es bestimmte Anwendungen nicht.");
-		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.WINDOWS.NAME);
+		stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, OperatingSystemComputer.WINDOWS.NAME);
 		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.MAC_OS_X.NAME);
-		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.LINUX.NAME);
-		
+		stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, OperatingSystemComputer.LINUX.NAME);
+				
 		// Betriebssystemschritt (Mobil/Tablet)
 		stepOperatingSystemMobile = new ScenarioTreeStepSimpleList("Betriebssystem (Mobil)", "Je nach BS gibt es bestimmte Apps nicht.");
 		stepOperatingSystemMobile.addFollowUpStep(stepHighAmountOfData, OperatingSystemMobile.WINDOWS.NAME);
@@ -210,11 +210,19 @@ public class ScenarioHardwareBerater {
 		if (currentStep == stepFinish){
 			// Endschritt keine Fortsetzung
 			return;
-		
+			
 		} else if (currentStep == this.stepAdditionalAccessoryYesNo){
 			// Zubehör Ja/Nein 0 = Ja, 1 = Nein
 			this.additionalAccessoryNeeded = this.stepAdditionalAccessoryYesNo.getSelection() == 0 ? true : false;
-			nextStep = this.stepAdditionalAccessoryYesNo.getNextStep();
+			
+			// Mobil nein -> nur PC Teile! Mobil ja -> Laptop oder Tablets anbieten
+			if (this.mobileUsageRequested == false){
+				nextStep = this.stepComputerComponents;
+			} else if (this.mobileDeviceCategory == MobileDeviceCategory.LAPTOP){
+				nextStep = this.stepDeviceNotebook;
+			} else {
+				nextStep = this.stepDeviceTablet;
+			}
 			
 		} else if (currentStep == this.stepAdditionalScreenRequirementType){
 			// Typ des Zusatzbildschirms
@@ -239,7 +247,12 @@ public class ScenarioHardwareBerater {
 		} else if (currentStep == this.stepWLANYesNo){
 			// WLAN Ja/Nein
 			this.wlanAvailable = this.stepWLANYesNo.getSelection() == 0 ? true : false;
-			nextStep = this.stepWLANYesNo.getNextStep();
+			if(this.mobileUsageRequested){
+				nextStep = this.stepMobileInternetYesNo;
+			} else {
+				nextStep = this.stepAdditionalScreenYesNo;
+			}
+			//nextStep = this.stepWLANYesNo.getNextStep();
 			
 		} else if (currentStep == this.stepSSDYesNo){
 			// SSD Schnellstart Ja/Nein
