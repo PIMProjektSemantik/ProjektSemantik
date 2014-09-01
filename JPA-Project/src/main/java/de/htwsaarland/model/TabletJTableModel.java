@@ -14,7 +14,7 @@ public class TabletJTableModel extends AbstractTableModel {
 	private String query;
 	
 	// Spalten. Können statisch definiert werden, da dies im DAO auch so ist, das als Datenbankinterface dient.
-	private String[] columnNames = {"Prod.Nr", "Hersteller", "Modell", "Betriebssystem", "Display", "Prozessor", "Speicher", "Funk", "Preis"};
+	private String[] columnNames = {"Nr.", "Hersteller", "Modell", "Betriebs.", "Display", "Prozessor", "Speicher", "Funk", "Preis"};
 	
 	@SuppressWarnings("rawtypes")
 	private Class[] classList = {Integer.class, String.class, String.class, String.class, Integer.class, String.class, String.class, String.class, String.class};

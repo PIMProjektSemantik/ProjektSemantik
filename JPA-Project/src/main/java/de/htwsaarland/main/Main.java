@@ -57,7 +57,7 @@ public class Main {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1167, 634);
+		frame.setBounds(100, 100, 1250, 634);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -86,7 +86,7 @@ public class Main {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(502, 11, 650, 529);
+		panel_1.setBounds(502, 11, 732, 529);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		

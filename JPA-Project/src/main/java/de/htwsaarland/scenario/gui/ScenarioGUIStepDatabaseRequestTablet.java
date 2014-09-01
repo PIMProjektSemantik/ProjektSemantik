@@ -59,11 +59,13 @@ public class ScenarioGUIStepDatabaseRequestTablet extends ScenarioGUIStep {
 		JTable table = new JTable(tableModel);
 		table.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - 2 * DEFAULT_LABEL_MARGIN);
-		table.getColumnModel().getColumn(0).setPreferredWidth(50);
-		table.getColumnModel().getColumn(3).setPreferredWidth(120);
+		table.getColumnModel().getColumn(0).setMaxWidth(40);
+		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		table.getColumnModel().getColumn(2).setPreferredWidth(150);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
 		table.getColumnModel().getColumn(4).setPreferredWidth(100);
 		table.getColumnModel().getColumn(5).setPreferredWidth(190);
-		table.getColumnModel().getColumn(7).setPreferredWidth(90);
+		table.getColumnModel().getColumn(7).setPreferredWidth(70);
 		
 		JScrollPane pane = new JScrollPane(table);
 		pane.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 

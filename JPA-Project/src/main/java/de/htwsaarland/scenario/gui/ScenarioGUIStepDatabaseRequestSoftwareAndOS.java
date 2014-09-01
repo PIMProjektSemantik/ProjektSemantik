@@ -60,24 +60,21 @@ public class ScenarioGUIStepDatabaseRequestSoftwareAndOS extends ScenarioGUIStep
 		tableTitleOS.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 20);
 		JLabel tableTitleSoftware = new JLabel("Software");
 		tableTitleSoftware.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN + 260, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 20);
-
 		
-		
-		// Softwaretabelle
-		
-		
-		// Arbeitsspeichertabelle
+		// Betriebssystemtabelle
 		BetriebssystemJTableModel tableModelOS = new BetriebssystemJTableModel(new BetriebssystemDao(), this.scenarioStep.generateQueryOS());
 		JTable tableOS = new JTable(tableModelOS);
 		tableOS.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 230);
-	
+		tableOS.getColumnModel().getColumn(0).setMaxWidth(60);
+		
 		JScrollPane paneOS = new JScrollPane(tableOS);
 		paneOS.setBounds(DEFAULT_LABEL_MARGIN, 30, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 230);
 		
-		// Grafikkartentabelle
+		// Softwaretabelle
 		SoftwareJTableModel tableModelSoftware = new SoftwareJTableModel(new SoftwareDao(), this.scenarioStep.generateQuerySoftware());
 		JTable tableGraphics = new JTable(tableModelSoftware);
 		tableGraphics.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 230);
+		tableGraphics.getColumnModel().getColumn(0).setMaxWidth(60);
 		
 		JScrollPane paneSoftware = new JScrollPane(tableGraphics);
 		paneSoftware.setBounds(DEFAULT_LABEL_MARGIN, 290, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 230);

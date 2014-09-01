@@ -26,13 +26,13 @@ public class ScenarioGUIParams {
 	public static final int STEP_RADIOBUTTON_Y_FIRSTPOS	= 45; 
 	public static final int STEP_RADIOBUTTON_Y_SIZE		= 20;
 	public static final int STEP_PANEL_X_POS			= 200;
-	public static final int STEP_PANEL_X_SIZE			= 250;
+	public static final int STEP_PANEL_X_SIZE			= 270;
 	public static final int STEP_PANEL_Y_FIRSTPOS		= 40;
 	public static final int STEP_PANEL_Y_SIZE			= 25;
 	public static final int STEP_Y_DISTANCE				= 25;
 	
 	// Größe der rechten Komponente (Detailfeld, nur zu sehen, wenn Schritt aktiv)
 	public static final int SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT = 529;
-	public static final int SCENARIO_GUI_DETAIL_ELEMENT_WIDTH = 650;
+	public static final int SCENARIO_GUI_DETAIL_ELEMENT_WIDTH = 732;
 	
 }

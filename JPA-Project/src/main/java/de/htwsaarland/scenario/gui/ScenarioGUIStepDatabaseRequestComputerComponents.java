@@ -75,6 +75,7 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		ArbeitsspeicherJTableModel tableModelRAM = new ArbeitsspeicherJTableModel(new ArbeitsspeicherDao(), this.scenarioStep.generateQueryRAM());
 		JTable tableRAM = new JTable(tableModelRAM);
 		tableRAM.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
+		tableRAM.getColumnModel().getColumn(0).setMaxWidth(60);
 	
 		JScrollPane paneRAM = new JScrollPane(tableRAM);
 		paneRAM.setBounds(DEFAULT_LABEL_MARGIN, 160, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
@@ -83,6 +84,7 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		GrafikkarteJTableModel tableModelGraphics = new GrafikkarteJTableModel(new GrafikkarteDao(), this.scenarioStep.generateQueryGraphics());
 		JTable tableGraphics = new JTable(tableModelGraphics);
 		tableGraphics.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
+		tableGraphics.getColumnModel().getColumn(0).setMaxWidth(60);
 		
 		JScrollPane paneGraphics = new JScrollPane(tableGraphics);
 		paneGraphics.setBounds(DEFAULT_LABEL_MARGIN, 290, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
@@ -91,6 +93,7 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		FestplatteJTableModel tableModelStorage = new FestplatteJTableModel(new FestplatteDao(), this.scenarioStep.generateQueryStorage());
 		JTable tableStorage = new JTable(tableModelStorage);
 		tableStorage.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
+		tableStorage.getColumnModel().getColumn(0).setMaxWidth(60);
 		
 		JScrollPane paneStorage = new JScrollPane(tableStorage);
 		paneStorage.setBounds(DEFAULT_LABEL_MARGIN, 420, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
