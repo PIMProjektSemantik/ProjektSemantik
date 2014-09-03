@@ -22,6 +22,8 @@ public class CPU extends Base {
 	private int kerne;
 
 	private double preis;
+	
+	private int leistung;
 
 	public String getName() {
 		return name;
@@ -65,7 +67,15 @@ public class CPU extends Base {
 
 	@Override
 	public String toString() {
-		return "CPU [name=" + name + ", hersteller=" + hersteller + ", takt=" + takt + ", kerne=" + kerne + ", preis=" + preis + "]";
+		return "CPU [name=" + name + ", hersteller=" + hersteller + ", takt=" + takt + ", kerne=" + kerne + ", preis=" + preis + ", leistung=" + leistung + "]";
+	}
+
+	public int getLeistung() {
+		return leistung;
+	}
+
+	public void setLeistung(int leistung) {
+		this.leistung = leistung;
 	}
 	
 }

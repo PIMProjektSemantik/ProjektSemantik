@@ -12,9 +12,11 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import de.htwsaarland.dao.ArbeitsspeicherDao;
+import de.htwsaarland.dao.CPUDao;
 import de.htwsaarland.dao.FestplatteDao;
 import de.htwsaarland.dao.GrafikkarteDao;
 import de.htwsaarland.model.ArbeitsspeicherJTableModel;
+import de.htwsaarland.model.CPUJTableModel;
 import de.htwsaarland.model.FestplatteJTableModel;
 import de.htwsaarland.model.GrafikkarteJTableModel;
 import de.htwsaarland.scenario.ScenarioTreeStepDBOWLComputerComponents;
@@ -68,15 +70,20 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		tableTitleStorage.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN + 390, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 20);
 		
 		// Prozessortabelle
-		// Tabelle fehlt noch
-		
-		
+		CPUJTableModel cpuTableModel = new CPUJTableModel(new CPUDao(), this.scenarioStep.generateQueryCPU());
+		JTable tableCPU = new JTable(cpuTableModel);
+		tableCPU.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
+		tableCPU.getColumnModel().getColumn(0).setMaxWidth(60);
+				
+		JScrollPane paneCPU = new JScrollPane(tableCPU);
+		paneCPU.setBounds(DEFAULT_LABEL_MARGIN, 30, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
+				
 		// Arbeitsspeichertabelle
 		ArbeitsspeicherJTableModel tableModelRAM = new ArbeitsspeicherJTableModel(new ArbeitsspeicherDao(), this.scenarioStep.generateQueryRAM());
 		JTable tableRAM = new JTable(tableModelRAM);
 		tableRAM.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		tableRAM.getColumnModel().getColumn(0).setMaxWidth(60);
-	
+				
 		JScrollPane paneRAM = new JScrollPane(tableRAM);
 		paneRAM.setBounds(DEFAULT_LABEL_MARGIN, 160, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		
@@ -103,6 +110,7 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		this.rightTablePanel.add(tableTitleRAM);
 		this.rightTablePanel.add(tableTitleGraphics);
 		this.rightTablePanel.add(tableTitleStorage);
+		this.rightTablePanel.add(paneCPU);
 		this.rightTablePanel.add(paneRAM);
 		this.rightTablePanel.add(paneGraphics);
 		this.rightTablePanel.add(paneStorage);

@@ -33,7 +33,7 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 	
 	public String generateQueryCPU(){
 		
-		return "SELECT * FROM prozessor";
+		return "SELECT * FROM cpu";
 		
 	}
 	
