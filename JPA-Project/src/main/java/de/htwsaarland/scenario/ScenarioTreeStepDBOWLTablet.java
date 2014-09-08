@@ -1,5 +1,8 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.scenario.selectionLists.OperatingSystemMobile;
+import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
+
 /**
  * Schritt für Geräte-Abfrage aus Datenbank und Ontologie.
  * 
@@ -27,14 +30,42 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 		this.scenario = scenario;
 	}
 
-	
-	
-	
-	
 	public String generateQuery(){
+
+		String osFilter = "";
+		String mobileInternetFilter = "";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
 		
-		return "SELECT * FROM tablet where preis > 100";
+		if(scenario.getOperatingSystemMobile() == OperatingSystemMobile.WINDOWS){
+			osFilter = "Windows";
+		} else if (scenario.getOperatingSystemMobile() == OperatingSystemMobile.IOS){
+			osFilter = "IOS";
+		} else if (scenario.getOperatingSystemMobile() == OperatingSystemMobile.ANDROID){
+			osFilter = "Android";
+		}
 		
+		if(!scenario.getIsMobileInternetRequested()){
+			mobileInternetFilter = "Wifi";
+		} else {
+			mobileInternetFilter = "Wifi +%";
+		}
+		
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 300;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 300;
+			priceUpperFilter = 600;
+		} else {
+			priceLowerFilter = 600;
+		}
+		
+		String query = "SELECT * FROM tablet WHERE betriebssystem LIKE '%" + osFilter + 
+						"%' AND connectionType LIKE '" + mobileInternetFilter +
+						"' AND preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+				
+		return query;
 	}
 	
 	

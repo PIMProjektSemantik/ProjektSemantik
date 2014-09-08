@@ -157,7 +157,7 @@ public class ScenarioHardwareBerater {
 		stepOperatingSystemComputer = new ScenarioTreeStepSimpleList("Betriebssystem (PC)", "Je nach BS gibt es bestimmte Anwendungen nicht.");
 		stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, OperatingSystemComputer.WINDOWS.NAME);
 		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.MAC_OS_X.NAME);
-		stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, OperatingSystemComputer.LINUX.NAME);
+		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.LINUX.NAME);
 				
 		// Betriebssystemschritt (Mobil/Tablet)
 		stepOperatingSystemMobile = new ScenarioTreeStepSimpleList("Betriebssystem (Mobil)", "Je nach BS gibt es bestimmte Apps nicht.");
@@ -262,6 +262,9 @@ public class ScenarioHardwareBerater {
 		} else if (currentStep == this.stepHighAmountOfData){
 			// Viel Speicher Ja/Nein
 			this.highAmountOfStorageRequested = this.stepHighAmountOfData.getSelection() == 0 ? true : false;
+			if(this.highAmountOfStorageRequested == true){
+				this.fastBootSSDRequested = true;
+			}
 			nextStep = this.stepHighAmountOfData.getNextStep();
 			
 		} else if (currentStep == this.stepOperatingSystemComputer) {
@@ -294,6 +297,9 @@ public class ScenarioHardwareBerater {
 		} else if (currentStep == this.stepMainUsage) {
 			// Hauptnutzung
 			this.setMainUsage(MainUsage.values()[this.stepMainUsage.getSelection()]);
+			if (this.mainUsage == MainUsage.CAD || this.mainUsage == MainUsage.MEDIA_EDITING){
+				this.budget = PriceBudgetGlobal.HIGH;
+			}
 			nextStep = this.stepMainUsage.getNextStep();
 
 		} else {

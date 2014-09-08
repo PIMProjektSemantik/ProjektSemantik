@@ -1,5 +1,8 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.scenario.selectionLists.OperatingSystemComputer;
+import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
+
 /**
  * Schritt für Geräte-Abfrage aus Datenbank und Ontologie.
  * 
@@ -33,14 +36,58 @@ public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDa
 	
 	
 	public String generateQuerySoftware(){
+	
 		
-		return "SELECT * FROM software";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+			
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 100;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 0;
+			priceUpperFilter = 200;
+		} else {
+			priceLowerFilter = 0;
+		}
+		
+		String query = "SELECT * FROM software WHERE preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
 		
 	}
 	
 	public String generateQueryOS(){
 		
-		return "SELECT * FROM betriebssystem";
+		String osFilter = "";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+		
+		if(scenario.getOperatingSystemComputer() == OperatingSystemComputer.WINDOWS){
+			osFilter = "Windows";
+		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.MAC_OS_X){
+			osFilter = "IOS";
+		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.LINUX){
+			osFilter = "Ubuntu";
+		}
+		
+		
+		
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 80;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 0;
+			priceUpperFilter = 150;
+		} else {
+			priceLowerFilter = 0;
+		}
+		
+		String query = "SELECT * FROM betriebssystem WHERE name LIKE '%" + osFilter + 
+						"%' AND preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
+
 		
 	}
 	

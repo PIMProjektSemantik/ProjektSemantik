@@ -1,5 +1,8 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.scenario.selectionLists.OperatingSystemComputer;
+import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
+
 /**
  * Schritt für Geräte-Abfrage aus Datenbank und Ontologie.
  * 
@@ -32,7 +35,35 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 	
 	public String generateQuery(){
 		
-		return "SELECT * FROM notebook where preis > 100";
+
+		String osFilter = "";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+		
+		if(scenario.getOperatingSystemComputer() == OperatingSystemComputer.WINDOWS){
+			osFilter = "Windows";
+		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.MAC_OS_X){
+			osFilter = "IOS";
+		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.LINUX){
+			osFilter = "Linux";
+		}
+		
+		
+		
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 400;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 400;
+			priceUpperFilter = 800;
+		} else {
+			priceLowerFilter = 800;
+		}
+		
+		String query = "SELECT * FROM notebook WHERE betriebssystem LIKE '%" + osFilter + 
+						"%' AND preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
 
 	}
 	

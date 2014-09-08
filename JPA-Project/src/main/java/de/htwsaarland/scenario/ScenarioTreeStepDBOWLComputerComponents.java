@@ -1,5 +1,7 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
+
 /**
  * Schritt für Geräte-Abfrage aus Datenbank und Ontologie.
  * 
@@ -33,26 +35,93 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 	
 	public String generateQueryCPU(){
 		
-		return "SELECT * FROM cpu";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+				
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 200;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 200;
+			priceUpperFilter = 400;
+		} else {
+			priceLowerFilter = 400;
+		}
+		
+		String query = "SELECT * FROM cpu WHERE preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
 		
 	}
 	
 	public String generateQueryRAM(){
 		
-		return "SELECT * FROM arbeitsspeicher";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+				
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 80;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 80;
+			priceUpperFilter = 160;
+		} else {
+			priceLowerFilter = 160;
+		}
+		
+		String query = "SELECT * FROM arbeitsspeicher WHERE preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
 		
 	}
 	
 	public String generateQueryGraphics(){
 		
-		return "SELECT * FROM grafikkarte";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+				
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 200;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 200;
+			priceUpperFilter = 400;
+		} else {
+			priceLowerFilter = 400;
+		}
+		
+		String query = "SELECT * FROM grafikkarte WHERE preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
 		
 	}
 	
 	
 	public String generateQueryStorage(){
 		
-		return "SELECT * FROM festplatte";
+		String typeFilter = "%";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+		
+		if(!scenario.getIsFastBootSSDRequested()){
+			typeFilter = "SSD";
+		}	
+		
+		
+		if(scenario.getBudget() == PriceBudgetGlobal.LOW){
+			priceUpperFilter = 50;
+		} else if (scenario.getBudget() == PriceBudgetGlobal.MIDDLE){
+			priceLowerFilter = 50;
+			priceUpperFilter = 100;
+		} else {
+			priceLowerFilter = 100;
+		}
+		
+		String query = "SELECT * FROM festplatte WHERE art LIKE '" + typeFilter + 
+						"' AND preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
 		
 	}
 	
