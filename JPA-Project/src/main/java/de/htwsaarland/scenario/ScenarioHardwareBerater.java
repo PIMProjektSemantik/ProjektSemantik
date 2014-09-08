@@ -174,7 +174,15 @@ public class ScenarioHardwareBerater {
 		stepMobileUsageYesNo = new ScenarioTreeStepTwoOptions("Mobiles Arbeiten?", stepMobileDeviceType, "Ja", stepOperatingSystemComputer, "Nein", "Arbeit ohne Kabel, beim Kunden, usw.");
 	
 		// Budgetschritt 
-		stepBudget = new ScenarioTreeStepSimpleList("Budget:", "Gering: < 500 €. Mittel < 1200 €. Hoch > 1200€");
+		stepBudget = new ScenarioTreeStepSimpleList("Budget:", "<html>Budgetkategorien aus Ontologie:<br>" +
+													"Notebook:			Gering: <= 400 €. Mittel 400-800 €. Hoch >= 800<br>" +
+													"Tablet:			Gering: <= 400 €. Mittel 400-800 €. Hoch >= 800<br>" +
+													"Software:			Gering: <= 100 €. Mittel <= 200 €. Hoch -> unbegrenzt <br>" +
+													"Betriebssystem:	Gering: <= 80 €. Mittel <= 150€. Hoch -> unbegrenzt <br>" +
+													"CPU:				Gering: <= 200 €. Mittel 200-400 €. Hoch >= 400<br>" +
+													"RAM:				Gering: <= 80 €. Mittel 80-160 €. Hoch >= 160<br>" +
+													"Grafikkarte:		Gering: <= 200 €. Mittel 200-400 €. Hoch >= 400<br>" +
+													"Festplatte:		Gering: <= 50 €. Mittel 50-100 €. Hoch >= 100</html>");
 		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.LOW.NAME);
 		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.MIDDLE.NAME);
 		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.HIGH.NAME);
