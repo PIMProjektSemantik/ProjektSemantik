@@ -109,7 +109,7 @@ public class ScenarioHardwareBerater {
 		// definiert wird.
 		
 		// Endschritt
-		stepFinish = new ScenarioTreeStepFinish("Abschluss", "Zubehörabfrage fehlt noch!");
+		stepFinish = new ScenarioTreeStepFinish("Abschluss", "");
 		
 		// Computerschritt test
 		stepComputerComponents = new ScenarioTreeStepDBOWLComputerComponents("Computerteile auswählen", "aus ihren Antworten gefiltert ->", this);
