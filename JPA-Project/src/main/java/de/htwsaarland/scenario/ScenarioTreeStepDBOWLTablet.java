@@ -1,6 +1,5 @@
 package de.htwsaarland.scenario;
 
-import de.htwsaarland.scenario.selectionLists.OperatingSystemMobile;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -37,13 +36,7 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 		
-		if(scenario.getOperatingSystemMobile() == OperatingSystemMobile.WINDOWS){
-			osFilter = "Windows";
-		} else if (scenario.getOperatingSystemMobile() == OperatingSystemMobile.IOS){
-			osFilter = "IOS";
-		} else if (scenario.getOperatingSystemMobile() == OperatingSystemMobile.ANDROID){
-			osFilter = "Android";
-		}
+		osFilter = scenario.getOperatingSystemName();
 		
 		if(!scenario.getIsMobileInternetRequested()){
 			mobileInternetFilter = "Wifi";

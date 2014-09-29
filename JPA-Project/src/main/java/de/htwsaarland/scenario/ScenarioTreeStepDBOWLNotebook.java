@@ -1,6 +1,5 @@
 package de.htwsaarland.scenario;
 
-import de.htwsaarland.scenario.selectionLists.OperatingSystemComputer;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -40,13 +39,7 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 		
-		if(scenario.getOperatingSystemComputer() == OperatingSystemComputer.WINDOWS){
-			osFilter = "Windows";
-		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.MAC_OS_X){
-			osFilter = "IOS";
-		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.LINUX){
-			osFilter = "Linux";
-		}
+		osFilter = scenario.getOperatingSystemName();
 		
 		
 		

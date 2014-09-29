@@ -3,6 +3,7 @@ package de.htwsaarland.main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ import javax.swing.border.EtchedBorder;
 
 import de.htwsaarland.dao.NotebookDao;
 import de.htwsaarland.model.Notebook;
+import de.htwsaarland.ontology.OntologyRequest;
 import de.htwsaarland.scenario.gui.ScenarioGUIController;
 
 public class Main {
@@ -48,20 +50,23 @@ public class Main {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public Main() {
+	public Main() throws IOException {
 		try {
 			UIManager.setLookAndFeel( "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel" );
 			} catch (UnsupportedLookAndFeelException e) {
 		} catch (Exception e) {
 		}
 		initialize();
+				
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1250, 634);

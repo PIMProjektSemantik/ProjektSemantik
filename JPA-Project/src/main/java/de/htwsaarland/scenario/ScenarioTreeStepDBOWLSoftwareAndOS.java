@@ -1,6 +1,5 @@
 package de.htwsaarland.scenario;
 
-import de.htwsaarland.scenario.selectionLists.OperatingSystemComputer;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -63,13 +62,7 @@ public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDa
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 		
-		if(scenario.getOperatingSystemComputer() == OperatingSystemComputer.WINDOWS){
-			osFilter = "Windows";
-		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.MAC_OS_X){
-			osFilter = "IOS";
-		} else if (scenario.getOperatingSystemComputer() == OperatingSystemComputer.LINUX){
-			osFilter = "Ubuntu";
-		}
+		osFilter = scenario.getOperatingSystemName();
 		
 		
 		
@@ -82,9 +75,13 @@ public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDa
 			priceLowerFilter = 0;
 		}
 		
+		
+		
 		String query = "SELECT * FROM betriebssystem WHERE name LIKE '%" + osFilter + 
 						"%' AND preis >= " + priceLowerFilter + 
 						" AND preis <= " + priceUpperFilter;
+		
+		System.out.println(query);
 		
 		return query;
 

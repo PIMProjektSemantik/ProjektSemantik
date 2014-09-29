@@ -1,12 +1,11 @@
 package de.htwsaarland.scenario;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import de.htwsaarland.ontology.OntologyRequest;
 import de.htwsaarland.scenario.selectionLists.AdditionalScreenCategory;
-import de.htwsaarland.scenario.selectionLists.MainUsage;
 import de.htwsaarland.scenario.selectionLists.MobileDeviceCategory;
-import de.htwsaarland.scenario.selectionLists.OperatingSystemComputer;
-import de.htwsaarland.scenario.selectionLists.OperatingSystemMobile;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -59,11 +58,10 @@ public class ScenarioHardwareBerater {
 	ScenarioTreeStepBeginning			stepBeginning							= null;
 	
 	// Über die GUI auswählbare Optionen
-	private MainUsage					mainUsage					= null;
+	private int							mainUsageId					= 0;
 	private MobileDeviceCategory 		mobileDeviceCategory		= null;
 	private AdditionalScreenCategory	additionalScreenCategory	= null;
-	private OperatingSystemComputer		operatingSystemComputer		= null;
-	private OperatingSystemMobile		operatingSystemMobile		= null;
+	private int							operatingSystemId			= 0;
 	private PriceBudgetGlobal			budget						= null;
 
 	
@@ -77,6 +75,10 @@ public class ScenarioHardwareBerater {
 	private boolean						highAmountOfStorageRequested= false;
 	private boolean 					mobileUsageRequested		= false;
 
+	// Ontolotie-Abgefragte Auswahlen
+	private String[]					mainUsageList = null;
+	private String[]					osList = null;
+	
 			
 	// Id-Werte für Tabellen-Auswahlen (CPU, RAM, Grafik wie oben automatisch nach Budget??)
 //	private List<Integer>				accessoryList				= new ArrayList<Integer>();
@@ -88,7 +90,11 @@ public class ScenarioHardwareBerater {
 //	private int							graphicsId					= -1;
 	
 	
-	public ScenarioHardwareBerater(){
+	public ScenarioHardwareBerater() throws IOException{
+		
+		// Ontologieabfragen
+		mainUsageList 	= OntologyRequest.getMainUsageCategories();
+		osList			= OntologyRequest.getOperatingSystems();
 		
 		// Konstruktion des Szenario-Ablaufs
 		this.buildScenario();
@@ -97,12 +103,14 @@ public class ScenarioHardwareBerater {
 		this.currentStep = this.stepBeginning;
 		this.stepPath = new ArrayList<ScenarioTreeStep>();
 		this.stepPath.add(this.stepBeginning);
+				
 	}
 	
 	/**
 	 * Erstellt den Szenariobaum als Struktur verknüpfter Szenarioschritt Objekte
+	 * @throws IOException 
 	 */
-	private void buildScenario(){
+	private void buildScenario() throws IOException{
 		
 		// Schritte von hinten nach vorne konstruieren, damit die Nachfolger
 		// stets direkt vorhanden sind, wenn der darauf beruhende Schritt 
@@ -153,17 +161,23 @@ public class ScenarioHardwareBerater {
 		stepSoftwareAndOS = new ScenarioTreeStepDBOWLSoftwareAndOS("Software und Betriebssysteme", "gefilterte Tabelle ->", this);
 		stepSoftwareAndOS.addFollowUpStep(stepHighAmountOfData);
 		
-		// BetriebssystemSchritt (PC/Laptop)
+		// BetriebssystemSchritt (1 für PC/Laptop + 1 für Mobil)
 		stepOperatingSystemComputer = new ScenarioTreeStepSimpleList("Betriebssystem (PC)", "Je nach BS gibt es bestimmte Anwendungen nicht.");
-		stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, OperatingSystemComputer.WINDOWS.NAME);
-		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.MAC_OS_X.NAME);
-		stepOperatingSystemComputer.addFollowUpStep(stepHighAmountOfData, OperatingSystemComputer.LINUX.NAME);
-				
-		// Betriebssystemschritt (Mobil/Tablet)
 		stepOperatingSystemMobile = new ScenarioTreeStepSimpleList("Betriebssystem (Mobil)", "Je nach BS gibt es bestimmte Apps nicht.");
-		stepOperatingSystemMobile.addFollowUpStep(stepHighAmountOfData, OperatingSystemMobile.WINDOWS.NAME);
-		stepOperatingSystemMobile.addFollowUpStep(stepHighAmountOfData, OperatingSystemMobile.IOS.NAME);
-		stepOperatingSystemMobile.addFollowUpStep(stepHighAmountOfData, OperatingSystemMobile.ANDROID.NAME);
+		
+		// Betriebssysteme aus der Ontologie in Nachfolgeliste verwandeln
+		for(int i = 0; i < osList.length; ++i){
+			if(osList[i].equals("Linux")){
+				stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, osList[i]);
+			} else if(osList[i].equals("Android")){
+				stepOperatingSystemMobile.addFollowUpStep(stepSoftwareAndOS, osList[i]);
+			} else {
+				stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, osList[i]);
+				stepOperatingSystemMobile.addFollowUpStep(stepHighAmountOfData, osList[i]);
+			}
+		}
+
+		
 		
 		// Mobiler Gerätetyp Schritt
 		stepMobileDeviceType = new ScenarioTreeStepSimpleList("Gerätetyp (Mobil)?", "Laptops mit voller PC Flexibilität oder kompakt mit Apps.");
@@ -189,12 +203,15 @@ public class ScenarioHardwareBerater {
 
 		// Anwendungsbereich
 		stepMainUsage = new ScenarioTreeStepSimpleList("Anwendungsbereich:", "Hauptnutzungsbereich ihres Gerätes.");
-		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.OFFICE.NAME);
-		stepMainUsage.addFollowUpStep(stepMobileUsageYesNo, MainUsage.MEDIA_EDITING.NAME);
-		stepMainUsage.addFollowUpStep(stepMobileUsageYesNo, MainUsage.CAD.NAME);
-		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.ENTERTAINMENT_MEDIA.NAME);
-		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.ENTERTAINMENT_GAMES.NAME);
-		stepMainUsage.addFollowUpStep(stepBudget, MainUsage.SOFTWARE_DEVELOPMENT.NAME);
+		
+		// Kategorien aus der Ontologie in Nachfolgeliste verwandeln
+		for(int i = 0; i < mainUsageList.length; ++i){
+			if(mainUsageList[i].equals("Bild-/Bild-/Videobearbeitung") || mainUsageList[i].equals("CAD")){
+				stepMainUsage.addFollowUpStep(stepMobileUsageYesNo, mainUsageList[i]);
+			} else {
+				stepMainUsage.addFollowUpStep(stepBudget, mainUsageList[i]);
+			}
+		}
 		
 		// StartSchritt
 		stepBeginning = new ScenarioTreeStepBeginning("Beginn", "'Schritt runter drücken, um fortzufahren.'");
@@ -277,13 +294,12 @@ public class ScenarioHardwareBerater {
 			
 		} else if (currentStep == this.stepOperatingSystemComputer) {
 			// Betriebssystem Computer
-			int pcOs = this.stepOperatingSystemComputer.getSelection();
-			this.setOperatingSystemComputer(OperatingSystemComputer.values()[pcOs]);
+			this.setOperatingSystemId(this.stepOperatingSystemComputer.getSelection());
 			nextStep = this.stepOperatingSystemComputer.getNextStep();
 			
 		} else if (currentStep == this.stepOperatingSystemMobile) {
 			// Betriebssystem Mobil
-			this.setOperatingSystemMobile(OperatingSystemMobile.values()[this.stepOperatingSystemMobile.getSelection()]);
+			this.setOperatingSystemId(this.stepOperatingSystemMobile.getSelection());
 			nextStep = this.stepOperatingSystemMobile.getNextStep();
 			
 		} else if (currentStep == this.stepMobileDeviceType) {
@@ -304,8 +320,8 @@ public class ScenarioHardwareBerater {
 			
 		} else if (currentStep == this.stepMainUsage) {
 			// Hauptnutzung
-			this.setMainUsage(MainUsage.values()[this.stepMainUsage.getSelection()]);
-			if (this.mainUsage == MainUsage.CAD || this.mainUsage == MainUsage.MEDIA_EDITING){
+			this.setMainUsageId(this.stepMainUsage.getSelection());
+			if (this.mainUsageList[this.mainUsageId].equals("CAD") || this.mainUsageList[this.mainUsageId].equals("Bild-/Bild-/Videobearbeitung")){
 				this.budget = PriceBudgetGlobal.HIGH;
 			}
 			nextStep = this.stepMainUsage.getNextStep();
@@ -474,15 +490,15 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the mainUsage
 	 */
-	public MainUsage getMainUsage() {
-		return mainUsage;
+	public int getMainUsageId() {
+		return mainUsageId;
 	}
 
 	/**
 	 * @param mainUsage the mainUsage to set
 	 */
-	public void setMainUsage(MainUsage mainUsage) {
-		this.mainUsage = mainUsage;
+	public void setMainUsageId(int mainUsageId) {
+		this.mainUsageId = mainUsageId;
 	}
 
 	/**
@@ -497,20 +513,6 @@ public class ScenarioHardwareBerater {
 	 */
 	public void setAdditionalScreenCategory(AdditionalScreenCategory additionalScreenCategory) {
 		this.additionalScreenCategory = additionalScreenCategory;
-	}
-
-	/**
-	 * @return the operatingSystemComputer
-	 */
-	public OperatingSystemComputer getOperatingSystemComputer() {
-		return operatingSystemComputer;
-	}
-
-	/**
-	 * @param operatingSystemComputer the operatingSystemComputer to set
-	 */
-	public void setOperatingSystemComputer(OperatingSystemComputer operatingSystemComputer) {
-		this.operatingSystemComputer = operatingSystemComputer;
 	}
 
 	/**
@@ -530,15 +532,19 @@ public class ScenarioHardwareBerater {
 	/**
 	 * @return the operatingSystemMobile
 	 */
-	public OperatingSystemMobile getOperatingSystemMobile() {
-		return operatingSystemMobile;
+	public int getOperatingSystemId() {
+		return operatingSystemId;
+	}
+	
+	public String getOperatingSystemName(){
+		return osList[operatingSystemId+1];
 	}
 
 	/**
 	 * @param operatingSystemMobile the operatingSystemMobile to set
 	 */
-	public void setOperatingSystemMobile(OperatingSystemMobile operatingSystemMobile) {
-		this.operatingSystemMobile = operatingSystemMobile;
+	public void setOperatingSystemId(int operatingSystemMobileId) {
+		this.operatingSystemId = operatingSystemMobileId;
 	}
 
 	/**

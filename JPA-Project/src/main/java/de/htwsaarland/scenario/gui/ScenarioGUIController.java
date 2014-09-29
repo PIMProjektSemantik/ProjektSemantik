@@ -12,6 +12,7 @@ import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_RADIOBUTTON_Y_F
 import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_RADIOBUTTON_Y_SIZE;
 import static de.htwsaarland.scenario.gui.ScenarioGUIParams.STEP_Y_DISTANCE;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -58,7 +59,7 @@ public class ScenarioGUIController {
 	// Referenz zur Szenariologik
 	ScenarioHardwareBerater scenarioHardwareBerater;
 	
-	public ScenarioGUIController(JPanel leftPanel, JPanel rightPanel){
+	public ScenarioGUIController(JPanel leftPanel, JPanel rightPanel) throws IOException{
 		
 		this.leftPanel 					= leftPanel;
 		this.rightPanel 				= rightPanel;
