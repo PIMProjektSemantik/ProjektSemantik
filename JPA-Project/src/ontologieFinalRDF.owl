@@ -1,0 +1,3023 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY pc2 "http://www.semanticweb.org/eugen/ontologies/2014/8/pc#" >
+    <!ENTITY pc "http://www.semanticweb.org/eugen/ontologies/2014/8/pc.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:pc="http://www.semanticweb.org/eugen/ontologies/2014/8/pc.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:pc2="http://www.semanticweb.org/eugen/ontologies/2014/8/pc#">
+    <Ontology rdf:about="http://www.semanticweb.org/eugen/ontologies/2014/8/pc">
+        <rdfs:label rdf:datatype="&xsd;string">Rechner Ontology</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">Diese Ontologie beschreibt eine Abhängigkeit eines PC-System von mehrere anderen Klassen und Faktoren</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">Eugen Weisbeck &amp; Steffen Zuber</rdfs:isDefinedBy>
+        <versionInfo rdf:datatype="&xsd;string">V. 1
+17.09.2014
+V. 2</versionInfo>
+        <versionIRI rdf:resource="http://www.semanticweb.org/eugen/ontologies/2014/8/pc"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2 -->
+
+    <ObjectProperty rdf:about="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2">
+        <rdfs:label xml:lang="de">hatBudget</rdfs:label>
+        <rdfs:domain rdf:resource="&pc2;Betriebssystem"/>
+        <rdfs:range rdf:resource="&pc2;Budget"/>
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:domain rdf:resource="&pc2;Zubehoer"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatArbeitsspeicher -->
+
+    <ObjectProperty rdf:about="&pc2;hatArbeitsspeicher">
+        <rdfs:range rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatHardware"/>
+        <inverseOf rdf:resource="&pc2;istArbeitsspeicherVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatArbeitsspeicherBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatArbeitsspeicherBudget">
+        <rdfs:range rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatBatterie -->
+
+    <ObjectProperty rdf:about="&pc2;hatBatterie">
+        <rdfs:range rdf:resource="&pc2;Batterie"/>
+        <rdfs:domain rdf:resource="&pc2;Notebook"/>
+        <rdfs:domain rdf:resource="&pc2;Tablet"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatZubehör"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatBetriebssystem -->
+
+    <ObjectProperty rdf:about="&pc2;hatBetriebssystem">
+        <rdfs:range rdf:resource="&pc2;Betriebssystem"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatBetriebssystemBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatBetriebssystemBudget">
+        <rdfs:range rdf:resource="&pc2;Betriebssystem"/>
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatCPU -->
+
+    <ObjectProperty rdf:about="&pc2;hatCPU">
+        <rdfs:range rdf:resource="&pc2;CPU"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatHardware"/>
+        <inverseOf rdf:resource="&pc2;istCPUVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatCPUBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatCPUBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:range rdf:resource="&pc2;CPU"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatEingabeGeräte -->
+
+    <ObjectProperty rdf:about="&pc2;hatEingabeGeräte">
+        <rdfs:range rdf:resource="&pc2;Eingabegeräte"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatZubehör"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatFestplatte -->
+
+    <ObjectProperty rdf:about="&pc2;hatFestplatte">
+        <rdfs:range rdf:resource="&pc2;Festplatte"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatHardware"/>
+        <inverseOf rdf:resource="&pc2;istFestplatteVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatFestplatteBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatFestplatteBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:range rdf:resource="&pc2;Festplatte"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatGrafikkarte -->
+
+    <ObjectProperty rdf:about="&pc2;hatGrafikkarte">
+        <rdfs:range rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatHardware"/>
+        <inverseOf rdf:resource="&pc2;istGrafikkarteVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatGrafikkarteBugdet -->
+
+    <ObjectProperty rdf:about="&pc2;hatGrafikkarteBugdet">
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:range rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatHardware -->
+
+    <ObjectProperty rdf:about="&pc2;hatHardware">
+        <rdfs:range rdf:resource="&pc2;Hardware"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatHoheLeistung -->
+
+    <ObjectProperty rdf:about="&pc2;hatHoheLeistung">
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:range rdf:resource="&pc2;Leistung_Hoch"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatLeistungen"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatHohesBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatHohesBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget_Hoch"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">2000.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">500.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">300.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">300.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">1000.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">450.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">3000.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">170.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">1500.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">800.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">1500.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">5000.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">200.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">300.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">2000.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">2000.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatLeistungen -->
+
+    <ObjectProperty rdf:about="&pc2;hatLeistungen">
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:range rdf:resource="&pc2;Leistung"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatMittlereLeistung -->
+
+    <ObjectProperty rdf:about="&pc2;hatMittlereLeistung">
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:range rdf:resource="&pc2;Leistung_Mittel"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatLeistungen"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatMittleresBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatMittleresBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget_Mittel"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">199.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">799.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">1000.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">330.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">800.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">150.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">499.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">80.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">1999.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">1499.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">299.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">150.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">169.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">250.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">999.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">600.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatMobilitaet -->
+
+    <ObjectProperty rdf:about="&pc2;hatMobilitaet">
+        <rdfs:range rdf:resource="&pc2;Mobilitaet"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatMonitor -->
+
+    <ObjectProperty rdf:about="&pc2;hatMonitor">
+        <rdfs:range rdf:resource="&pc2;Monitor"/>
+        <rdfs:domain rdf:resource="&pc2;Rechner"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatZubehör"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatNiedrigeLeistung -->
+
+    <ObjectProperty rdf:about="&pc2;hatNiedrigeLeistung">
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:range rdf:resource="&pc2;Leistung_Niedrig"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatLeistungen"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatNiedrigesBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatNiedrigesBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget_Niedrig"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">350.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">79.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">249.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">999.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">80.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">329.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">10.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">150.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">799.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">60.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">110.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">360.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">149.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">599.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">149.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatNotebookBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatNotebookBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:range rdf:resource="&pc2;Notebook"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatRechnerBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatRechnerBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:range rdf:resource="&pc2;Rechner"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatTabletBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatTabletBudget">
+        <rdfs:domain rdf:resource="&pc2;Budget"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:range rdf:resource="&pc2;Tablet"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatZubehör -->
+
+    <ObjectProperty rdf:about="&pc2;hatZubehör">
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:range rdf:resource="&pc2;Zubehoer"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hoheMobiliteat -->
+
+    <ObjectProperty rdf:about="&pc2;hoheMobiliteat">
+        <rdfs:range rdf:resource="&pc2;Mobilitaet_Hoch"/>
+        <rdfs:domain rdf:resource="&pc2;Tablet"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatMobilitaet"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istArbeitsspeicherVon -->
+
+    <ObjectProperty rdf:about="&pc2;istArbeitsspeicherVon">
+        <rdfs:domain rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:range rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;istHardwareVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istBetriebssystemVon -->
+
+    <ObjectProperty rdf:about="&pc2;istBetriebssystemVon">
+        <rdfs:domain rdf:resource="&pc2;Betriebssystem"/>
+        <rdfs:range rdf:resource="&pc2;PC_System"/>
+        <inverseOf rdf:resource="&pc2;hatBetriebssystem"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istCPUVon -->
+
+    <ObjectProperty rdf:about="&pc2;istCPUVon">
+        <rdfs:subPropertyOf rdf:resource="&pc2;istHardwareVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istFestplatteVon -->
+
+    <ObjectProperty rdf:about="&pc2;istFestplatteVon">
+        <rdfs:subPropertyOf rdf:resource="&pc2;istHardwareVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istGrafikkarteVon -->
+
+    <ObjectProperty rdf:about="&pc2;istGrafikkarteVon">
+        <rdfs:subPropertyOf rdf:resource="&pc2;istHardwareVon"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istHardwareVon -->
+
+    <ObjectProperty rdf:about="&pc2;istHardwareVon">
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:range rdf:resource="&pc2;PC_System"/>
+        <inverseOf rdf:resource="&pc2;hatHardware"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#istLeistungVon -->
+
+    <ObjectProperty rdf:about="&pc2;istLeistungVon">
+        <rdfs:range rdf:resource="&pc2;Hardware"/>
+        <rdfs:domain rdf:resource="&pc2;Leistung"/>
+        <rdfs:range rdf:resource="&pc2;PC_System"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#keineMobilitaet -->
+
+    <ObjectProperty rdf:about="&pc2;keineMobilitaet">
+        <rdfs:range rdf:resource="&pc2;Mobilitaet_Nicht"/>
+        <rdfs:domain rdf:resource="&pc2;Rechner"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatMobilitaet"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#mittelMobilitaet -->
+
+    <ObjectProperty rdf:about="&pc2;mittelMobilitaet">
+        <rdfs:range rdf:resource="&pc2;Mobilitaet_Mittel"/>
+        <rdfs:domain rdf:resource="&pc2;Notebook"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatMobilitaet"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatDisplayGroesse -->
+
+    <DatatypeProperty rdf:about="&pc2;hatDisplayGroesse">
+        <rdfs:domain rdf:resource="&pc2;Monitor"/>
+        <rdfs:domain rdf:resource="&pc2;Notebook"/>
+        <rdfs:domain rdf:resource="&pc2;Tablet"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatEdition -->
+
+    <DatatypeProperty rdf:about="&pc2;hatEdition">
+        <rdfs:domain rdf:resource="&pc2;Betriebssystem"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatGroesse -->
+
+    <DatatypeProperty rdf:about="&pc2;hatGroesse">
+        <rdfs:domain rdf:resource="&pc2;Festplatte"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatHersteller -->
+
+    <DatatypeProperty rdf:about="&pc2;hatHersteller">
+        <rdfs:domain rdf:resource="&pc2;Domain_Entity"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatKerne -->
+
+    <DatatypeProperty rdf:about="&pc2;hatKerne">
+        <rdfs:domain rdf:resource="&pc2;CPU"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatLeistung -->
+
+    <DatatypeProperty rdf:about="&pc2;hatLeistung">
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">langsam</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">mittel</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&rdf;List"/>
+                                        <rdf:first rdf:datatype="&xsd;string">schnell</rdf:first>
+                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatName -->
+
+    <DatatypeProperty rdf:about="&pc2;hatName">
+        <rdfs:domain rdf:resource="&pc2;Domain_Entity"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatPreis -->
+
+    <DatatypeProperty rdf:about="&pc2;hatPreis">
+        <rdfs:domain rdf:resource="&pc2;Domain_Entity"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatRamGroesse -->
+
+    <DatatypeProperty rdf:about="&pc2;hatRamGroesse">
+        <rdfs:domain rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatSpeicherGroesse -->
+
+    <DatatypeProperty rdf:about="&pc2;hatSpeicherGroesse">
+        <rdfs:domain rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatTakt -->
+
+    <DatatypeProperty rdf:about="&pc2;hatTakt">
+        <rdfs:domain rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:domain rdf:resource="&pc2;CPU"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Android -->
+
+    <Class rdf:about="&pc2;Android">
+        <rdfs:subClassOf rdf:resource="&pc2;Betriebssystem"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Anwendung -->
+
+    <Class rdf:about="&pc2;Anwendung">
+        <rdfs:subClassOf rdf:resource="&pc2;Values"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;CAD"/>
+                    <rdf:Description rdf:about="&pc2;Office"/>
+                    <rdf:Description rdf:about="&pc2;SW-Entwicklung"/>
+                    <rdf:Description rdf:about="&pc2;Videobearbeitung"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Arbeitsspeicher -->
+
+    <Class rdf:about="&pc2;Arbeitsspeicher">
+        <rdfs:subClassOf rdf:resource="&pc2;Hardware"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTakt"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRamGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Batterie -->
+
+    <Class rdf:about="&pc2;Batterie">
+        <rdfs:subClassOf rdf:resource="&pc2;Zubehoer"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Betriebssystem -->
+
+    <Class rdf:about="&pc2;Betriebssystem">
+        <rdfs:subClassOf rdf:resource="&pc2;Domain_Entity"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatEdition"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatName"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;Android"/>
+                    <rdf:Description rdf:about="&pc2;FireOS"/>
+                    <rdf:Description rdf:about="&pc2;Linux"/>
+                    <rdf:Description rdf:about="&pc2;OS"/>
+                    <rdf:Description rdf:about="&pc2;Windows"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Budget -->
+
+    <Class rdf:about="&pc2;Budget">
+        <rdfs:subClassOf rdf:resource="&pc2;Values"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;Budget_Hoch"/>
+                    <rdf:Description rdf:about="&pc2;Budget_Mittel"/>
+                    <rdf:Description rdf:about="&pc2;Budget_Niedrig"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Budget_Hoch -->
+
+    <Class rdf:about="&pc2;Budget_Hoch">
+        <rdfs:subClassOf rdf:resource="&pc2;Budget"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Budget_Mittel -->
+
+    <Class rdf:about="&pc2;Budget_Mittel">
+        <rdfs:subClassOf rdf:resource="&pc2;Budget"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Budget_Niedrig -->
+
+    <Class rdf:about="&pc2;Budget_Niedrig">
+        <rdfs:subClassOf rdf:resource="&pc2;Budget"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#CAD -->
+
+    <Class rdf:about="&pc2;CAD">
+        <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">schnell</hasValue>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatHohesBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Hoch"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#CPU -->
+
+    <Class rdf:about="&pc2;CPU">
+        <rdfs:subClassOf rdf:resource="&pc2;Hardware"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTakt"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatKerne"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Domain_Entity -->
+
+    <Class rdf:about="&pc2;Domain_Entity">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatHersteller"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatPreis"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatName"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Drucker -->
+
+    <Class rdf:about="&pc2;Drucker">
+        <rdfs:subClassOf rdf:resource="&pc2;Zubehoer"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Eingabegeräte -->
+
+    <Class rdf:about="&pc2;Eingabegeräte">
+        <rdfs:subClassOf rdf:resource="&pc2;Zubehoer"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;Maus"/>
+                    <rdf:Description rdf:about="&pc2;Tastatur"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Festplatte -->
+
+    <Class rdf:about="&pc2;Festplatte">
+        <rdfs:subClassOf rdf:resource="&pc2;Hardware"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;HDD"/>
+                    <rdf:Description rdf:about="&pc2;SSD"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#FireOS -->
+
+    <Class rdf:about="&pc2;FireOS">
+        <rdfs:subClassOf rdf:resource="&pc2;Betriebssystem"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Grafikkarte -->
+
+    <Class rdf:about="&pc2;Grafikkarte">
+        <rdfs:subClassOf rdf:resource="&pc2;Hardware"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatSpeicherGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#HDD -->
+
+    <Class rdf:about="&pc2;HDD">
+        <rdfs:subClassOf rdf:resource="&pc2;Festplatte"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Hardware -->
+
+    <Class rdf:about="&pc2;Hardware">
+        <rdfs:subClassOf rdf:resource="&pc2;Domain_Entity"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatName"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Leistung -->
+
+    <Class rdf:about="&pc2;Leistung">
+        <rdfs:subClassOf rdf:resource="&pc2;Values"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;Leistung_Hoch"/>
+                    <rdf:Description rdf:about="&pc2;Leistung_Mittel"/>
+                    <rdf:Description rdf:about="&pc2;Leistung_Niedrig"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Leistung_Hoch -->
+
+    <Class rdf:about="&pc2;Leistung_Hoch">
+        <rdfs:subClassOf rdf:resource="&pc2;Leistung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;istLeistungVon"/>
+                <allValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatLeistung"/>
+                        <hasValue rdf:datatype="&xsd;string">schnell</hasValue>
+                    </Restriction>
+                </allValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Leistung_Mittel -->
+
+    <Class rdf:about="&pc2;Leistung_Mittel">
+        <rdfs:subClassOf rdf:resource="&pc2;Leistung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;istLeistungVon"/>
+                <allValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatLeistung"/>
+                        <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
+                    </Restriction>
+                </allValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Leistung_Niedrig -->
+
+    <Class rdf:about="&pc2;Leistung_Niedrig">
+        <rdfs:subClassOf rdf:resource="&pc2;Leistung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;istLeistungVon"/>
+                <allValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatLeistung"/>
+                        <hasValue rdf:datatype="&xsd;string">langsam</hasValue>
+                    </Restriction>
+                </allValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Linux -->
+
+    <Class rdf:about="&pc2;Linux">
+        <rdfs:subClassOf rdf:resource="&pc2;Betriebssystem"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Maus -->
+
+    <Class rdf:about="&pc2;Maus">
+        <rdfs:subClassOf rdf:resource="&pc2;Eingabegeräte"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Mobilitaet -->
+
+    <Class rdf:about="&pc2;Mobilitaet">
+        <rdfs:subClassOf rdf:resource="&pc2;Values"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;Mobilitaet_Hoch"/>
+                    <rdf:Description rdf:about="&pc2;Mobilitaet_Mittel"/>
+                    <rdf:Description rdf:about="&pc2;Mobilitaet_Nicht"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Mobilitaet_Hoch -->
+
+    <Class rdf:about="&pc2;Mobilitaet_Hoch">
+        <rdfs:subClassOf rdf:resource="&pc2;Mobilitaet"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Mobilitaet_Mittel -->
+
+    <Class rdf:about="&pc2;Mobilitaet_Mittel">
+        <rdfs:subClassOf rdf:resource="&pc2;Mobilitaet"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Mobilitaet_Nicht -->
+
+    <Class rdf:about="&pc2;Mobilitaet_Nicht">
+        <rdfs:subClassOf rdf:resource="&pc2;Mobilitaet"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Monitor -->
+
+    <Class rdf:about="&pc2;Monitor">
+        <rdfs:subClassOf rdf:resource="&pc2;Zubehoer"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatDisplayGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Notebook -->
+
+    <Class rdf:about="&pc2;Notebook">
+        <rdfs:subClassOf rdf:resource="&pc2;PC_System"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatDisplayGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarte"/>
+                <someValuesFrom rdf:resource="&pc2;Grafikkarte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBatterie"/>
+                <onClass rdf:resource="&pc2;Batterie"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
+                <allValuesFrom rdf:resource="&pc2;Festplatte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicher"/>
+                <someValuesFrom rdf:resource="&pc2;Arbeitsspeicher"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OS -->
+
+    <Class rdf:about="&pc2;OS">
+        <rdfs:subClassOf rdf:resource="&pc2;Betriebssystem"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Office -->
+
+    <Class rdf:about="&pc2;Office">
+        <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">langsam</hasValue>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNiedrigesBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Niedrig"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#PC_System -->
+
+    <Class rdf:about="&pc2;PC_System">
+        <rdfs:subClassOf rdf:resource="&pc2;Domain_Entity"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPU"/>
+                <onClass rdf:resource="&pc2;CPU"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystem"/>
+                <someValuesFrom rdf:resource="&pc2;Betriebssystem"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Rechner -->
+
+    <Class rdf:about="&pc2;Rechner">
+        <rdfs:subClassOf rdf:resource="&pc2;PC_System"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatEingabeGeräte"/>
+                <allValuesFrom>
+                    <Class>
+                        <intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&pc2;Maus"/>
+                            <rdf:Description rdf:about="&pc2;Tastatur"/>
+                        </intersectionOf>
+                    </Class>
+                </allValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicher"/>
+                <someValuesFrom rdf:resource="&pc2;Arbeitsspeicher"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatMonitor"/>
+                <someValuesFrom rdf:resource="&pc2;Monitor"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarte"/>
+                <someValuesFrom rdf:resource="&pc2;Grafikkarte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
+                <someValuesFrom rdf:resource="&pc2;Festplatte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#SSD -->
+
+    <Class rdf:about="&pc2;SSD">
+        <rdfs:subClassOf rdf:resource="&pc2;Festplatte"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#SW-Entwicklung -->
+
+    <Class rdf:about="&pc2;SW-Entwicklung">
+        <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatMittleresBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Mittel"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Tablet -->
+
+    <Class rdf:about="&pc2;Tablet">
+        <rdfs:subClassOf rdf:resource="&pc2;PC_System"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatDisplayGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
+                <someValuesFrom rdf:resource="&pc2;Festplatte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Tastatur -->
+
+    <Class rdf:about="&pc2;Tastatur">
+        <rdfs:subClassOf rdf:resource="&pc2;Eingabegeräte"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Values -->
+
+    <Class rdf:about="&pc2;Values"/>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Videobearbeitung -->
+
+    <Class rdf:about="&pc2;Videobearbeitung">
+        <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatMittleresBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Mittel"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Windows -->
+
+    <Class rdf:about="&pc2;Windows">
+        <rdfs:subClassOf rdf:resource="&pc2;Betriebssystem"/>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#Zubehoer -->
+
+    <Class rdf:about="&pc2;Zubehoer">
+        <rdfs:subClassOf rdf:resource="&pc2;Domain_Entity"/>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_03ac9dcd_5825_415a_9b4f_41f9abece854 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_03ac9dcd_5825_415a_9b4f_41f9abece854">
+        <rdf:type rdf:resource="&pc2;Batterie"/>
+        <rdfs:label xml:lang="de">NotebookBAT500</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">260.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Astro</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Astro 5000</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_088d21d7_5289_4814_b4bc_733ab89263be -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_088d21d7_5289_4814_b4bc_733ab89263be">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte6</rdfs:label>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">4</pc2:hatSpeicherGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">450.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Radeon R9 290X</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_0c74fef1_c852_4fa9_abeb_dfa67a4742eb -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_0c74fef1_c852_4fa9_abeb_dfa67a4742eb">
+        <rdf:type rdf:resource="&pc2;Android"/>
+        <rdfs:label xml:lang="de">Android4.2</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">0.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Android 4.2</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Google</pc2:hatHersteller>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Standard</pc2:hatEdition>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_0ff2e4d6_617a_4dd5_a138_7a419d644987 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_0ff2e4d6_617a_4dd5_a138_7a419d644987">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU9</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">100.0</pc2:hatPreis>
+        <pc2:hatKerne rdf:datatype="&xsd;int">2</pc2:hatKerne>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.4</pc2:hatTakt>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i3-4130</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_15e00ff1_5a88_4248_bf6b_fc8fb462a297 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_15e00ff1_5a88_4248_bf6b_fc8fb462a297">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher1</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1600.0</pc2:hatTakt>
+        <pc2:hatPreis rdf:datatype="&xsd;double">200.0</pc2:hatPreis>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">32</pc2:hatRamGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Crucial</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Crucil Ballistix Sport</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_16e7c6fe_04bb_40d5_b170_37e8703dc13d -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_16e7c6fe_04bb_40d5_b170_37e8703dc13d">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher10</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1600.0</pc2:hatTakt>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">4</pc2:hatRamGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">60.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Corsair</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Corsair Vengeance</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_189d0d13_2905_4f36_b963_058b0b93f20b -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_189d0d13_2905_4f36_b963_058b0b93f20b">
+        <rdf:type rdf:resource="&pc2;Maus"/>
+        <rdfs:label xml:lang="de">Raptor5000</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">20.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Raptor</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Raptor 5000</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_1e9ae849_206c_4964_9a6a_dd8787bf65fa -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_1e9ae849_206c_4964_9a6a_dd8787bf65fa">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU6</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">150.0</pc2:hatPreis>
+        <pc2:hatTakt rdf:datatype="&xsd;double">4.0</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">8</pc2:hatKerne>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">AMD FX-8350</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_1ff63ea0_8624_48b3_b851_c5808e9b1a3d -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_1ff63ea0_8624_48b3_b851_c5808e9b1a3d">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher4</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">100.0</pc2:hatPreis>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1333.0</pc2:hatTakt>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">16</pc2:hatRamGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Kingston</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Kingston ValueRam</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_244d017e_e3b2_46e5_b8c2_ca895f2d0238 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_244d017e_e3b2_46e5_b8c2_ca895f2d0238">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher2</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">110.0</pc2:hatPreis>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">16</pc2:hatRamGroesse>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1600.0</pc2:hatTakt>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Crucial</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Crucial Ballistix Sport</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_24cc3311_a8ec_451c_9fca_279a4b89bb52 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_24cc3311_a8ec_451c_9fca_279a4b89bb52">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher5</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1333.0</pc2:hatTakt>
+        <pc2:hatPreis rdf:datatype="&xsd;double">60.0</pc2:hatPreis>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">8</pc2:hatRamGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Kingston</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Kingston ValueRam</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_259571ff_7568_4d1b_b50c_d22fed4d1d45 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_259571ff_7568_4d1b_b50c_d22fed4d1d45">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU2</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.5</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">6</pc2:hatKerne>
+        <pc2:hatPreis rdf:datatype="&xsd;double">600.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i7 4800</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_28211d64_e006_4b50_9240_cfbf93ad513f -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_28211d64_e006_4b50_9240_cfbf93ad513f">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte4</rdfs:label>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">2</pc2:hatSpeicherGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">225.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">GTX 760</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Nvidia</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_2dacc5e3_28ed_4a27_99c7_c9a323aebce9 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_2dacc5e3_28ed_4a27_99c7_c9a323aebce9">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher7</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">2400.0</pc2:hatTakt>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">32</pc2:hatRamGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">350.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">G.Skill</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">G.Skill Trident</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_35fdb8c5_eca6_4303_ab74_a02d94885438 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_35fdb8c5_eca6_4303_ab74_a02d94885438">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte1</rdfs:label>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">6</pc2:hatSpeicherGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">950.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">GTX Titan</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Nvidia</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_41cc37f0_d71d_4659_89b5_c027903dff00 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_41cc37f0_d71d_4659_89b5_c027903dff00">
+        <rdf:type rdf:resource="&pc2;HDD"/>
+        <rdfs:label xml:lang="de">HDD3</rdfs:label>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">2048</pc2:hatGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">75.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">WD20EFRX</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Western Digital</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_45cbb9ca_e7c7_405c_b6a1_fc8d125c9f92 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_45cbb9ca_e7c7_405c_b6a1_fc8d125c9f92">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte8</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">250.0</pc2:hatPreis>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">3</pc2:hatSpeicherGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Radeon R9 280X</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_574738e4_eea1_4529_be12_2cae03826cc2 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_574738e4_eea1_4529_be12_2cae03826cc2">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte5</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">130.0</pc2:hatPreis>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">2</pc2:hatSpeicherGroesse>
+        <pc2:hatName rdf:datatype="&xsd;string">GTX 750 Ti</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Nvidia</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_5861562c_e839_4659_afe6_fbf8564a7aa6 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_5861562c_e839_4659_afe6_fbf8564a7aa6">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU5</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">200.0</pc2:hatPreis>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.4</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">4</pc2:hatKerne>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i5 4670k</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_59787d33_c20f_4113_99f3_83c3c8a79729 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_59787d33_c20f_4113_99f3_83c3c8a79729">
+        <rdf:type rdf:resource="&pc2;HDD"/>
+        <rdfs:label xml:lang="de">HDD1</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">140.0</pc2:hatPreis>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">4096</pc2:hatGroesse>
+        <pc2:hatName rdf:datatype="&xsd;string">WD40EFRX</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Western Digital</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_5c1a8504_a3d6_4429_a70a_3b34d22bf782 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_5c1a8504_a3d6_4429_a70a_3b34d22bf782">
+        <rdf:type rdf:resource="&pc2;OS"/>
+        <rdfs:label xml:lang="de">IOS7</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">0.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Apple</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">IOS 7</pc2:hatName>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Standard</pc2:hatEdition>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_6541a35f_e625_4449_a7d5_38c3573cea53 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_6541a35f_e625_4449_a7d5_38c3573cea53">
+        <rdf:type rdf:resource="&pc2;Monitor"/>
+        <rdfs:label xml:lang="de">HeroMon3000</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">145.0</pc2:hatPreis>
+        <pc2:hatDisplayGroesse rdf:datatype="&xsd;double">24.0</pc2:hatDisplayGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">BlueMoon</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">HeroMon 3000</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_65a97d89_e9cb_42f0_8343_2c3ef4490eac -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_65a97d89_e9cb_42f0_8343_2c3ef4490eac">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU4</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">275.0</pc2:hatPreis>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.5</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">4</pc2:hatKerne>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i7 4770k</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_6f781405_a58c_439c_ad39_30dfc2d63d29 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_6f781405_a58c_439c_ad39_30dfc2d63d29">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU10</rdfs:label>
+        <pc2:hatKerne rdf:datatype="&xsd;int">2</pc2:hatKerne>
+        <pc2:hatTakt rdf:datatype="&xsd;double">2.4</pc2:hatTakt>
+        <pc2:hatPreis rdf:datatype="&xsd;double">70.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i3-4030</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_71481c62_edd3_4264_918c_5b64e7b37907 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_71481c62_edd3_4264_918c_5b64e7b37907">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU7</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.5</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">6</pc2:hatKerne>
+        <pc2:hatPreis rdf:datatype="&xsd;double">90.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">AMD FX.6300</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_739972d0_057c_4b16_a253_f0810d030d64 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_739972d0_057c_4b16_a253_f0810d030d64">
+        <rdf:type rdf:resource="&pc2;SSD"/>
+        <rdfs:label xml:lang="de">SSD5</rdfs:label>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">1024</pc2:hatGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">450.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">SSD1024G</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Samsung</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_783d7e2f_4796_40ac_b867_4e726179e16e -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_783d7e2f_4796_40ac_b867_4e726179e16e">
+        <rdf:type rdf:resource="&pc2;Windows"/>
+        <rdfs:label xml:lang="de">Windows8</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">70.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Microsoft</pc2:hatHersteller>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Standard</pc2:hatEdition>
+        <pc2:hatName rdf:datatype="&xsd;string">Windows 8</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_8485300f_fb35_49e5_96c8_f47a0ed850aa -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_8485300f_fb35_49e5_96c8_f47a0ed850aa">
+        <rdf:type rdf:resource="&pc2;Linux"/>
+        <rdfs:label xml:lang="de">Ubuntu14.04</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">0.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Canonical</pc2:hatHersteller>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Standard</pc2:hatEdition>
+        <pc2:hatName rdf:datatype="&xsd;string">Ubuntu 14.04</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_875271b9_fade_4bb2_8ff4_32a1ea5a7cc9 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_875271b9_fade_4bb2_8ff4_32a1ea5a7cc9">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher3</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1600.0</pc2:hatTakt>
+        <pc2:hatPreis rdf:datatype="&xsd;double">60.0</pc2:hatPreis>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">8</pc2:hatRamGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Crucial</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Crucial Ballistix Sport</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_922e923d_6ff4_4495_a142_fde24636271b -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_922e923d_6ff4_4495_a142_fde24636271b">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte2</rdfs:label>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">3</pc2:hatSpeicherGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">450.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">GTX 780</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Nvidia</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_951a8add_1a21_4136_9ff7_8b7443415b33 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_951a8add_1a21_4136_9ff7_8b7443415b33">
+        <rdf:type rdf:resource="&pc2;Drucker"/>
+        <rdfs:label xml:lang="de">Brother_5000</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">230.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Brother</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Brother 5000 EC</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_9874da0c_4714_4b35_b5db_c824c3e46ed4 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_9874da0c_4714_4b35_b5db_c824c3e46ed4">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU8</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.8</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">4</pc2:hatKerne>
+        <pc2:hatPreis rdf:datatype="&xsd;double">75.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">AMD FX-4130</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_a04c9cda_1b32_479c_bd3f_5530667af635 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_a04c9cda_1b32_479c_bd3f_5530667af635">
+        <rdf:type rdf:resource="&pc2;HDD"/>
+        <rdfs:label xml:lang="de">HDD2</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">100.0</pc2:hatPreis>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">3072</pc2:hatGroesse>
+        <pc2:hatName rdf:datatype="&xsd;string">WD30EFRX</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Western Digital</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_a2829bcd_809f_49ad_84ef_48b9ea75f787 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_a2829bcd_809f_49ad_84ef_48b9ea75f787">
+        <rdf:type rdf:resource="&pc2;HDD"/>
+        <rdfs:label xml:lang="de">HDD4</rdfs:label>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">1024</pc2:hatGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">50.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">WD10EFRX</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Western Digital</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_a31525cd_87d6_498a_a8b1_c582728187b6 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_a31525cd_87d6_498a_a8b1_c582728187b6">
+        <rdf:type rdf:resource="&pc2;Android"/>
+        <rdfs:label xml:lang="de">Android4.4</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">0.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Android 4.4</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Google</pc2:hatHersteller>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Standard</pc2:hatEdition>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_a3d87bbc_2949_44c4_969c_dfc301c1a8ab -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_a3d87bbc_2949_44c4_969c_dfc301c1a8ab">
+        <rdf:type rdf:resource="&pc2;Tastatur"/>
+        <rdfs:label xml:lang="de">SolarTouch200</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">50.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">SolarTouch</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Tastatur Solar200</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_a75c8ce9_970b_4530_8091_5ad27e1939d7 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_a75c8ce9_970b_4530_8091_5ad27e1939d7">
+        <rdf:type rdf:resource="&pc2;Tastatur"/>
+        <rdfs:label xml:lang="de">Tastatur0815</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">30.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Lenovo</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Lenovo Standard</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_a8143876_c249_445c_8cc8_c0391834a342 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_a8143876_c249_445c_8cc8_c0391834a342">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher8</rdfs:label>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">16</pc2:hatRamGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">200.0</pc2:hatPreis>
+        <pc2:hatTakt rdf:datatype="&xsd;double">2400.0</pc2:hatTakt>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">G.Skill</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">G.Skill Trident</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_b05bee42_5f71_4d92_8929_dbe463a0b0c0 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_b05bee42_5f71_4d92_8929_dbe463a0b0c0">
+        <rdf:type rdf:resource="&pc2;SSD"/>
+        <rdfs:label xml:lang="de">SSD2</rdfs:label>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">128</pc2:hatGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">60.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">SSD128G</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Samsung</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_ba8d1b4e_e304_47a6_9b9c_f5f85b66eede -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_ba8d1b4e_e304_47a6_9b9c_f5f85b66eede">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte9</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">150.0</pc2:hatPreis>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">2</pc2:hatSpeicherGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Radeon R9 270</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_bf8d5d42_341f_48ae_a70d_fccffab513bb -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_bf8d5d42_341f_48ae_a70d_fccffab513bb">
+        <rdf:type rdf:resource="&pc2;SSD"/>
+        <rdfs:label xml:lang="de">SSD4</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">230.0</pc2:hatPreis>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">512</pc2:hatGroesse>
+        <pc2:hatName rdf:datatype="&xsd;string">SSD512G</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Samsung</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_bfc394e3_eee4_4fdd_a468_1c9245bd7933 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_bfc394e3_eee4_4fdd_a468_1c9245bd7933">
+        <rdf:type rdf:resource="&pc2;Drucker"/>
+        <rdfs:label xml:lang="de">LIXAHP222</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">80.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">HP</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">LIXIA222 EF</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_c552a31b_bcd0_45dd_93ec_096b8733696d -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_c552a31b_bcd0_45dd_93ec_096b8733696d">
+        <rdf:type rdf:resource="&pc2;Windows"/>
+        <rdfs:label xml:lang="de">Windows7</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">80.0</pc2:hatPreis>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Home Premium</pc2:hatEdition>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Microsoft</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Windows 7</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_d2c4c02d_da04_4e1e_804f_c21176fcc40e -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_d2c4c02d_da04_4e1e_804f_c21176fcc40e">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher6</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1333.0</pc2:hatTakt>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">4</pc2:hatRamGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">40.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Kingston</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Kingston ValueRam</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_d6a920c1_c077_4304_8197_e4da5e68d6dc -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_d6a920c1_c077_4304_8197_e4da5e68d6dc">
+        <rdf:type rdf:resource="&pc2;FireOS"/>
+        <rdfs:label xml:lang="de">FireOS3</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">0.0</pc2:hatPreis>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Amazon</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">FireOS 3</pc2:hatName>
+        <pc2:hatEdition rdf:datatype="&xsd;string">Standard</pc2:hatEdition>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_dac9b44c_b544_499c_af15_c32bb342f2da -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_dac9b44c_b544_499c_af15_c32bb342f2da">
+        <rdf:type rdf:resource="&pc2;Monitor"/>
+        <rdfs:label xml:lang="de">Acer24</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">200.0</pc2:hatPreis>
+        <pc2:hatDisplayGroesse rdf:datatype="&xsd;double">24.0</pc2:hatDisplayGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Acer</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Acer 24</pc2:hatName>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_dc84e191_172d_4564_aa24_772da7d31336 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_dc84e191_172d_4564_aa24_772da7d31336">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte3</rdfs:label>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">2</pc2:hatSpeicherGroesse>
+        <pc2:hatPreis rdf:datatype="&xsd;double">300.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">GTX 770</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Nvidia</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_dcfa4bc0_ec9f_44ee_9f24_c22fe240e0f8 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_dcfa4bc0_ec9f_44ee_9f24_c22fe240e0f8">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte10</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">105.0</pc2:hatPreis>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">2</pc2:hatSpeicherGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Radeon R7 260X</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">langsam</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_dee4f92f_d407_4241_95e9_2d8af62f2d47 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_dee4f92f_d407_4241_95e9_2d8af62f2d47">
+        <rdf:type rdf:resource="&pc2;Maus"/>
+        <rdfs:label xml:lang="de">Microsoft9000</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">45.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Mic 400</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Microsoft</pc2:hatHersteller>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_e09e2e46_4548_4e5d_9c89_2f5d49bbf4dc -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_e09e2e46_4548_4e5d_9c89_2f5d49bbf4dc">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU3</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">3.7</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">4</pc2:hatKerne>
+        <pc2:hatPreis rdf:datatype="&xsd;double">450.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i7 4790</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_e386ed87_15df_43b3_a50e_523b2d7a23ec -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_e386ed87_15df_43b3_a50e_523b2d7a23ec">
+        <rdf:type rdf:resource="&pc2;Batterie"/>
+        <rdfs:label xml:lang="de">Batterie_AS5</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">152.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">New TECG 6</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Samsung</pc2:hatHersteller>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_e9d1e7cc_98ac_4208_855a_5b306e2cbeba -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_e9d1e7cc_98ac_4208_855a_5b306e2cbeba">
+        <rdf:type rdf:resource="&pc2;SSD"/>
+        <rdfs:label xml:lang="de">SSD1</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">40.0</pc2:hatPreis>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">64</pc2:hatGroesse>
+        <pc2:hatName rdf:datatype="&xsd;string">SSD64G</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Samsung</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_ed173721_8299_4beb_9d70_192fa8515b5d -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_ed173721_8299_4beb_9d70_192fa8515b5d">
+        <rdf:type rdf:resource="&pc2;Arbeitsspeicher"/>
+        <rdfs:label xml:lang="de">Arbeitsspeicher9</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">105.0</pc2:hatPreis>
+        <pc2:hatTakt rdf:datatype="&xsd;double">1600.0</pc2:hatTakt>
+        <pc2:hatRamGroesse rdf:datatype="&xsd;int">8</pc2:hatRamGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Corsair</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Corsair Vengeance</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_f0353031_b99b_46d6_9d2c_26a15903de28 -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_f0353031_b99b_46d6_9d2c_26a15903de28">
+        <rdf:type rdf:resource="&pc2;CPU"/>
+        <rdfs:label xml:lang="de">CPU1</rdfs:label>
+        <pc2:hatTakt rdf:datatype="&xsd;double">4.0</pc2:hatTakt>
+        <pc2:hatKerne rdf:datatype="&xsd;int">6</pc2:hatKerne>
+        <pc2:hatPreis rdf:datatype="&xsd;double">999.0</pc2:hatPreis>
+        <pc2:hatName rdf:datatype="&xsd;string">Core i7 4850</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Intel</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_fdf8a437_4b89_4461_ab80_1b38262d3f5d -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_fdf8a437_4b89_4461_ab80_1b38262d3f5d">
+        <rdf:type rdf:resource="&pc2;Grafikkarte"/>
+        <rdfs:label xml:lang="de">Grafikkarte7</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">350.0</pc2:hatPreis>
+        <pc2:hatSpeicherGroesse rdf:datatype="&xsd;int">4</pc2:hatSpeicherGroesse>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">AMD</pc2:hatHersteller>
+        <pc2:hatName rdf:datatype="&xsd;string">Radeon R9 290</pc2:hatName>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">mittel</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLNamedIndividual_fec37deb_f97b_4bd4_8afa_00224b7768de -->
+
+    <NamedIndividual rdf:about="&pc2;OWLNamedIndividual_fec37deb_f97b_4bd4_8afa_00224b7768de">
+        <rdf:type rdf:resource="&pc2;SSD"/>
+        <rdfs:label xml:lang="de">SSD3</rdfs:label>
+        <pc2:hatPreis rdf:datatype="&xsd;double">120.0</pc2:hatPreis>
+        <pc2:hatGroesse rdf:datatype="&xsd;int">256</pc2:hatGroesse>
+        <pc2:hatName rdf:datatype="&xsd;string">SSD256G</pc2:hatName>
+        <pc2:hatHersteller rdf:datatype="&xsd;string">Samsung</pc2:hatHersteller>
+        <pc2:hatLeistung rdf:datatype="&xsd;string">schnell</pc2:hatLeistung>
+    </NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&pc2;Leistung_Hoch"/>
+            <rdf:Description rdf:about="&pc2;Leistung_Mittel"/>
+            <rdf:Description rdf:about="&pc2;Leistung_Niedrig"/>
+        </members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

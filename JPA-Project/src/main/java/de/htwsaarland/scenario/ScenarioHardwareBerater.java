@@ -78,6 +78,7 @@ public class ScenarioHardwareBerater {
 	// Ontolotie-Abgefragte Auswahlen
 	private String[]					mainUsageList = null;
 	private String[]					osList = null;
+	private String						performance = "";
 	
 			
 	// Id-Werte für Tabellen-Auswahlen (CPU, RAM, Grafik wie oben automatisch nach Budget??)
@@ -321,7 +322,8 @@ public class ScenarioHardwareBerater {
 		} else if (currentStep == this.stepMainUsage) {
 			// Hauptnutzung
 			this.setMainUsageId(this.stepMainUsage.getSelection());
-			if (this.mainUsageList[this.mainUsageId].equals("CAD") || this.mainUsageList[this.mainUsageId].equals("Bild-/Bild-/Videobearbeitung")){
+			this.performance = OntologyRequest.getPerformance(this.mainUsageList[this.mainUsageId]);
+			if (this.mainUsageList[this.mainUsageId].equals("CAD") || this.mainUsageList[this.mainUsageId].equals("Videobearbeitung")){
 				this.budget = PriceBudgetGlobal.HIGH;
 			}
 			nextStep = this.stepMainUsage.getNextStep();
@@ -561,5 +563,11 @@ public class ScenarioHardwareBerater {
 		this.budget = budget;
 	}
 	
-	
+	/**
+	 * 
+	 * @return the performance
+	 */
+	public String getPerformance() {
+		return performance;
+	}
 }
