@@ -70,7 +70,8 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		tableTitleStorage.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN + 390, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 20);
 		
 		// Prozessortabelle
-		CPUJTableModel cpuTableModel = new CPUJTableModel(new CPUDao(), this.scenarioStep.generateQueryCPU());
+//		CPUJTableModel cpuTableModel = new CPUJTableModel(new CPUDao(), this.scenarioStep.generateQueryCPU());
+		CPUJTableModel cpuTableModel = new CPUJTableModel(new CPUDao(), this.scenarioStep.generateQueryFromOWL("CPU"));
 		JTable tableCPU = new JTable(cpuTableModel);
 		tableCPU.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		tableCPU.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -79,7 +80,8 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		paneCPU.setBounds(DEFAULT_LABEL_MARGIN, 30, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 				
 		// Arbeitsspeichertabelle
-		ArbeitsspeicherJTableModel tableModelRAM = new ArbeitsspeicherJTableModel(new ArbeitsspeicherDao(), this.scenarioStep.generateQueryRAM());
+//		ArbeitsspeicherJTableModel tableModelRAM = new ArbeitsspeicherJTableModel(new ArbeitsspeicherDao(), this.scenarioStep.generateQueryRAM());
+		ArbeitsspeicherJTableModel tableModelRAM = new ArbeitsspeicherJTableModel(new ArbeitsspeicherDao(), this.scenarioStep.generateQueryFromOWL("Arbeitsspeicher"));
 		JTable tableRAM = new JTable(tableModelRAM);
 		tableRAM.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		tableRAM.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -88,7 +90,8 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		paneRAM.setBounds(DEFAULT_LABEL_MARGIN, 160, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		
 		// Grafikkartentabelle
-		GrafikkarteJTableModel tableModelGraphics = new GrafikkarteJTableModel(new GrafikkarteDao(), this.scenarioStep.generateQueryGraphics());
+//		GrafikkarteJTableModel tableModelGraphics = new GrafikkarteJTableModel(new GrafikkarteDao(), this.scenarioStep.generateQueryGraphics());
+		GrafikkarteJTableModel tableModelGraphics = new GrafikkarteJTableModel(new GrafikkarteDao(), this.scenarioStep.generateQueryFromOWL("Grafikkarte"));
 		JTable tableGraphics = new JTable(tableModelGraphics);
 		tableGraphics.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		tableGraphics.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -97,7 +100,8 @@ public class ScenarioGUIStepDatabaseRequestComputerComponents extends ScenarioGU
 		paneGraphics.setBounds(DEFAULT_LABEL_MARGIN, 290, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		
 		// Festplattentabelle
-		FestplatteJTableModel tableModelStorage = new FestplatteJTableModel(new FestplatteDao(), this.scenarioStep.generateQueryStorage());
+//		FestplatteJTableModel tableModelStorage = new FestplatteJTableModel(new FestplatteDao(), this.scenarioStep.generateQueryStorage());
+		FestplatteJTableModel tableModelStorage = new FestplatteJTableModel(new FestplatteDao(), this.scenarioStep.generateQueryFromOWL("Festplatte"));
 		JTable tableStorage = new JTable(tableModelStorage);
 		tableStorage.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 100);
 		tableStorage.getColumnModel().getColumn(0).setMaxWidth(60);

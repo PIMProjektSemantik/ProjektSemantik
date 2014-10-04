@@ -1,5 +1,6 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.ontology.OntologyRequest;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -29,6 +30,34 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 		this.scenario = scenario;
 	}
 
+	public String generateQueryFromOWL(){
+		String category = "Tablet";
+		String mobileInternetFilter = "";
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+
+		String osFilter = scenario.getOperatingSystemName();
+		
+		if(!scenario.getIsMobileInternetRequested()){
+			mobileInternetFilter = "Wifi";
+		} else {
+			mobileInternetFilter = "Wifi +%";
+		}
+		
+		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
+		category = category.toLowerCase(); //Grossbuchstaben entfernen
+		priceLowerFilter = Integer.valueOf(bereich[1]);
+		priceUpperFilter = Integer.valueOf(bereich[2]);
+
+		
+		String query = "SELECT * FROM "+ category +" WHERE betriebssystem LIKE '%" + osFilter + 
+						"%' AND connectionType LIKE '" + mobileInternetFilter +
+						"' AND preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		return query;
+		
+	}
+	
 	public String generateQuery(){
 
 		String osFilter = "";

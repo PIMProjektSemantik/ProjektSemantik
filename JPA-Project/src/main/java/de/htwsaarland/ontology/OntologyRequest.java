@@ -43,5 +43,31 @@ public class OntologyRequest {
 		return performance;
 		
 	}
+
+
+	public static String[] getBudgetTypes() {
+		OWLParser parser = new OWLParser();
+		ArrayList<String> osList = parser.getValuesOfCategory("Budget");
+		
+		// Gibt das Array mit dem Listeninhalt gefüllt zurück
+		String[] osRet = new String[osList.size()];
+		return osList.toArray(osRet);
+	}
+	
+	public static String[] getBudgetForCategory(String budgetType, String category) {
+		OWLParser parser = new OWLParser();
+		ArrayList<ArrayList<String>> osList = parser.getRangeOfDomain(budgetType);
+		ArrayList<String> returnValue = new ArrayList<String>();
+
+		for (ArrayList<String> arrayList : osList) {
+			if(arrayList.get(0).contains(category)) {
+				returnValue = arrayList;
+				break; //Element gefunden... Suche beendet
+			}
+		}
+		// Gibt das Array mit dem Listeninhalt gefüllt zurück
+		String[] osRet = new String[returnValue.size()];
+		return returnValue.toArray(osRet);
+	}
 	
 }

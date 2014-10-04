@@ -1,5 +1,6 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.ontology.OntologyRequest;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -30,7 +31,28 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 	}
 
 	
-	
+	public String generateQueryFromOWL(String category){
+		
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+		String typeFilter = "";
+		
+		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
+		category = category.toLowerCase(); //Grossbuchstaben entfernen
+		priceLowerFilter = Integer.valueOf(bereich[1]);
+		priceUpperFilter = Integer.valueOf(bereich[2]);
+
+		if(!scenario.getIsFastBootSSDRequested()){
+			typeFilter = " art LIKE 'SSD' AND ";
+		}
+		
+		String query = "SELECT * FROM "+ category +" WHERE " + typeFilter 
+						+ "preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
+		
+	}
 	
 	
 	public String generateQueryCPU(){

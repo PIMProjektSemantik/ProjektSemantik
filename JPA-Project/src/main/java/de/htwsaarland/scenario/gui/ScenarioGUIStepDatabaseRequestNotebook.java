@@ -55,7 +55,8 @@ public class ScenarioGUIStepDatabaseRequestNotebook extends ScenarioGUIStep {
 		rightTablePanel.setLayout(null);
 		
 		// Text einbauen
-		NotebookJTableModel tableModel = new NotebookJTableModel(new NotebookDao(), this.scenarioStep.generateQuery());
+//		NotebookJTableModel tableModel = new NotebookJTableModel(new NotebookDao(), this.scenarioStep.generateQuery());
+		NotebookJTableModel tableModel = new NotebookJTableModel(new NotebookDao(), this.scenarioStep.generateQueryFromOWL());
 		JTable table = new JTable(tableModel);
 		table.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN, 
 						SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, SCENARIO_GUI_DETAIL_ELEMENT_HEIGHT - 2 * DEFAULT_LABEL_MARGIN);

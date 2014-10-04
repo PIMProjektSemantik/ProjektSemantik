@@ -62,7 +62,8 @@ public class ScenarioGUIStepDatabaseRequestSoftwareAndOS extends ScenarioGUIStep
 		tableTitleSoftware.setBounds(DEFAULT_LABEL_MARGIN, DEFAULT_LABEL_MARGIN + 260, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 20);
 		
 		// Betriebssystemtabelle
-		BetriebssystemJTableModel tableModelOS = new BetriebssystemJTableModel(new BetriebssystemDao(), this.scenarioStep.generateQueryOS());
+//		BetriebssystemJTableModel tableModelOS = new BetriebssystemJTableModel(new BetriebssystemDao(), this.scenarioStep.generateQueryOS());
+		BetriebssystemJTableModel tableModelOS = new BetriebssystemJTableModel(new BetriebssystemDao(), this.scenarioStep.generateQueryOSFromOWL());
 		JTable tableOS = new JTable(tableModelOS);
 		tableOS.setBounds(0, 0, SCENARIO_GUI_DETAIL_ELEMENT_WIDTH - 2 * DEFAULT_LABEL_MARGIN, 230);
 		tableOS.getColumnModel().getColumn(0).setMaxWidth(60);

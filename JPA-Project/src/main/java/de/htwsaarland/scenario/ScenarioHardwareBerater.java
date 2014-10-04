@@ -63,6 +63,7 @@ public class ScenarioHardwareBerater {
 	private AdditionalScreenCategory	additionalScreenCategory	= null;
 	private int							operatingSystemId			= 0;
 	private PriceBudgetGlobal			budget						= null;
+	private String						budgetOntologie				= null;
 
 	
 	// Zusätzliche Ja/Nein Antworten
@@ -79,6 +80,7 @@ public class ScenarioHardwareBerater {
 	private String[]					mainUsageList = null;
 	private String[]					osList = null;
 	private String						performance = "";
+	private String[]					budgetList = null;					
 	
 			
 	// Id-Werte für Tabellen-Auswahlen (CPU, RAM, Grafik wie oben automatisch nach Budget??)
@@ -96,6 +98,7 @@ public class ScenarioHardwareBerater {
 		// Ontologieabfragen
 		mainUsageList 	= OntologyRequest.getMainUsageCategories();
 		osList			= OntologyRequest.getOperatingSystems();
+		budgetList		= OntologyRequest.getBudgetTypes();
 		
 		// Konstruktion des Szenario-Ablaufs
 		this.buildScenario();
@@ -198,16 +201,19 @@ public class ScenarioHardwareBerater {
 													"RAM:				Gering: <= 80 €. Mittel 80-160 €. Hoch >= 160<br>" +
 													"Grafikkarte:		Gering: <= 200 €. Mittel 200-400 €. Hoch >= 400<br>" +
 													"Festplatte:		Gering: <= 50 €. Mittel 50-100 €. Hoch >= 100</html>");
-		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.LOW.NAME);
-		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.MIDDLE.NAME);
-		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.HIGH.NAME);
+//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.LOW.NAME);//TODO
+//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.MIDDLE.NAME);
+//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.HIGH.NAME);
+		for (int i = 0; i < budgetList.length; i++) {
+			stepBudget.addFollowUpStep(stepMobileUsageYesNo, budgetList[i]);
+		}
 
 		// Anwendungsbereich
 		stepMainUsage = new ScenarioTreeStepSimpleList("Anwendungsbereich:", "Hauptnutzungsbereich ihres Gerätes.");
 		
 		// Kategorien aus der Ontologie in Nachfolgeliste verwandeln
 		for(int i = 0; i < mainUsageList.length; ++i){
-			if(mainUsageList[i].equals("Bild-/Bild-/Videobearbeitung") || mainUsageList[i].equals("CAD")){
+			if(mainUsageList[i].equals("Videobearbeitung") || mainUsageList[i].equals("CAD")){
 				stepMainUsage.addFollowUpStep(stepMobileUsageYesNo, mainUsageList[i]);
 			} else {
 				stepMainUsage.addFollowUpStep(stepBudget, mainUsageList[i]);
@@ -317,6 +323,7 @@ public class ScenarioHardwareBerater {
 		} else if (currentStep == this.stepBudget) {
 			// Budget
 			this.setBudget(PriceBudgetGlobal.values()[this.stepBudget.getSelection()]);
+			this.setBudgetOntologie(this.stepBudget.getSelectionOptions()[this.stepBudget.getSelection()]);
 			nextStep = this.stepBudget.getNextStep();
 			
 		} else if (currentStep == this.stepMainUsage) {
@@ -564,10 +571,21 @@ public class ScenarioHardwareBerater {
 	}
 	
 	/**
+	 * @param budget the budget to set
+	 */
+	public void setBudgetOntologie(String budget) {
+		this.budgetOntologie = budget;
+	}
+	
+	/**
 	 * 
 	 * @return the performance
 	 */
 	public String getPerformance() {
 		return performance;
+	}
+
+	public String getBudgetOntologie() {
+		return budgetOntologie;
 	}
 }

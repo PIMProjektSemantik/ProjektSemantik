@@ -1,5 +1,6 @@
 package de.htwsaarland.scenario;
 
+import de.htwsaarland.ontology.OntologyRequest;
 import de.htwsaarland.scenario.selectionLists.PriceBudgetGlobal;
 
 /**
@@ -30,7 +31,26 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 		
 	}
 
+	public String generateQueryFromOWL(){
 		
+		double priceLowerFilter = 0;
+		double priceUpperFilter = Integer.MAX_VALUE;
+		String osFilter = scenario.getOperatingSystemName();
+		String category = "Notebook";
+		
+		
+		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
+		category = category.toLowerCase(); //Grossbuchstaben entfernen
+		priceLowerFilter = Integer.valueOf(bereich[1]);
+		priceUpperFilter = Integer.valueOf(bereich[2]);
+		
+		String query = "SELECT * FROM "+ category + " WHERE betriebssystem LIKE '%" + osFilter + 
+						"%' AND preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter;
+		
+		return query;
+		
+	}		
 	
 	public String generateQuery(){
 		
