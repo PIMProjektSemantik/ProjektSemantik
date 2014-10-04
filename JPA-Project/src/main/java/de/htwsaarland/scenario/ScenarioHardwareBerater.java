@@ -201,7 +201,7 @@ public class ScenarioHardwareBerater {
 													"RAM:				Gering: <= 80 €. Mittel 80-160 €. Hoch >= 160<br>" +
 													"Grafikkarte:		Gering: <= 200 €. Mittel 200-400 €. Hoch >= 400<br>" +
 													"Festplatte:		Gering: <= 50 €. Mittel 50-100 €. Hoch >= 100</html>");
-//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.LOW.NAME);//TODO
+//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.LOW.NAME);
 //		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.MIDDLE.NAME);
 //		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.HIGH.NAME);
 		for (int i = 0; i < budgetList.length; i++) {
@@ -330,9 +330,17 @@ public class ScenarioHardwareBerater {
 			// Hauptnutzung
 			this.setMainUsageId(this.stepMainUsage.getSelection());
 			this.performance = OntologyRequest.getPerformance(this.mainUsageList[this.mainUsageId]);
-			if (this.mainUsageList[this.mainUsageId].equals("CAD") || this.mainUsageList[this.mainUsageId].equals("Videobearbeitung")){
+			/* Deprecated
+			if (this.mainUsageList[this.mainUsageId].equals("CAD") || this.mainUsageList[this.mainUsageId].equals("Videobearbeitung")){//TODO
 				this.budget = PriceBudgetGlobal.HIGH;
 			}
+			*/
+			
+			//Ontologieabfrage: Besitzt die Auswahl eine Budgetkategorisie?
+			String tempBudget = OntologyRequest.getBudgetType(this.mainUsageList[this.mainUsageId]);
+			if(!tempBudget.isEmpty())
+				this.budgetOntologie = tempBudget;
+			
 			nextStep = this.stepMainUsage.getNextStep();
 
 		} else {

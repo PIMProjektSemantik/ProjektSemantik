@@ -119,7 +119,6 @@ public class OWLParser {
 	public ArrayList<ArrayList<String>> getRangeOfCategory(String category,
 			String subcategory) {
 		String categoryValues;
-		String oldLine = "";
 		String newLine = "";
 		int classCount = 0;
 		ArrayList<ArrayList<String>> values = new ArrayList<ArrayList<String>>();
@@ -178,7 +177,6 @@ public class OWLParser {
 					// ERGEBNIS: Category-Variable in die Dropdown-Box (statt
 					// println())
 				}
-				oldLine = newLine;
 			}
 			br.close();
 		} catch(IOException e) {
@@ -221,9 +219,8 @@ public class OWLParser {
 	 */
 	public ArrayList<ArrayList<String>> getRangeOfDomain(String category) {
 		String categoryValues;
-		String oldLine = "";
 		String newLine = "";
-		int classCount = 0;
+		int classCount = 1;
 		ArrayList<ArrayList<String>> values = new ArrayList<ArrayList<String>>();
 		try{
 			BufferedReader br = new BufferedReader(new FileReader("src/ontologieFinalRDF.owl"));
@@ -279,7 +276,6 @@ public class OWLParser {
 					// ERGEBNIS: Category-Variable in die Dropdown-Box (statt
 					// println())
 				}
-				oldLine = newLine;
 			}
 			br.close();
 		} catch(IOException e) {

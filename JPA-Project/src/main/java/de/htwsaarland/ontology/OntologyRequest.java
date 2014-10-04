@@ -70,4 +70,17 @@ public class OntologyRequest {
 		return returnValue.toArray(osRet);
 	}
 	
+	public static String getBudgetType(String category) {
+		OWLParser parser = new OWLParser();
+		ArrayList<ArrayList<String>> osList = parser.getRestrictionOfCategory(category);
+		ArrayList<String> returnValue = new ArrayList<String>();
+
+		for (ArrayList<String> arrayList : osList) {
+			if(arrayList.get(0).contains("Budget")) {
+				returnValue = arrayList;
+				break; //Element gefunden... Suche beendet
+			}
+		}
+		return returnValue.get(1);
+	}
 }

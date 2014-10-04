@@ -34,18 +34,21 @@ public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDa
 		String category = "Betriebssystem";
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
+		String os = scenario.getOperatingSystemName();
+		String osFilter ="";
+		String preisFilter = " AND preis >= " + priceLowerFilter + " AND preis <= "+ priceUpperFilter;
 		
-		String osFilter = scenario.getOperatingSystemName();
-		
+		if(!os.isEmpty())
+			osFilter = "name LIKE '%" + os + "%'";
 		
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1]);
-		priceUpperFilter = Integer.valueOf(bereich[2]);
+		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
+		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
 		
-		String query = "SELECT * FROM " + category + " WHERE name LIKE '%" + osFilter + 
-						"%' AND preis >= " + priceLowerFilter + 
-						" AND preis <= " + priceUpperFilter;
+		String query = "SELECT * FROM " + category + " WHERE " + osFilter
+//				+ preisFilter
+				;
 		
 		return query;
 		

@@ -36,24 +36,28 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 
-		String osFilter = scenario.getOperatingSystemName();
+		String os = scenario.getOperatingSystemName();
+		String osFilter ="";
+		String mobileInternet = "";
 		
 		if(!scenario.getIsMobileInternetRequested()){
-			mobileInternetFilter = "Wifi";
+			mobileInternet= "Wifi";
 		} else {
-			mobileInternetFilter = "Wifi +%";
+			mobileInternet= "Wifi +%";
 		}
+		
+		if(!os.isEmpty())
+			osFilter = " AND betriebssystem LIKE '%" + os + "%'";
+		mobileInternetFilter = " AND connectionType LIKE '" + mobileInternet +"'";
 		
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1]);
-		priceUpperFilter = Integer.valueOf(bereich[2]);
+		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
+		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
 
 		
-		String query = "SELECT * FROM "+ category +" WHERE betriebssystem LIKE '%" + osFilter + 
-						"%' AND connectionType LIKE '" + mobileInternetFilter +
-						"' AND preis >= " + priceLowerFilter + 
-						" AND preis <= " + priceUpperFilter;
+		String query = "SELECT * FROM "+ category +" WHERE preis >= " + priceLowerFilter + 
+						" AND preis <= " + priceUpperFilter + mobileInternetFilter + osFilter;
 		return query;
 		
 	}

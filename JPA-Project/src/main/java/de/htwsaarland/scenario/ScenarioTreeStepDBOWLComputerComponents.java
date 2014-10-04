@@ -36,19 +36,24 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 		String typeFilter = "";
+		String performance = scenario.getPerformance();
+		String performanceFilter = "";
 		
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1]);
-		priceUpperFilter = Integer.valueOf(bereich[2]);
+		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
+		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
 
 		if(!scenario.getIsFastBootSSDRequested()){
-			typeFilter = " art LIKE 'SSD' AND ";
+			typeFilter = " AND art LIKE 'SSD'";
 		}
 		
-		String query = "SELECT * FROM "+ category +" WHERE " + typeFilter 
+		if(!performance.isEmpty())
+			performanceFilter = " AND Kategorie LIKE \"%"+performance+"%\"";
+		
+		String query = "SELECT * FROM "+ category +" WHERE " 
 						+ "preis >= " + priceLowerFilter + 
-						" AND preis <= " + priceUpperFilter;
+						" AND preis <= " + priceUpperFilter + typeFilter+ performanceFilter;
 		
 		return query;
 		
