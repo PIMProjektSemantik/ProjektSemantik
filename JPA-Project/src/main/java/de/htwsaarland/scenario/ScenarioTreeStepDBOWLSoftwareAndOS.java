@@ -35,6 +35,7 @@ public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDa
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 		String os = scenario.getOperatingSystemName();
+		System.out.println("OS Name: " + os);
 		String osFilter ="";
 		String preisFilter = " AND preis >= " + priceLowerFilter + " AND preis <= "+ priceUpperFilter;
 		
@@ -43,13 +44,12 @@ public class ScenarioTreeStepDBOWLSoftwareAndOS extends ScenarioTreeStepSimpleDa
 		
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
-		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
+		priceLowerFilter = Double.valueOf(bereich[2]);
+		priceUpperFilter = Double.valueOf(bereich[4]);
 		
 		String query = "SELECT * FROM " + category + " WHERE " + osFilter
 //				+ preisFilter
 				;
-		
 		return query;
 		
 	}

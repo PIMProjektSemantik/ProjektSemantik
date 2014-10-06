@@ -32,29 +32,48 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 
 	
 	public String generateQueryFromOWL(String category){
-		
+		String query = "SELECT * FROM "+ category +" WHERE";
+		String priceFilter = "";
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
 		String typeFilter = "";
 		String performance = scenario.getPerformance();
 		String performanceFilter = "";
+		int diskSize = 0;
+		String diskSizeFilter = "";
 		
+		//Ermittlung des Preisbereichs
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
-		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
+		priceLowerFilter = Double.valueOf(bereich[2]);
+		priceUpperFilter = Double.valueOf(bereich[4]);
+		priceFilter =" preis >= " + priceLowerFilter + " AND preis <= " + priceUpperFilter;
 
-		if(!scenario.getIsFastBootSSDRequested()){
-			typeFilter = " AND art LIKE 'SSD'";
+		//Ermittlung der Festplattenspezifikationen
+		System.out.println(category);
+		if(category.equals("festplatte")){
+			String[] diskSizeDefinition = OntologyRequest.getDiskSize(scenario.getDiskSizeType());
+			diskSize = Integer.valueOf(diskSizeDefinition[2]);
+			if(diskSizeDefinition[1].equals("minInclusive")){
+				diskSizeFilter = " AND groesse >= ";
+			} else if(diskSizeDefinition[1].equals("maxInclusive")){
+				diskSizeFilter = " AND groesse <= ";
+			} else if(diskSizeDefinition[1].equals("minExclusive")){
+				diskSizeFilter = " AND groesse >= ";
+			} else if(diskSizeDefinition[1].equals("maxExclusive")){
+				diskSizeFilter = " AND groesse <= ";
+			}
+			diskSizeFilter += diskSize;
+			if(scenario.getIsFastBootSSDRequested())
+				typeFilter = " AND (art LIKE 'SSD' OR art LIKE 'SSHD')";
 		}
 		
+		//Ermittlung der Leistung
 		if(!performance.isEmpty())
 			performanceFilter = " AND Kategorie LIKE \"%"+performance+"%\"";
 		
-		String query = "SELECT * FROM "+ category +" WHERE " 
-						+ "preis >= " + priceLowerFilter + 
-						" AND preis <= " + priceUpperFilter + typeFilter+ performanceFilter;
-		
+		//query zusammenstellen
+		query += priceFilter + typeFilter+ performanceFilter + diskSizeFilter;
 		return query;
 		
 	}
@@ -129,10 +148,10 @@ public class ScenarioTreeStepDBOWLComputerComponents extends ScenarioTreeStepSim
 		String typeFilter = "%";
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
-		
+
 		if(!scenario.getIsFastBootSSDRequested()){
 			typeFilter = "SSD";
-		}	
+		}
 		
 		
 		if(scenario.getBudget() == PriceBudgetGlobal.LOW){

@@ -166,8 +166,17 @@ public class OWLParser {
 									categoryValues = newLine.substring(
 											newLine.indexOf(">") + 1,
 											newLine.lastIndexOf("<"));
-									values.get(values.size() - 1).add(
-											categoryValues);
+									values.get(values.size() - 1).add(categoryValues);
+								} else if (newLine.contains("xsd:maxExclusive")) {
+									categoryValues = newLine.substring(
+											newLine.indexOf(">") + 1,
+											newLine.lastIndexOf("<"));
+									values.get(values.size() - 1).add(categoryValues);
+								} else if (newLine.contains("xsd:minExclusive")) {
+									categoryValues = newLine.substring(
+											newLine.indexOf(">") + 1,
+											newLine.lastIndexOf("<"));
+									values.get(values.size() - 1).add(categoryValues);
 								}
 	
 								newLine = br.readLine();
@@ -188,6 +197,7 @@ public class OWLParser {
 			ArrayList<String> nArray = new ArrayList<String>();
 			nArray.add(arrayList.get(0));
 			nArray.add(arrayList.get(1));
+			nArray.add(arrayList.get(2));
 			boolean adden = true;
 			//fuegt bereits vorhandener Range den neuen Wert sortiert ein
 			if (rValues.size() >= 0) {//gibt es schon angelegte Ranges?
@@ -195,13 +205,13 @@ public class OWLParser {
 					ArrayList<String> current = rValues.get(i);
 					if (current.get(0).equals(arrayList.get(0))) {
 						if (current.size() == 2) {
-							if (Double.valueOf(current.get(1)) < Double
-									.valueOf(arrayList.get(1)))
-								current.add(arrayList.get(1));
+							if (Double.valueOf(current.get(2)) < Double
+									.valueOf(arrayList.get(2)))
+								current.add(arrayList.get(2));
 							else
-								current.add(1, arrayList.get(1));
+								current.add(1, arrayList.get(2));
 						} else {
-							current.add(arrayList.get(1));
+							current.add(arrayList.get(2));
 						}
 						adden = false; //Range wurde gefunden
 					}
@@ -246,10 +256,7 @@ public class OWLParser {
 						if (newLine.contains("<rdfs:range"))
 							while (!newLine.contains("</rdfs:range")) {
 								ArrayList<String> value = new ArrayList<String>();
-								if (newLine.contains("onProperty")
-										&& (values.size() > 0 ? values.get(
-												values.size() - 1).size() > 1
-												: true)) {
+								if (newLine.contains("onProperty") && (values.size() > 0 ? values.get(values.size() - 1).size() > 1 : true)) {
 									categoryValues = newLine.substring(
 											newLine.indexOf(";") + 1,
 											newLine.lastIndexOf("\""));
@@ -259,14 +266,26 @@ public class OWLParser {
 									categoryValues = newLine.substring(
 											newLine.indexOf(">") + 1,
 											newLine.lastIndexOf("<"));
-									values.get(values.size() - 1).add(
-											categoryValues);
+									values.get(values.size() - 1).add("minInclusive");
+									values.get(values.size() - 1).add(categoryValues);
 								} else if (newLine.contains("xsd:maxInclusive")) {
 									categoryValues = newLine.substring(
 											newLine.indexOf(">") + 1,
 											newLine.lastIndexOf("<"));
-									values.get(values.size() - 1).add(
-											categoryValues);
+									values.get(values.size() - 1).add("maxInclusive");
+									values.get(values.size() - 1).add(categoryValues);
+								} else if (newLine.contains("xsd:maxExclusive")) {
+									categoryValues = newLine.substring(
+											newLine.indexOf(">") + 1,
+											newLine.lastIndexOf("<"));
+									values.get(values.size() - 1).add("maxExclusive");
+									values.get(values.size() - 1).add(categoryValues);
+								} else if (newLine.contains("xsd:minExclusive")) {
+									categoryValues = newLine.substring(
+											newLine.indexOf(">") + 1,
+											newLine.lastIndexOf("<"));
+									values.get(values.size() - 1).add("minExclusive");
+									values.get(values.size() - 1).add(categoryValues);
 								}
 	
 								newLine = br.readLine();
@@ -287,20 +306,23 @@ public class OWLParser {
 			ArrayList<String> nArray = new ArrayList<String>();
 			nArray.add(arrayList.get(0));
 			nArray.add(arrayList.get(1));
+			nArray.add(arrayList.get(2));
 			boolean adden = true;
 			//fuegt bereits vorhandener Range den neuen Wert sortiert ein
 			if (rValues.size() >= 0) {//gibt es schon angelegte Ranges?
 				for (int i = 0; i < rValues.size(); i++) {
 					ArrayList<String> current = rValues.get(i);
 					if (current.get(0).equals(arrayList.get(0))) {
-						if (current.size() == 2) {
-							if (Double.valueOf(current.get(1)) < Double
-									.valueOf(arrayList.get(1)))
+						if (current.size() >= 2) {
+							if (Double.valueOf(current.get(2)) < Double.valueOf(arrayList.get(2))){
 								current.add(arrayList.get(1));
-							else
+								current.add(arrayList.get(2));
+							} else {
+								current.add(1, arrayList.get(2));
 								current.add(1, arrayList.get(1));
+							}
 						} else {
-							current.add(arrayList.get(1));
+							current.add(arrayList.get(2));
 						}
 						adden = false; //Range wurde gefunden
 					}

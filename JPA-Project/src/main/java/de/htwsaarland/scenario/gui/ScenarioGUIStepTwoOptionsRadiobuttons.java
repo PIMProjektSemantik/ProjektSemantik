@@ -144,7 +144,6 @@ public class ScenarioGUIStepTwoOptionsRadiobuttons extends ScenarioGUIStep {
 	public void setSelectionIntoScenarioStep() {
 
 		this.scenarioStep.setSelection(this.getSelection());
-		
 	}
 	
 	@Override

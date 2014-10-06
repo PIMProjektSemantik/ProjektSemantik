@@ -38,18 +38,46 @@ public class ScenarioTreeStepDBOWLNotebook extends ScenarioTreeStepSimpleDatabas
 		String os = scenario.getOperatingSystemName();
 		String osFilter ="";		
 		String category = "Notebook";
+		String typeFilter = "";
+		String performance = scenario.getPerformance();
+		String performanceFilter = "";
+		int diskSize = 0;
+		String diskSizeFilter = "";
+		
+		if(!performance.isEmpty())
+			performanceFilter = " AND Kategorie LIKE \"%"+performance+"%\"";
 		
 		
 		if(!os.isEmpty())
 			osFilter = " AND betriebssystem LIKE '%" + os + "%'";
 		
+
+		//Ermittlung der Festplattenspezifikationen
+		System.out.println(category);
+		String[] diskSizeDefinition = OntologyRequest.getDiskSize(scenario.getDiskSizeType());
+		diskSize = Integer.valueOf(diskSizeDefinition[2]);
+		if(diskSizeDefinition[1].equals("minInclusive")){
+			diskSizeFilter = " AND festplattengroesse >= ";
+		} else if(diskSizeDefinition[1].equals("maxInclusive")){
+			diskSizeFilter = " AND festplattengroesse <= ";
+		} else if(diskSizeDefinition[1].equals("minExclusive")){
+			diskSizeFilter = " AND festplattengroesse >= ";
+		} else if(diskSizeDefinition[1].equals("maxExclusive")){
+			diskSizeFilter = " AND festplattengroesse <= ";
+		}
+		diskSizeFilter += diskSize;
+		if(scenario.getIsFastBootSSDRequested())
+			typeFilter = " AND (festplattentyp LIKE 'SSD' OR festplattentyp LIKE 'SSHD')";
+
+		
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
-		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
+		priceLowerFilter = Double.valueOf(bereich[2]);
+		priceUpperFilter = Double.valueOf(bereich[4]);
 		
 		String query = "SELECT * FROM "+ category + " WHERE preis >= " + priceLowerFilter + 
-						" AND preis <= " + priceUpperFilter + osFilter;
+						" AND preis <= " + priceUpperFilter
+						+ osFilter + typeFilter +performanceFilter+diskSizeFilter;
 		return query;
 		
 	}		

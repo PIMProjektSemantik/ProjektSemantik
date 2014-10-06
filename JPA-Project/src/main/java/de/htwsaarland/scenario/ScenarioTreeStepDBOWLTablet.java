@@ -35,6 +35,11 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 		String mobileInternetFilter = "";
 		double priceLowerFilter = 0;
 		double priceUpperFilter = Integer.MAX_VALUE;
+		String performance = scenario.getPerformance();
+		String performanceFilter = "";
+		
+		if(!performance.isEmpty())
+			performanceFilter = " AND Kategorie LIKE \"%"+performance+"%\"";
 
 		String os = scenario.getOperatingSystemName();
 		String osFilter ="";
@@ -52,12 +57,13 @@ public class ScenarioTreeStepDBOWLTablet extends ScenarioTreeStepSimpleDatabaseR
 		
 		String[] bereich = OntologyRequest.getBudgetForCategory(scenario.getBudgetOntologie(), category);
 		category = category.toLowerCase(); //Grossbuchstaben entfernen
-		priceLowerFilter = Integer.valueOf(bereich[1].substring(0, bereich[1].lastIndexOf(".")));
-		priceUpperFilter = Integer.valueOf(bereich[2].substring(0, bereich[2].lastIndexOf(".")));
+		priceLowerFilter = Double.valueOf(bereich[2]);
+		priceUpperFilter = Double.valueOf(bereich[4]);
 
 		
 		String query = "SELECT * FROM "+ category +" WHERE preis >= " + priceLowerFilter + 
-						" AND preis <= " + priceUpperFilter + mobileInternetFilter + osFilter;
+						" AND preis <= " + priceUpperFilter
+						+ mobileInternetFilter + osFilter + performanceFilter;
 		return query;
 		
 	}

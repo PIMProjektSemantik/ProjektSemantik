@@ -119,6 +119,15 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	public int getSelection() {
 		return this.selectionBox.getSelectedIndex();
 	}
+	
+	/**
+	 * Liefert den Namen der ausgewählten Option der Dropdownliste.
+	 * Die String-Werte entsprechen der String-Werte in der String-Liste,
+	 * die dem Konstruktor übergeben wurde.
+	 */
+	public String getSelectionName() {
+		return this.selectionBox.getSelectedItem().toString();
+	}
 
 	/**
 	 * Transferiert die Auswahl der GUI-Komponenten in den darunterliegenden Szenarioschritt,
@@ -127,7 +136,7 @@ public class ScenarioGUIStepDropdownList extends ScenarioGUIStep {
 	@Override
 	public void setSelectionIntoScenarioStep() {
 		this.scenarioStep.setSelection(this.getSelection());
-		
+		this.scenarioStep.setSelectionName(this.getSelectionName());
 	}
 	
 	@Override

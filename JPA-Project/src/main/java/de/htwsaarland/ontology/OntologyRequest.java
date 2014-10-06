@@ -41,7 +41,6 @@ public class OntologyRequest {
 			}
 		}
 		return performance;
-		
 	}
 
 
@@ -82,5 +81,24 @@ public class OntologyRequest {
 			}
 		}
 		return returnValue.get(1);
+	}
+
+
+	public static String[] getDiskSize(String diskSizeType) {
+		OWLParser parser = new OWLParser();
+		ArrayList<ArrayList<String>> osList = parser.getRangeOfDomain(diskSizeType);
+		ArrayList<String> returnValue = osList.get(0);
+		// Gibt das Array mit dem Listeninhalt gefüllt zurück
+		String[] osRet = new String[returnValue.size()];
+		return returnValue.toArray(osRet);
+	}
+	
+	public static String[] getDiskSizeType() {
+		OWLParser parser = new OWLParser();
+		ArrayList<String> osList = parser.getValuesOfCategory("FestplattenGroesse");
+		
+		// Gibt das Array mit dem Listeninhalt gefüllt zurück
+		String[] osRet = new String[osList.size()];
+		return osList.toArray(osRet);
 	}
 }

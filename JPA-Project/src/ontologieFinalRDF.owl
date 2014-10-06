@@ -13,11 +13,11 @@
 
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:pc="http://www.semanticweb.org/eugen/ontologies/2014/8/pc.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:pc2="http://www.semanticweb.org/eugen/ontologies/2014/8/pc#">
     <Ontology rdf:about="http://www.semanticweb.org/eugen/ontologies/2014/8/pc">
         <rdfs:label rdf:datatype="&xsd;string">Rechner Ontology</rdfs:label>
@@ -42,19 +42,6 @@ V. 2</versionInfo>
     
 
 
-    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2 -->
-
-    <ObjectProperty rdf:about="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2">
-        <rdfs:label xml:lang="de">hatBudget</rdfs:label>
-        <rdfs:domain rdf:resource="&pc2;Betriebssystem"/>
-        <rdfs:range rdf:resource="&pc2;Budget"/>
-        <rdfs:domain rdf:resource="&pc2;Hardware"/>
-        <rdfs:domain rdf:resource="&pc2;PC_System"/>
-        <rdfs:domain rdf:resource="&pc2;Zubehoer"/>
-    </ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatArbeitsspeicher -->
 
     <ObjectProperty rdf:about="&pc2;hatArbeitsspeicher">
@@ -71,7 +58,7 @@ V. 2</versionInfo>
     <ObjectProperty rdf:about="&pc2;hatArbeitsspeicherBudget">
         <rdfs:range rdf:resource="&pc2;Arbeitsspeicher"/>
         <rdfs:domain rdf:resource="&pc2;Budget"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
     </ObjectProperty>
     
 
@@ -101,7 +88,19 @@ V. 2</versionInfo>
     <ObjectProperty rdf:about="&pc2;hatBetriebssystemBudget">
         <rdfs:range rdf:resource="&pc2;Betriebssystem"/>
         <rdfs:domain rdf:resource="&pc2;Budget"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatBudget -->
+
+    <ObjectProperty rdf:about="&pc2;hatBudget">
+        <rdfs:domain rdf:resource="&pc2;Betriebssystem"/>
+        <rdfs:range rdf:resource="&pc2;Budget"/>
+        <rdfs:domain rdf:resource="&pc2;Hardware"/>
+        <rdfs:domain rdf:resource="&pc2;PC_System"/>
+        <rdfs:domain rdf:resource="&pc2;Zubehoer"/>
     </ObjectProperty>
     
 
@@ -122,7 +121,7 @@ V. 2</versionInfo>
     <ObjectProperty rdf:about="&pc2;hatCPUBudget">
         <rdfs:domain rdf:resource="&pc2;Budget"/>
         <rdfs:range rdf:resource="&pc2;CPU"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
     </ObjectProperty>
     
 
@@ -153,7 +152,23 @@ V. 2</versionInfo>
     <ObjectProperty rdf:about="&pc2;hatFestplatteBudget">
         <rdfs:domain rdf:resource="&pc2;Budget"/>
         <rdfs:range rdf:resource="&pc2;Festplatte"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatFestplattenGroesse -->
+
+    <ObjectProperty rdf:about="&pc2;hatFestplattenGroesse">
+        <rdfs:domain rdf:resource="&pc2;Festplatte"/>
+        <rdfs:domain rdf:resource="&pc2;Notebook"/>
+        <rdfs:domain rdf:resource="&pc2;Tablet"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGroesse"/>
+                <someValuesFrom rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:range>
     </ObjectProperty>
     
 
@@ -174,7 +189,36 @@ V. 2</versionInfo>
     <ObjectProperty rdf:about="&pc2;hatGrafikkarteBugdet">
         <rdfs:domain rdf:resource="&pc2;Budget"/>
         <rdfs:range rdf:resource="&pc2;Grafikkarte"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatGrosseFestplattenGroesse -->
+
+    <ObjectProperty rdf:about="&pc2;hatGrosseFestplattenGroesse">
+        <rdfs:domain rdf:resource="&pc2;GrosseFestplatte"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatFestplattenGroesse"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatGroesse"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;int"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;int">512</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
     </ObjectProperty>
     
 
@@ -203,7 +247,27 @@ V. 2</versionInfo>
 
     <ObjectProperty rdf:about="&pc2;hatHohesBudget">
         <rdfs:domain rdf:resource="&pc2;Budget_Hoch"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
         <rdfs:range>
             <Restriction>
                 <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
@@ -215,7 +279,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">2000.0</xsd:maxInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -235,47 +299,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">500.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">300.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">300.0</xsd:maxInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">2000.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -295,7 +319,27 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">1000.0</xsd:minInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">1500.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -335,7 +379,27 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">3000.0</xsd:maxInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -355,27 +419,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">170.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">1500.0</xsd:minInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">300.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -395,7 +439,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">800.0</xsd:minInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">2000.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -406,7 +450,7 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
                 <someValuesFrom>
                     <Restriction>
                         <onProperty rdf:resource="&pc2;hatPreis"/>
@@ -415,7 +459,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">1500.0</xsd:maxInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -446,6 +490,26 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
                 <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
                 <someValuesFrom>
                     <Restriction>
@@ -455,7 +519,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">200.0</xsd:minInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">9000.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -466,7 +530,7 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
                 <someValuesFrom>
                     <Restriction>
                         <onProperty rdf:resource="&pc2;hatPreis"/>
@@ -475,7 +539,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">300.0</xsd:minInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -486,7 +550,7 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
                 <someValuesFrom>
                     <Restriction>
                         <onProperty rdf:resource="&pc2;hatPreis"/>
@@ -495,7 +559,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">2000.0</xsd:minInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">3000.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -504,18 +568,27 @@ V. 2</versionInfo>
                 </someValuesFrom>
             </Restriction>
         </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#hatKleineFestplattenGroesse -->
+
+    <ObjectProperty rdf:about="&pc2;hatKleineFestplattenGroesse">
+        <rdfs:domain rdf:resource="&pc2;KleineFestplatte"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatFestplattenGroesse"/>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
                 <someValuesFrom>
                     <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <onProperty rdf:resource="&pc2;hatGroesse"/>
                         <someValuesFrom>
                             <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
+                                <onDatatype rdf:resource="&xsd;int"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">2000.0</xsd:maxInclusive>
+                                        <xsd:maxExclusive rdf:datatype="&xsd;int">512</xsd:maxExclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -553,7 +626,107 @@ V. 2</versionInfo>
 
     <ObjectProperty rdf:about="&pc2;hatMittleresBudget">
         <rdfs:domain rdf:resource="&pc2;Budget_Mittel"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">169.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">999.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
         <rdfs:range>
             <Restriction>
                 <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
@@ -596,46 +769,6 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">1000.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">330.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
                 <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
                 <someValuesFrom>
                     <Restriction>
@@ -645,67 +778,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">800.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">150.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">499.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">80.0</xsd:minInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -736,6 +809,26 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">499.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
                 <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
                 <someValuesFrom>
                     <Restriction>
@@ -756,6 +849,86 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
                 <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
                 <someValuesFrom>
                     <Restriction>
@@ -766,106 +939,6 @@ V. 2</versionInfo>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
                                         <xsd:maxInclusive rdf:datatype="&xsd;double">299.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">150.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">169.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">250.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">999.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatTabletBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">600.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -912,10 +985,10 @@ V. 2</versionInfo>
 
     <ObjectProperty rdf:about="&pc2;hatNiedrigesBudget">
         <rdfs:domain rdf:resource="&pc2;Budget_Niedrig"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
                 <someValuesFrom>
                     <Restriction>
                         <onProperty rdf:resource="&pc2;hatPreis"/>
@@ -924,7 +997,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">350.0</xsd:minInclusive>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">149.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -935,7 +1008,7 @@ V. 2</versionInfo>
         </rdfs:range>
         <rdfs:range>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
                 <someValuesFrom>
                     <Restriction>
                         <onProperty rdf:resource="&pc2;hatPreis"/>
@@ -945,26 +1018,6 @@ V. 2</versionInfo>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
                                         <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">79.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -1004,67 +1057,107 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatNotebookBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">79.0</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
                                         <xsd:maxInclusive rdf:datatype="&xsd;double">999.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">80.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">329.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatArbeitsspeicherBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">10.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -1084,7 +1177,7 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">150.0</xsd:minInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -1105,66 +1198,6 @@ V. 2</versionInfo>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
                                         <xsd:maxInclusive rdf:datatype="&xsd;double">799.0</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatFestplatteBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">60.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatCPUBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">110.0</xsd:minInclusive>
-                                    </rdf:Description>
-                                </withRestrictions>
-                            </rdfs:Datatype>
-                        </someValuesFrom>
-                    </Restriction>
-                </someValuesFrom>
-            </Restriction>
-        </rdfs:range>
-        <rdfs:range>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatRechnerBudget"/>
-                <someValuesFrom>
-                    <Restriction>
-                        <onProperty rdf:resource="&pc2;hatPreis"/>
-                        <someValuesFrom>
-                            <rdfs:Datatype>
-                                <onDatatype rdf:resource="&xsd;double"/>
-                                <withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="&xsd;double">360.0</xsd:minInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -1224,7 +1257,47 @@ V. 2</versionInfo>
                                 <onDatatype rdf:resource="&xsd;double"/>
                                 <withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="&xsd;double">149.0</xsd:maxInclusive>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatBetriebssystemBudget"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                                    </rdf:Description>
+                                </withRestrictions>
+                            </rdfs:Datatype>
+                        </someValuesFrom>
+                    </Restriction>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarteBugdet"/>
+                <someValuesFrom>
+                    <Restriction>
+                        <onProperty rdf:resource="&pc2;hatPreis"/>
+                        <someValuesFrom>
+                            <rdfs:Datatype>
+                                <onDatatype rdf:resource="&xsd;double"/>
+                                <withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;double">329.0</xsd:maxInclusive>
                                     </rdf:Description>
                                 </withRestrictions>
                             </rdfs:Datatype>
@@ -1242,7 +1315,7 @@ V. 2</versionInfo>
     <ObjectProperty rdf:about="&pc2;hatNotebookBudget">
         <rdfs:domain rdf:resource="&pc2;Budget"/>
         <rdfs:range rdf:resource="&pc2;Notebook"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
     </ObjectProperty>
     
 
@@ -1251,8 +1324,8 @@ V. 2</versionInfo>
 
     <ObjectProperty rdf:about="&pc2;hatRechnerBudget">
         <rdfs:domain rdf:resource="&pc2;Budget"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
         <rdfs:range rdf:resource="&pc2;Rechner"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
     </ObjectProperty>
     
 
@@ -1261,8 +1334,8 @@ V. 2</versionInfo>
 
     <ObjectProperty rdf:about="&pc2;hatTabletBudget">
         <rdfs:domain rdf:resource="&pc2;Budget"/>
-        <rdfs:subPropertyOf rdf:resource="&pc2;OWLObjectProperty_fba06756_0283_423b_9637_e838b1ac1cf2"/>
         <rdfs:range rdf:resource="&pc2;Tablet"/>
+        <rdfs:subPropertyOf rdf:resource="&pc2;hatBudget"/>
     </ObjectProperty>
     
 
@@ -1551,16 +1624,16 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;Hardware"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatTakt"/>
+                <onProperty rdf:resource="&pc2;hatRamGroesse"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
-                <onDataRange rdf:resource="&xsd;double"/>
+                <onDataRange rdf:resource="&xsd;int"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatRamGroesse"/>
+                <onProperty rdf:resource="&pc2;hatTakt"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
-                <onDataRange rdf:resource="&xsd;int"/>
+                <onDataRange rdf:resource="&xsd;double"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -1581,13 +1654,6 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;Domain_Entity"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatEdition"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
-                <onDataRange rdf:resource="&xsd;string"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&pc2;hatName"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
                 <onDataRange rdf:resource="&xsd;string"/>
@@ -1603,6 +1669,13 @@ V. 2</versionInfo>
                     <rdf:Description rdf:about="&pc2;Windows"/>
                 </unionOf>
             </Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatEdition"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;string"/>
+            </Restriction>
         </rdfs:subClassOf>
     </Class>
     
@@ -1697,7 +1770,7 @@ V. 2</versionInfo>
     <Class rdf:about="&pc2;Domain_Entity">
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatHersteller"/>
+                <onProperty rdf:resource="&pc2;hatName"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
                 <onDataRange rdf:resource="&xsd;string"/>
             </Restriction>
@@ -1711,7 +1784,7 @@ V. 2</versionInfo>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatName"/>
+                <onProperty rdf:resource="&pc2;hatHersteller"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
                 <onDataRange rdf:resource="&xsd;string"/>
             </Restriction>
@@ -1767,6 +1840,22 @@ V. 2</versionInfo>
     
 
 
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#FestplattenGroesse -->
+
+    <Class rdf:about="&pc2;FestplattenGroesse">
+        <rdfs:subClassOf rdf:resource="&pc2;Values"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&pc2;GrosseFestplatte"/>
+                    <rdf:Description rdf:about="&pc2;KleineFestplatte"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
     <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#FireOS -->
 
     <Class rdf:about="&pc2;FireOS">
@@ -1786,6 +1875,14 @@ V. 2</versionInfo>
                 <onDataRange rdf:resource="&xsd;int"/>
             </Restriction>
         </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#GrosseFestplatte -->
+
+    <Class rdf:about="&pc2;GrosseFestplatte">
+        <rdfs:subClassOf rdf:resource="&pc2;FestplattenGroesse"/>
     </Class>
     
 
@@ -1816,6 +1913,14 @@ V. 2</versionInfo>
                 <onDataRange rdf:resource="&xsd;string"/>
             </Restriction>
         </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/eugen/ontologies/2014/8/pc#KleineFestplatte -->
+
+    <Class rdf:about="&pc2;KleineFestplatte">
+        <rdfs:subClassOf rdf:resource="&pc2;FestplattenGroesse"/>
     </Class>
     
 
@@ -1972,6 +2077,12 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;PC_System"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
+                <allValuesFrom rdf:resource="&pc2;Festplatte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&pc2;hatDisplayGroesse"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
                 <onDataRange rdf:resource="&xsd;double"/>
@@ -1985,21 +2096,15 @@ V. 2</versionInfo>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicher"/>
+                <someValuesFrom rdf:resource="&pc2;Arbeitsspeicher"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&pc2;hatBatterie"/>
                 <onClass rdf:resource="&pc2;Batterie"/>
                 <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatFestplatte"/>
-                <allValuesFrom rdf:resource="&pc2;Festplatte"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatArbeitsspeicher"/>
-                <someValuesFrom rdf:resource="&pc2;Arbeitsspeicher"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2020,15 +2125,15 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatLeistung"/>
-                <hasValue rdf:datatype="&xsd;string">langsam</hasValue>
+                <onProperty rdf:resource="&pc2;hatNiedrigesBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Niedrig"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatNiedrigesBudget"/>
-                <onClass rdf:resource="&pc2;Budget_Niedrig"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">langsam</hasValue>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2069,6 +2174,18 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;PC_System"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&pc2;hatGrafikkarte"/>
+                <someValuesFrom rdf:resource="&pc2;Grafikkarte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatMonitor"/>
+                <someValuesFrom rdf:resource="&pc2;Monitor"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&pc2;hatEingabeGeräte"/>
                 <allValuesFrom>
                     <Class>
@@ -2082,26 +2199,14 @@ V. 2</versionInfo>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatArbeitsspeicher"/>
-                <someValuesFrom rdf:resource="&pc2;Arbeitsspeicher"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatMonitor"/>
-                <someValuesFrom rdf:resource="&pc2;Monitor"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&pc2;hatGrafikkarte"/>
-                <someValuesFrom rdf:resource="&pc2;Grafikkarte"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&pc2;hatFestplatte"/>
                 <someValuesFrom rdf:resource="&pc2;Festplatte"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&pc2;hatArbeitsspeicher"/>
+                <someValuesFrom rdf:resource="&pc2;Arbeitsspeicher"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2122,15 +2227,15 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatMittleresBudget"/>
-                <onClass rdf:resource="&pc2;Budget_Mittel"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatLeistung"/>
-                <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
+                <onProperty rdf:resource="&pc2;hatMittleresBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Mittel"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2143,15 +2248,15 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;PC_System"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatDisplayGroesse"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
-                <onDataRange rdf:resource="&xsd;double"/>
+                <onProperty rdf:resource="&pc2;hatFestplatte"/>
+                <someValuesFrom rdf:resource="&pc2;Festplatte"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatFestplatte"/>
-                <someValuesFrom rdf:resource="&pc2;Festplatte"/>
+                <onProperty rdf:resource="&pc2;hatDisplayGroesse"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="&xsd;double"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2178,15 +2283,15 @@ V. 2</versionInfo>
         <rdfs:subClassOf rdf:resource="&pc2;Anwendung"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatLeistung"/>
-                <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
+                <onProperty rdf:resource="&pc2;hatMittleresBudget"/>
+                <onClass rdf:resource="&pc2;Budget_Mittel"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&pc2;hatMittleresBudget"/>
-                <onClass rdf:resource="&pc2;Budget_Mittel"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onProperty rdf:resource="&pc2;hatLeistung"/>
+                <hasValue rdf:datatype="&xsd;string">mittel</hasValue>
             </Restriction>
         </rdfs:subClassOf>
     </Class>

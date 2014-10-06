@@ -22,6 +22,7 @@ public class ScenarioTreeStepSimpleList extends ScenarioTreeStep {
 
 	// Parameter für die gesetzte Auswahl
 	private int selectedOption;
+	private String selectedOptionName;
 
 	
 	/**
@@ -66,7 +67,12 @@ public class ScenarioTreeStepSimpleList extends ScenarioTreeStep {
 		
 		return this.getFollowUpStep(selectedOption);
 	}
+
+	public void setSelectionName(String selectionName) {
+		selectedOptionName = selectionName;
+	}
 	
-	
-	
+	public String getSelectionName() {
+		return selectedOptionName;
+	}
 }

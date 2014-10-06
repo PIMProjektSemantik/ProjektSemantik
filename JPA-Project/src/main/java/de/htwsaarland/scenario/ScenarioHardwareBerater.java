@@ -48,9 +48,11 @@ public class ScenarioHardwareBerater {
 	ScenarioTreeStepTwoOptions 			stepMobileInternetYesNo					= null;
 	ScenarioTreeStepTwoOptions 			stepWLANYesNo							= null;
 	ScenarioTreeStepTwoOptions 			stepSSDYesNo							= null;
-	ScenarioTreeStepTwoOptions 			stepHighAmountOfData					= null;
+//	ScenarioTreeStepTwoOptions 			stepHighAmountOfData					= null;
+	ScenarioTreeStepSimpleList 			stepDiskSize							= null;
 	ScenarioTreeStepSimpleList 			stepOperatingSystemComputer				= null;
 	ScenarioTreeStepSimpleList 			stepOperatingSystemMobile				= null;
+	ScenarioTreeStepSimpleList 			stepOperatingSystemLaptop				= null;
 	ScenarioTreeStepSimpleList 			stepMobileDeviceType					= null;
 	ScenarioTreeStepTwoOptions 			stepMobileUsageYesNo					= null;
 	ScenarioTreeStepSimpleList 			stepBudget								= null;
@@ -62,6 +64,7 @@ public class ScenarioHardwareBerater {
 	private MobileDeviceCategory 		mobileDeviceCategory		= null;
 	private AdditionalScreenCategory	additionalScreenCategory	= null;
 	private int							operatingSystemId			= 0;
+	private String						operatingSystemName			= "";
 	private PriceBudgetGlobal			budget						= null;
 	private String						budgetOntologie				= null;
 
@@ -80,7 +83,10 @@ public class ScenarioHardwareBerater {
 	private String[]					mainUsageList = null;
 	private String[]					osList = null;
 	private String						performance = "";
-	private String[]					budgetList = null;					
+	private String[]					budgetList = null;
+	private String[]					diskSizeList = null;
+	private String 						diskSizeType = "";
+	private String						diskSpeedType = "";
 	
 			
 	// Id-Werte für Tabellen-Auswahlen (CPU, RAM, Grafik wie oben automatisch nach Budget??)
@@ -99,6 +105,7 @@ public class ScenarioHardwareBerater {
 		mainUsageList 	= OntologyRequest.getMainUsageCategories();
 		osList			= OntologyRequest.getOperatingSystems();
 		budgetList		= OntologyRequest.getBudgetTypes();
+		diskSizeList	= OntologyRequest.getDiskSizeType();
 		
 		// Konstruktion des Szenario-Ablaufs
 		this.buildScenario();
@@ -159,34 +166,44 @@ public class ScenarioHardwareBerater {
 		stepSSDYesNo = new ScenarioTreeStepTwoOptions("Schneller PC-Start?", stepWLANYesNo, "Ja", stepWLANYesNo, "Nein", "PC-Start in unter 20 Sekunden");
 		
 		// Datenspeicherschritt (Viele Daten Ja/Nein)
-		stepHighAmountOfData = new ScenarioTreeStepTwoOptions("Große Datenmenge", stepWLANYesNo, "Ja", stepSSDYesNo, "Nein", "Große Video und Fotosammlungen, Backups, usw.?");
+//		stepHighAmountOfData = new ScenarioTreeStepTwoOptions("Große Datenmenge", stepWLANYesNo, "Ja", stepSSDYesNo, "Nein", "Große Video und Fotosammlungen, Backups, usw.?");
+		stepDiskSize = new ScenarioTreeStepSimpleList("Große oder kleine Datenmenge", "Große Video und Fotosammlungen, Backups, usw.?");
+		for (int i = 0; i < diskSizeList.length; i++) {
+			stepDiskSize.addFollowUpStep(stepSSDYesNo, diskSizeList[i]);
+		}
 		
 		// Softwareauswahl (nur Windows/Linux auf Laptop/PC)
 		stepSoftwareAndOS = new ScenarioTreeStepDBOWLSoftwareAndOS("Software und Betriebssysteme", "gefilterte Tabelle ->", this);
-		stepSoftwareAndOS.addFollowUpStep(stepHighAmountOfData);
+//		stepSoftwareAndOS.addFollowUpStep(stepHighAmountOfData);
+		stepSoftwareAndOS.addFollowUpStep(stepDiskSize);
 		
-		// BetriebssystemSchritt (1 für PC/Laptop + 1 für Mobil)
+		// BetriebssystemSchritt (1 für PC + 1 für Mobil + 1 für Laptop)
 		stepOperatingSystemComputer = new ScenarioTreeStepSimpleList("Betriebssystem (PC)", "Je nach BS gibt es bestimmte Anwendungen nicht.");
 		stepOperatingSystemMobile = new ScenarioTreeStepSimpleList("Betriebssystem (Mobil)", "Je nach BS gibt es bestimmte Apps nicht.");
+		stepOperatingSystemLaptop = new ScenarioTreeStepSimpleList("Betriebssystem (Laptop)", "Je nach BS gibt es bestimmte Anwendungen nicht.");
 		
 		// Betriebssysteme aus der Ontologie in Nachfolgeliste verwandeln
 		for(int i = 0; i < osList.length; ++i){
-			if(osList[i].equals("Linux")){
+			if(osList[i].equals("OS") || osList[i].equals("Windows")) {
+				stepOperatingSystemLaptop.addFollowUpStep(stepDiskSize, osList[i]);
+			}
+			if(osList[i].equals("OS") || osList[i].equals("Android") || osList[i].equals("FireOS")) {
+				stepOperatingSystemMobile.addFollowUpStep(stepWLANYesNo, osList[i]);
+			}
+			if(osList[i].equals("Windows")) {
 				stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, osList[i]);
-			} else if(osList[i].equals("Android")){
-				stepOperatingSystemMobile.addFollowUpStep(stepSoftwareAndOS, osList[i]);
-			} else {
-				stepOperatingSystemComputer.addFollowUpStep(stepSoftwareAndOS, osList[i]);
-				stepOperatingSystemMobile.addFollowUpStep(stepHighAmountOfData, osList[i]);
+			}
+			if(osList[i].equals("Linux")) {
+				stepOperatingSystemComputer.addFollowUpStep(stepDiskSize, osList[i]);
 			}
 		}
-
 		
 		
 		// Mobiler Gerätetyp Schritt
 		stepMobileDeviceType = new ScenarioTreeStepSimpleList("Gerätetyp (Mobil)?", "Laptops mit voller PC Flexibilität oder kompakt mit Apps.");
-		stepMobileDeviceType.addFollowUpStep(stepOperatingSystemComputer, MobileDeviceCategory.LAPTOP.NAME);
+		stepMobileDeviceType.addFollowUpStep(stepOperatingSystemLaptop, MobileDeviceCategory.LAPTOP.NAME);
 		stepMobileDeviceType.addFollowUpStep(stepOperatingSystemMobile, MobileDeviceCategory.TABLET.NAME);
+		
 		
 		// Mobiles Arbeiten Schritt ((Ja/Nein)
 		stepMobileUsageYesNo = new ScenarioTreeStepTwoOptions("Mobiles Arbeiten?", stepMobileDeviceType, "Ja", stepOperatingSystemComputer, "Nein", "Arbeit ohne Kabel, beim Kunden, usw.");
@@ -201,9 +218,6 @@ public class ScenarioHardwareBerater {
 													"RAM:				Gering: <= 80 €. Mittel 80-160 €. Hoch >= 160<br>" +
 													"Grafikkarte:		Gering: <= 200 €. Mittel 200-400 €. Hoch >= 400<br>" +
 													"Festplatte:		Gering: <= 50 €. Mittel 50-100 €. Hoch >= 100</html>");
-//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.LOW.NAME);
-//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.MIDDLE.NAME);
-//		stepBudget.addFollowUpStep(stepMobileUsageYesNo, PriceBudgetGlobal.HIGH.NAME);
 		for (int i = 0; i < budgetList.length; i++) {
 			stepBudget.addFollowUpStep(stepMobileUsageYesNo, budgetList[i]);
 		}
@@ -290,24 +304,38 @@ public class ScenarioHardwareBerater {
 			// SSD Schnellstart Ja/Nein
 			this.fastBootSSDRequested = this.stepSSDYesNo.getSelection() == 0 ? true : false;
 			nextStep = this.stepSSDYesNo.getNextStep();
-			
-		} else if (currentStep == this.stepHighAmountOfData){
+
+//		} else if (currentStep == this.stepHighAmountOfData){
+		} else if (currentStep == this.stepDiskSize){
 			// Viel Speicher Ja/Nein
-			this.highAmountOfStorageRequested = this.stepHighAmountOfData.getSelection() == 0 ? true : false;
-			if(this.highAmountOfStorageRequested == true){
-				this.fastBootSSDRequested = true;
-			}
-			nextStep = this.stepHighAmountOfData.getNextStep();
+//			this.highAmountOfStorageRequested = this.stepHighAmountOfData.getSelection() == 0 ? true : false;
+			this.highAmountOfStorageRequested = this.stepDiskSize.getSelection() == 0 ? true : false;
+			diskSizeType = this.stepDiskSize.getSelectionName();
+			
+//			if(this.highAmountOfStorageRequested == true){
+//				this.fastBootSSDRequested = true;
+//			}
+			
+//			nextStep = this.stepHighAmountOfData.getNextStep();
+			nextStep = this.stepDiskSize.getNextStep();
 			
 		} else if (currentStep == this.stepOperatingSystemComputer) {
 			// Betriebssystem Computer
 			this.setOperatingSystemId(this.stepOperatingSystemComputer.getSelection());
+			this.operatingSystemName = this.stepOperatingSystemComputer.getSelectionName();
 			nextStep = this.stepOperatingSystemComputer.getNextStep();
 			
 		} else if (currentStep == this.stepOperatingSystemMobile) {
 			// Betriebssystem Mobil
 			this.setOperatingSystemId(this.stepOperatingSystemMobile.getSelection());
+			this.operatingSystemName = this.stepOperatingSystemMobile.getSelectionName();
 			nextStep = this.stepOperatingSystemMobile.getNextStep();
+			
+		} else if (currentStep == this.stepOperatingSystemLaptop) {
+			// Betriebssystem Mobil
+			this.setOperatingSystemId(this.stepOperatingSystemLaptop.getSelection());
+			this.operatingSystemName = this.stepOperatingSystemLaptop.getSelectionName();
+			nextStep = this.stepOperatingSystemLaptop.getNextStep();
 			
 		} else if (currentStep == this.stepMobileDeviceType) {
 			// Mobiler Gerätetyp
@@ -330,11 +358,6 @@ public class ScenarioHardwareBerater {
 			// Hauptnutzung
 			this.setMainUsageId(this.stepMainUsage.getSelection());
 			this.performance = OntologyRequest.getPerformance(this.mainUsageList[this.mainUsageId]);
-			/* Deprecated
-			if (this.mainUsageList[this.mainUsageId].equals("CAD") || this.mainUsageList[this.mainUsageId].equals("Videobearbeitung")){//TODO
-				this.budget = PriceBudgetGlobal.HIGH;
-			}
-			*/
 			
 			//Ontologieabfrage: Besitzt die Auswahl eine Budgetkategorisie?
 			String tempBudget = OntologyRequest.getBudgetType(this.mainUsageList[this.mainUsageId]);
@@ -554,7 +577,7 @@ public class ScenarioHardwareBerater {
 	}
 	
 	public String getOperatingSystemName(){
-		return osList[operatingSystemId+1];
+		return operatingSystemName;
 	}
 
 	/**
@@ -595,5 +618,13 @@ public class ScenarioHardwareBerater {
 
 	public String getBudgetOntologie() {
 		return budgetOntologie;
+	}
+
+	public String getDiskSizeType() {
+		return diskSizeType;
+	}
+
+	public String getDiskSpeedType() {
+		return diskSpeedType;
 	}
 }
